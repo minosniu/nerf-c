@@ -9,6 +9,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
+-include src/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -22,19 +23,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: test1
+all: izh\ finger
 
 # Tool invocations
-prueba: $(OBJS) $(USER_OBJS)
+izh\ finger: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MacOS X C Linker'
-	gcc  -o "prueba" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc  -o "izh finger" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) prueba
+	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) "izh finger"
 	-@echo ' '
 
 .PHONY: all clean dependents
