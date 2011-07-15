@@ -36,19 +36,20 @@ main(int argc, char *argv[])
   double spkcnt = 0.0;
   int i;
 
-  auxVar[0] = -70.0; // v: membrane voltage
-  auxVar[1] = -14.0; // b * v0 = 0.2 * (-70.0) = -14.0
-  auxVar[2] = 0.0; // not spiking at the beginning
-
   param[0] = 400.0;
   param[1] = 5.0;
   //srand48(time(NULL));
 
   double I;
-  for (I = 0.0; I < 500.0; I = I+1.0)
+  for (I = 0.0; I < 500.0; I = I + 1.0)
     {
       param[0] = I;
       spkcnt = 0.0;
+
+      auxVar[0] = -70.0; // v: membrane voltage
+      auxVar[1] = -14.0; // b * v0 = 0.2 * (-70.0) = -14.0
+      auxVar[2] = 0.0; // not spiking at the beginning
+
       for (i = 0; i < 1000; ++i)
         {
           //param [0] = 500.0 * drand48();
