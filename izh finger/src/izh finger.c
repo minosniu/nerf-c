@@ -40,7 +40,7 @@ main(int argc, char *argv[])
   const double T = 1.0 / samplFreq; // in seconds
   const double PERIODS = 4;
   const double BIAS = 100.0;
-  const double AMP = 20;
+  const double AMP = 50;
   double pps[1000];
   int n;
   double max_n;
@@ -72,17 +72,17 @@ main(int argc, char *argv[])
   for (i = 0; i < max_n; ++i)
     {
       //param [0] = 500.0 * drand48();
-      param [0] = 500.0;//pps[i];
+      param [0] = 20.174 * 5.0 * pps[i] - 83.987;
       stateMatrix[0] = (double) i / samplFreq;
       Doer(stateMatrix, bufferInd, bufferLength, numDataColumns, samplFreq,
           motorVoltages, param, auxVar);
       ////spkcnt += auxVar[2];
-      //spkcnt = spkcnt + auxVar[2];
+      //pkcnt = spkcnt + auxVar[2];
       printf("%.6lf\t", auxVar[2]);
       printf("%.6lf\n", pps[i]);
 
     }
-  //printf("%.1lf\n", spkcnt);
+  //printf("Total spikes = %.1lf\n", spkcnt);
 
 
   free(stateMatrix);
