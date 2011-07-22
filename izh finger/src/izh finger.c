@@ -32,7 +32,7 @@ main(int argc, char *argv[])
   double *motorVoltages = (double *) calloc(20, sizeof(double));
   double *param = calloc(2, sizeof(double));
   double *auxVar = calloc(3, sizeof(double));
-  double samplFreq = 40;
+  double samplFreq = 1000.0;
   double spkcnt = 0.0;
   int i;
 
@@ -41,7 +41,7 @@ main(int argc, char *argv[])
   //srand48(time(NULL));
 
   double I;
-  for (I = 0.0; I < 500.0; I = I + 1.0)
+  for (I = 0.0; I < 5000.0; I = I + 10.0)
     {
       param[0] = I;
       spkcnt = 0.0;
@@ -50,7 +50,7 @@ main(int argc, char *argv[])
       auxVar[1] = -14.0; // b * v0 = 0.2 * (-70.0) = -14.0
       auxVar[2] = 0.0; // not spiking at the beginning
 
-      for (i = 0; i < 1000; ++i)
+      for (i = 0; i < (int) samplFreq; ++i)
         {
           //param [0] = 500.0 * drand48();
           stateMatrix[0] = (double) i / samplFreq;
@@ -61,7 +61,7 @@ main(int argc, char *argv[])
           //printf("%.6f\n", auxVar[2]);
 
         }
-      printf("%f, %f\n", I, spkcnt);
+      printf("%f\t%f\n", I, spkcnt);
 
     }
   free(stateMatrix);
