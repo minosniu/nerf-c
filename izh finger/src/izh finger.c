@@ -32,34 +32,57 @@ main(int argc, char *argv[])
   double *motorVoltages = (double *) calloc(20, sizeof(double));
   double *param = calloc(2, sizeof(double));
   double *auxVar = calloc(3, sizeof(double));
-  double samplFreq = 40;
+  double samplFreq = 1000;
   double spkcnt = 0.0;
   int i;
-  double RATE_PPS = 200.0; // pulses per second
+  //double RATE_PPS = 200.0; // pulses per second
+  const double F = 4; // in Hz, continuous freq
+  const double T = 1.0 / samplFreq; // in seconds
+  const double PERIODS = 4;
+  const double BIAS = 100.0;
+  const double AMP = 20;
+  double pps[1000];
+  int n;
+  double max_n;
+  double w;
+
+
+
+  w = F * 2.0 * M_PI * T;
+  max_n = 2.0 * M_PI * PERIODS / w;
+  //printf("%.6f\t", max_n);
+  for (n = 0; n < max_n; n++)
+    {
+      pps[n] = AMP * sin(w * n) + BIAS;
+      //printf("%.6f\t", pps[n]);
+    }
 
   //param[0] = 400.0;
   param[1] = 5.0;
   //srand48(time(NULL));
 
-  param[0] = 1.2435 * RATE_PPS - 19.014; // empirically measured, see sangerlab.wikidot.com/izhikevich_firing
+  //param[0] = 1.2435 * RATE_PPS - 19.014; // empirically measured, see sangerlab.wikidot.com/izhikevich_firing
+
   spkcnt = 0.0;
 
   auxVar[0] = -70.0; // v: membrane voltage
   auxVar[1] = -14.0; // b * v0 = 0.2 * (-70.0) = -14.0
   auxVar[2] = 0.0; // not spiking at the beginning
 
-  for (i = 0; i < 1000; ++i)
+  for (i = 0; i < max_n; ++i)
     {
       //param [0] = 500.0 * drand48();
+      param [0] = 500.0;//pps[i];
       stateMatrix[0] = (double) i / samplFreq;
       Doer(stateMatrix, bufferInd, bufferLength, numDataColumns, samplFreq,
           motorVoltages, param, auxVar);
-      //spkcnt += auxVar[2];
-      spkcnt = spkcnt + auxVar[2];
-      //printf("%.6f\n", auxVar[2]);
+      ////spkcnt += auxVar[2];
+      //spkcnt = spkcnt + auxVar[2];
+      printf("%.6lf\t", auxVar[2]);
+      printf("%.6lf\n", pps[i]);
 
     }
-  printf("%.1lf\n", spkcnt);
+  //printf("%.1lf\n", spkcnt);
 
 
   free(stateMatrix);

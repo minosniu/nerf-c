@@ -54,6 +54,7 @@ main(int argc, char *argv[])
   double w;
 
 
+
   w = F * 2.0 * M_PI * T;
   max_n = 2.0 * M_PI * PERIODS / w;
 
