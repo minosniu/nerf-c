@@ -37,7 +37,7 @@ main(int argc, char *argv[])
   int i;
 
   param[0] = 400.0;
-  param[1] = 5.0;
+  param[1] = 1.0;
   //srand48(time(NULL));
 
   double I;
