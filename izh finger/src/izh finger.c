@@ -93,7 +93,8 @@ main(int argc, char *argv[])
       param[0] = 80.0; //param[0] in spindle
       param [1] = lce[i];  //param[1] in spindle
 
-      pps[i] = auxVar[3] * 0.08; // mult by 0.1 becasue spindle model is NOT completed
+      //pps[i] = auxVar[3] * 0.08; // mult by 0.1 becasue spindle model is NOT completed
+      pps[i] = lce[i] * 100.0;//changed this july 28 // mult by 0.1 becasue spindle model is NOT completed
       // param[2] and param[3] are for izhikevich
       param[2] = fmax(0.43 * pps[i]  - 5.7, 0.0);
       param[3] = MAX_VOLTAGE;
@@ -132,6 +133,7 @@ Doer(double *stateMatrix, int bufferInd, int bufferLength, int numDataColumns,
   double *spindle_param = calloc(NUM_SPINDLE_PARAM + 1, sizeof(double)); // Sim parameters that should be pre-defined w/o updating
   double *izh_state = calloc(NUM_IZH_STATE, sizeof(double)); // State variables that keep updating by themselves
   double *izh_param = calloc(NUM_IZH_PARAM + 1, sizeof(double)); // Sim parameters that should be pre-defined w/o updating
+  //double *filter_state = calloc(NUM_FILTER_STATE, sizeof(double));
 
 
   memcpy(spindle_state, &auxVar[0], NUM_SPINDLE_STATE * sizeof(double)); // dump the previous states to neuron_state[]
@@ -266,3 +268,38 @@ Spindle(double *neuron_state, double *neuron_input)
   //printf("%.6f\n", xx2);
 
 }
+/*
+void
+Filter()
+{
+  srand48(time(NULL));
+
+  double alfa = 0.4;
+  //double T = 0.001; // Sampling interval
+  //double eat = exp(-alfa * T);
+  double y[1000];
+  //double x0;
+  double x = neuron_input[0];
+  double yy = 0.0;
+  int i;
+
+
+
+  for (i = 0; i < 50; i++)
+    {
+      y[i] = yy;
+      if (drand48() > 0.8)
+        {
+          x = 1;
+          printf("%.6f\t", x);
+        }
+      else
+        {
+          x = 0;
+          printf("%.6f\t", x);
+        }
+      yy = alfa * y[i] + (1 - alfa) * x;
+      printf("%.6f\n\t ", yy);
+      yy = neuron_state[0];
+}
+/*
