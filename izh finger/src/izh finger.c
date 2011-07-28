@@ -40,7 +40,7 @@ main(int argc, char *argv[])
   double *motorVoltages = (double *) calloc(20, sizeof(double));
   double *param = calloc(NUM_PARAM, sizeof(double));
   double *auxVar = calloc(NUM_STATE, sizeof(double));
-  double samplFreq = 1000;
+  double samplFreq = 1000.0;
   double spkcnt = 0.0;
   const double MAX_VOLTAGE = 5.0;
   int i;
@@ -61,7 +61,6 @@ main(int argc, char *argv[])
   int n;
   double max_n;
   double w;
-
 
   w = F * 2.0 * M_PI * T;
   max_n = 2.0 * M_PI * PERIODS / w;
@@ -94,17 +93,21 @@ main(int argc, char *argv[])
       param[0] = 80.0; //param[0] in spindle
       param [1] = lce[i];  //param[1] in spindle
 
-      pps[i] = auxVar[3] * 0.1; // mult by 0.1 becasue spndle model is NOT completed
+      pps[i] = auxVar[3] * 0.08; // mult by 0.1 becasue spindle model is NOT completed
       // param[2] and param[3] are for izhikevich
-      param[2] = 100.0 * pps[i] - 56.2;
+      param[2] = fmax(0.43 * pps[i]  - 5.7, 0.0);
       param[3] = MAX_VOLTAGE;
       stateMatrix[0] = (double) i / samplFreq;
       Doer(stateMatrix, bufferInd, bufferLength, numDataColumns, samplFreq,
           motorVoltages, param, auxVar);
       ////spkcnt += auxVar[2];
-      //pkcnt = spkcnt + auxVar[2];
-      printf("%.6lf\t", auxVar[NUM_SPINDLE_STATE - 1]);
-      printf("%.6lf\n", auxVar[NUM_STATE - 1]);
+      //spkcnt = spkcnt + auxVar[2];
+      printf("%.6lf\t", pps[i]);//auxVar[NUM_SPINDLE_STATE - 1]);
+      //printf("%.6lf\t", param[2]);//auxVar[NUM_SPINDLE_STATE - 1]);
+      printf("%.6lf\t", auxVar[NUM_STATE - 1]);
+      printf(" %.6lf\t", auxVar[4]);
+      printf(" %.6lf\n", auxVar[5]);
+
 
     }
   //printf("Total spikes = %.1lf\n", spkcnt);
@@ -126,9 +129,9 @@ Doer(double *stateMatrix, int bufferInd, int bufferLength, int numDataColumns,
 
   //double neuron_state[3], neuron_input[3];
   double *spindle_state = calloc(NUM_SPINDLE_STATE, sizeof(double)); // State variables that keep updating by themselves
-  double *spindle_param = calloc(NUM_SPINDLE_PARAM, sizeof(double)); // Sim parameters that should be pre-defined w/o updating
+  double *spindle_param = calloc(NUM_SPINDLE_PARAM + 1, sizeof(double)); // Sim parameters that should be pre-defined w/o updating
   double *izh_state = calloc(NUM_IZH_STATE, sizeof(double)); // State variables that keep updating by themselves
-  double *izh_param = calloc(NUM_IZH_PARAM, sizeof(double)); // Sim parameters that should be pre-defined w/o updating
+  double *izh_param = calloc(NUM_IZH_PARAM + 1, sizeof(double)); // Sim parameters that should be pre-defined w/o updating
 
 
   memcpy(spindle_state, &auxVar[0], NUM_SPINDLE_STATE * sizeof(double)); // dump the previous states to neuron_state[]
@@ -152,6 +155,10 @@ Doer(double *stateMatrix, int bufferInd, int bufferLength, int numDataColumns,
   motorVoltages[1] = izh_state[NUM_IZH_STATE - 1];
  //motorVoltages[1] = neuron_state[3]; in spindle, gotta check it!
 
+  free(spindle_state);
+  free(spindle_param);
+  free(izh_state);
+  free(izh_param);
   return 0;
 
 }
@@ -159,6 +166,8 @@ Doer(double *stateMatrix, int bufferInd, int bufferLength, int numDataColumns,
 void
 Izhikevich(double *neuron_state, double *neuron_input)
 {
+  double DT = neuron_input[2] * 1000.0;
+
   double const A = 0.02; // a: time scale of the recovery variable u
   double const B = 0.2; // b:sensitivity of the recovery variable u to the subthreshold fluctuations of v.
   double const C = -65.0; // c: reset value of v caused by fast high threshold (K+)
@@ -172,7 +181,6 @@ Izhikevich(double *neuron_state, double *neuron_input)
   double vv, uu;
   double I = neuron_input[0];
   double vol_spike = neuron_input[1];
-  double DT = neuron_input[2];
 
   vv = v + DT * (0.04 * pow(v, 2) + X * v + Y - u + I); // neuron[0] = v;
   uu = u + DT * A * (B * v - u); // neuron[1] = u; See iZhikevich model

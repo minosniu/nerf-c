@@ -27,7 +27,7 @@ int main(void)
   int i;
 
 
-  for (i = 0; i < 46; i++)
+  for (i = 0; i < 50; i++)
     {
       y[i] = yy;
       if (drand48() > 0.8)
