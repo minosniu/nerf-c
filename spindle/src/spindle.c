@@ -1,10 +1,10 @@
 /*
  ============================================================================
  Name        : spindle.c
- Author      : Ivan
+ Author      : Ivan Trujillo-Priego // ivan7256[]hotmail
  Version     :
  Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
+ Description : Spindle model
  ============================================================================
  */
 //#include <ansi_c.h>
@@ -39,9 +39,7 @@ main(int argc, char *argv[])
   const double LPR0 = 0.76;
   const double F0ACT = 0.0289;
   const double LCEIN=1.0;
-  //double lce;
   //double fib;
-
   //const double SAMPLING_RATE = 1024.0;
   const double F = 4; // in Hz, continuous freq
   const double T = 1.0 / samplFreq; // in seconds

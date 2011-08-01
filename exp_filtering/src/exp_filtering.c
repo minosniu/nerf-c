@@ -1,10 +1,10 @@
 /*
  ============================================================================
  Name        : exp_filtering.c
- Author      : Ivan
+ Author      : Ivan Trujillo-Priego // ivan7256[]hotmail
  Version     :
  Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
+ Description : Exponential filtering
  ============================================================================
  */
 

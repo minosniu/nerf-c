@@ -1,10 +1,10 @@
 /*
  ============================================================================
  Name        : izh.c
- Author      : Ivan
+ Author      : Ivan Trujillo-Priego // ivan7256[at]hotmail
  Version     :
  Copyright   : Your copyright notice
- Description : Izhikevich, spindle & exponential filter. (closed-loop)
+ Description : Monosynaptic Spinal loop: Izhikevich, spindle & exponential filter.
  ============================================================================
  */
 #include <ansi_c.h>
@@ -20,13 +20,11 @@ Doer(double *stateMatrix, int bufferInd, int bufferLength, int numDataColumns,
 void
 Izhikevich(double *neuron_state, double *neuron_input);
 
-
 int
 main(int argc, char *argv[])
 {
   double *stateMatrix = (double *) calloc(500 * 67, sizeof(double));
   const int numMotorsTotal = 20;
-
   int bufferInd = 0;
   int bufferLength = 0;
   int numDataColumns = 67;
@@ -42,7 +40,7 @@ main(int argc, char *argv[])
   const double LSR0 = 0.04;
   const double LPR0 = 0.76;
   const double F0ACT = 0.0289;
-  const double LCEIN=1.0;
+  const double LCEIN = 1.0;
   const double F = 4; // in Hz, continuous freq
   const double T = 1.0 / samplFreq; // in seconds
   const double PERIODS = 4;
@@ -55,30 +53,29 @@ main(int argc, char *argv[])
   int n;
   int i;
 
-
   w = F * 2.0 * M_PI * T;
   max_n = 2.0 * M_PI * PERIODS / w;
- constant lce
-  for (n = 0; n < (int) max_n / 2 + 1; n ++)
-    {
-      lce[n] = 1.0;
-    }
+/*//  constant lce
+  for (n = 0;n < (int) max_n / 2 + 1;n ++)
+      {
+        lce[n] = 1.0;
+      }
   for (n = (int) max_n / 2 + 1; n < max_n; n++)
-    {
-      lce[n] = 1.0; //fmax(AMP * sin(w * n) + BIAS, 0.0);
+      {
+        lce[n] = 1.0; //fmax(AMP * sin(w * n) + BIAS, 0.0);
 
-    }
-
-/*  // to have waveform
-  for (n = 0; n < max_n; n++)
-    {
-      lce[n] = fmax(AMP * sin(w * n) + BIAS, 0.0);
-    }
+      }
 */
+      // to have waveform
+     for (n = 0; n < max_n; n++)
+     {
+     lce[n] = fmax(AMP * sin(w * n) + BIAS, 0.0);
+     }
+
   spkcnt = 0.0;
 
   auxVar[0] = 0.0; // spindle - xo = activation coefficient
-  auxVar[1] = (LPR0*KPR+LCEIN*KSR-LSR0*KSR-F0ACT)/(KSR+KPR); //  spindle -  x1 = Lpr,spindle
+  auxVar[1] = (LPR0 * KPR + LCEIN * KSR - LSR0 * KSR - F0ACT) / (KSR + KPR); //  spindle -  x1 = Lpr,spindle
   auxVar[2] = 0.0; //  spindle -  x2 = Lpr /dt
   auxVar[3] = 0.0; //  spindle - pps output from sipndle
   auxVar[4] = -70.0; // spindle neuron - v: membrane voltage
@@ -90,26 +87,24 @@ main(int argc, char *argv[])
   auxVar[10] = 0.0; // muscle force
 
 
-
   for (i = 0; i < max_n; ++i)
     {
 
       param[0] = 80.0;
-      param [1] = lce[i];
-      pps[i] = auxVar[3] * 0.5;// spindle
+      param[1] = lce[i];
+      pps[i] = auxVar[3]* 0.5;// spindle
       //param[2] = fmax(0.43 * pps[i]  - 5.7, 0.0);
-      param[2] = 0.43 * pps[i]  - 5.7;  //  empirically measured, pps - I relation
+      param[2] = 0.43 * pps[i] - 5.7; //  I, empirically measured, pps - I relation
       param[3] = MAX_VOLTAGE;
-      //param[4] =  fmax(0.43 * pps[i]  - 5.7, 0.0);
       stateMatrix[0] = (double) i / samplFreq;
-      param[4] = 0.43 * 50.0  - 5.7;
+      param[4] = 0.43 * 50.0 - 5.7;
       param[5] = MAX_VOLTAGE;
 
       Doer(stateMatrix, bufferInd, bufferLength, numDataColumns, samplFreq,
           motorVoltages, param, auxVar);
       //spkcnt = spkcnt + auxVar[2];
       printf("%.6lf\t", lce[i]);
-      printf("%.6lf\t",auxVar[2]);
+      printf("%.6lf\t", auxVar[2]);
       printf("%.6lf\t", auxVar[3]);
       printf(" %.6lf\t", auxVar[4]);
       printf(" %.6lf\t", auxVar[7]);
@@ -128,12 +123,12 @@ main(int argc, char *argv[])
 }
 
 int
-Doer(double *stateMatrix, int bufferInd, int bufferLength, int numDataColumns,
-    double samplFreq, double *motorVoltages, double *param, double *auxVar)
+Doer(double *stateMatrix, int bufferInd, int bufferLength,
+    int numDataColumns, double samplFreq, double *motorVoltages,
+    double *param, double *auxVar)
 {
 
   motorVoltages[1] = 0.0;
-
 
   double *spindle_state = calloc(4, sizeof(double)); // State variables that keep updating by themselves
   double *spindle_param = calloc(3, sizeof(double)); // Sim parameters that should be pre-defined w/o updating
@@ -149,17 +144,16 @@ Doer(double *stateMatrix, int bufferInd, int bufferLength, int numDataColumns,
   spindle_param[2] = 1.0 / samplFreq; // dt
 
   Spindle(spindle_state, spindle_param); // do one step of the integration
-  memcpy(&auxVar[0], spindle_state, 4 * sizeof(double)); // dump the previous states to neuron_state[]
+  memcpy(&auxVar[0], spindle_state, 4 * sizeof(double)); // save the current states in auxVar
 
 
-  memcpy(izh_state, &auxVar[0+4], 3 * sizeof(double)); // dump the previous states to neuron_state[]
+  memcpy(izh_state, &auxVar[0 + 4], 3 * sizeof(double)); // dump the previous states to neuron_state[]
 
   izh_param[0] = param[2]; // Synaptic input current
   izh_param[1] = param[3]; // Output voltage to the motor when spikes
   izh_param[2] = 1.0 / samplFreq; // dt
   Izhikevich(izh_state, izh_param); // do one step of the integration
-  memcpy(&auxVar[0+4], izh_state, 3 * sizeof(double)); // save the current states in auxVar
-
+  memcpy(&auxVar[0 + 4], izh_state, 3 * sizeof(double)); // save the current states in auxVar
 
 
   memcpy(mn_state, &auxVar[7], 3 * sizeof(double)); // dump the previous states to neuron_state[]
@@ -188,7 +182,7 @@ Doer(double *stateMatrix, int bufferInd, int bufferLength, int numDataColumns,
 void
 Izhikevich(double *neuron_state, double *neuron_input)
 {
-  double DT = neuron_input[2] * 1000.0; // unit must be in milliseconds
+  double DT = neuron_input[2] * 1000.0; // in milliseconds *see Izhikevich paper
 
   double const A = 0.02; // a: time scale of the recovery variable u
   double const B = 0.2; // b:sensitivity of the recovery variable u to the subthreshold fluctuations of v.
@@ -223,15 +217,14 @@ Izhikevich(double *neuron_state, double *neuron_input)
     };
 }
 
-
 void
 Spindle(double *neuron_state, double *neuron_input)
 {
 
-  // constants spindle model, see Mileusnic 2006
+  // constants spindle model, see Mileusnic et al. 2006
   const double KSR = 10.4649;
   const double KPR = 0.1127;
-  const double BDAMP=0.2356;
+  const double BDAMP = 0.2356;
   const double GI = 20000;
   const double LSR0 = 0.04;
   const double M = 0.0002;
@@ -262,7 +255,8 @@ Spindle(double *neuron_state, double *neuron_input)
       CSS = (2.0 / (1.0 + exp(-1000.0 * x2))) - 1.0;
     }
 
-  dx2 = (1 / M) * (KSR * lce - (KSR + KPR) * x1 - CSS * (BDAMP * x0) * (fabs(x2)) - 0.4);
+  dx2 = (1 / M) * (KSR * lce - (KSR + KPR) * x1 - CSS * (BDAMP * x0)
+      * (fabs(x2)) - 0.4);
   xx0 = x0 + dx0 * DT;
   xx1 = x1 + dx1 * DT;
   xx2 = x2 + dx2 * DT;
@@ -273,7 +267,6 @@ Spindle(double *neuron_state, double *neuron_input)
   neuron_state[1] = xx1;
   neuron_state[2] = xx2;
   neuron_state[3] = fib;
-
 
 }
 
