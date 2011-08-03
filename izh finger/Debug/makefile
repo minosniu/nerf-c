@@ -28,8 +28,8 @@ all: izh\ finger
 # Tool invocations
 izh\ finger: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
-	@echo 'Invoking: MacOS X C Linker'
-	gcc  -o "izh finger" $(OBJS) $(USER_OBJS) $(LIBS)
+	@echo 'Invoking: GCC C Linker'
+	gcc -lm -o "izh finger" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
