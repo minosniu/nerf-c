@@ -23,19 +23,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: izh\ finger
+all: exp_filtering
 
 # Tool invocations
-izh\ finger: $(OBJS) $(USER_OBJS)
+exp_filtering: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
-	@echo 'Invoking: GCC C Linker'
-	gcc -lm -o "izh finger" $(OBJS) $(USER_OBJS) $(LIBS)
+	@echo 'Invoking: MacOS X C Linker'
+	gcc  -o "exp_filtering" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) "izh finger"
+	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) exp_filtering
 	-@echo ' '
 
 .PHONY: all clean dependents
