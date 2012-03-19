@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.12"
+    ComputedModelVersion    "1.13"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -26,9 +26,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "minos_niu"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Mar 18 13:16:15 2012"
+  LastModifiedDate	  "Sun Mar 18 15:47:37 2012"
   RTWModifiedTimeStamp	  253903887
-  ModelVersionFormat	  "1.%<AutoIncrement:12>"
+  ModelVersionFormat	  "1.%<AutoIncrement:13>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -727,7 +727,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "15"
+    SIDHighWatermark	    "22"
     Block {
       BlockType		      Constant
       Name		      "Constant"
