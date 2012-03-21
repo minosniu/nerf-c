@@ -32,6 +32,8 @@
 
 #define S_FUNCTION_NAME muscle
 #define S_FUNCTION_LEVEL 2
+#define TRUE 1
+#define FALSE 0
 
 #include "simstruc.h"
 
@@ -45,9 +47,9 @@
  
 #define NPARAMS 2 // {MAGICNUM_PARAM, X0_PARAM}
 
-#define NSTATES   2 // {force, x1} in muscle force model. mxGetN(X0_PARAM(S))
-#define NMAGICNUM 3 // {Kse, Kpe, b} in Izh model
-#define NINPUTS   2 // {A, pos} in muscel force model. A: active state. mxGetN(B_PARAM(S))
+#define NSTATES   1 // {force} in muscle force model. mxGetN(X0_PARAM(S))
+#define NMAGICNUM 3 // {Kse, Kpe, b} in muscle force model
+#define NINPUTS   3 // {A, pos, vel} in muscel force model. A: active state. mxGetN(B_PARAM(S))
 #define NOUTPUTS  1 // {force} in muscle force model. mxGetM(C_PARAM(S))
 
 #define IS_PARAM_DOUBLE(pVal) (mxIsNumeric(pVal) && !mxIsLogical(pVal) &&\
@@ -81,7 +83,7 @@
 
       /* Check 2nd parameter: X0 */
       {
-          if ( ((mxGetM(X0_PARAM(S)) != 0) && 
+          if ( ((mxGetNumberOfElements(X0_PARAM(S)) != 0) && 
                (mxGetNumberOfElements(X0_PARAM(S)) != NSTATES)) || !OK_EMPTY_DOUBLE_PARAM(X0_PARAM(S)) ) {
               ssSetErrorStatus(S,"2nd parameter to S-function "
                                "\"X0-Matrix\" is not dimensioned "
@@ -126,15 +128,18 @@ static void mdlInitializeSizes(SimStruct *S)
     ssSetNumContStates(S, NSTATES);
     ssSetNumDiscStates(S, 0);
 
-    if (!ssSetNumInputPorts(S, 1)) return;
-    ssSetInputPortWidth(S, 0, NINPUTS);
-    ssSetInputPortDirectFeedThrough(S, 0, 1);
+    if (!ssSetNumInputPorts(S, NINPUTS)) return;
+    ssSetInputPortWidth(S, 0, 1);
+    ssSetInputPortDirectFeedThrough(S, 0, TRUE);
+    ssSetInputPortWidth(S, 1, 1);
+    ssSetInputPortDirectFeedThrough(S, 1, TRUE);
+    ssSetInputPortWidth(S, 2, 1);
+    ssSetInputPortDirectFeedThrough(S, 2, TRUE);
 
     if (!ssSetNumOutputPorts(S, NOUTPUTS)) return;
     //ssSetOutputPortWidth(S, 0, NOUTPUTS);
     {
         ssSetOutputPortWidth(S, 0, 1);
-        ssSetOutputPortWidth(S, 1, 1);
     }
     ssSetNumSampleTimes(S, 1);
     ssSetNumRWork(S, 0);
@@ -209,33 +214,9 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     real_T            accum;
  
     UNUSED_ARG(tid); /* not used in single tasking mode */
-  // SetRandomSeed(0);  
-  // Firing threshold randomly distributed 25.0 ~ 35.0
-    double TH_RANGE = 10.0;
-    //double TH = 30.0 - TH_RANGE + ( 2.0 * TH_RANGE * rand() / ( RAND_MAX + 1.0 ) );
-    double TH = 30.0;
-    //*exportTH = TH;
 
-    real_T  v = x[0];
-    real_T  u = x[1];
-    
-    real_T  C = apr[2];
-    real_T  D = apr[3];
-    
-    if (v >= TH) // if spikes    
-    {
-      x[0] = C;
-      x[1] = u + D;
-      y[0] = C;             
-      y[1] = 1.0; // 1 = spiking
 
-    }
-    else
-    {
-        y[0] = x[0];
-        y[1] = 0.0;
-    };
-
+    y[0] = x[0];
 // 
 //     /* Matrix Multiply: y = Cx + Du */
 //     for (i = 0; i < nOutputs; i++) {
@@ -264,8 +245,8 @@ static void mdlOutputs(SimStruct *S, int_T tid)
  */
 static void mdlDerivatives(SimStruct *S)
 {
-    real_T            *dT     = ssGetdX(S);
-    real_T            *T      = ssGetContStates(S);
+    real_T            *dx     = ssGetdX(S);
+    real_T            *x      = ssGetContStates(S);
     InputRealPtrsType uPtrs   = ssGetInputPortRealSignalPtrs(S,0);
     const real_T      *apr    = mxGetPr(MAGICNUM_PARAM(S));
     int_T             nStates = ssGetNumContStates(S);
@@ -275,14 +256,17 @@ static void mdlDerivatives(SimStruct *S)
  
     /* Matrix Multiply: dx = Ax + Bu */
     
-    real_T   = x[0];
-    real_T   = x[1];
+    real_T  T_0 = x[0];
+    real_T  A = U(0);
+    real_T  x1 = U(1);   //muscle length
+    real_T  x2 = U(2);   //muscle change of length (vel)
+   // real_T  dT = dx[0];
     
     real_T  Kse = apr[0];
     real_T  Kpe = apr[1];
     real_T  b = apr[2];
 
-    dT = Kse / b * (Kpe * (x1 - x0) - (1 + Kpe/Kse)*T_0 + A)
+    dx[0] = Kse / b * (Kpe * (x1 - 1.0) + b*x2 - (1 + Kpe/Kse)*T_0 + A);
 
 //     for (i = 0; i < nStates; i++) {
 //         accum = 0.0;

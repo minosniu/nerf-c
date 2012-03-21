@@ -33,6 +33,8 @@
 #define S_FUNCTION_NAME izh
 #define S_FUNCTION_LEVEL 2
 
+#define SAMPLING_RATE 1024.0
+
 #include "simstruc.h"
 
 #define U(element) (*uPtrs[element])  /* Pointer to Input Port0 */
@@ -227,7 +229,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
       x[0] = C;
       x[1] = u + D;
       y[0] = C;             
-      y[1] = 1.0; // 1 = spiking
+      y[1] = 1.0 * SAMPLING_RATE; // 1 = spiking
 
     }
     else
