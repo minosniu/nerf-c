@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.31"
+    ComputedModelVersion    "1.33"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "eric"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Mar 21 14:30:51 2012"
-  RTWModifiedTimeStamp	  254241047
-  ModelVersionFormat	  "1.%<AutoIncrement:31>"
+  LastModifiedDate	  "Wed Mar 21 15:01:28 2012"
+  RTWModifiedTimeStamp	  254242880
+  ModelVersionFormat	  "1.%<AutoIncrement:33>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -67,7 +67,6 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "calc_filter_coeff"
-    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -747,7 +746,7 @@ Model {
   }
   System {
     Name		    "calc_filter_coeff"
-    Location		    [1, 353, 791, 794]
+    Location		    [2899, 563, 3689, 1004]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -775,20 +774,6 @@ Model {
       SID		      "36"
       Position		      [40, 100, 135, 130]
       Value		      "45845"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant5"
-      SID		      "37"
-      Position		      [50, 150, 130, 180]
-      Value		      "0.0326"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant6"
-      SID		      "38"
-      Position		      [50, 207, 130, 233]
-      Value		      "0.034"
     }
     Block {
       BlockType		      Display
@@ -992,6 +977,20 @@ Model {
 	}
       }
     }
+    Block {
+      BlockType		      Constant
+      Name		      "t_fall"
+      SID		      "38"
+      Position		      [50, 207, 130, 233]
+      Value		      "0.041"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "t_rise"
+      SID		      "37"
+      Position		      [50, 150, 130, 180]
+      Value		      "0.04"
+    }
     Line {
       SrcBlock		      "Constant3"
       SrcPort		      1
@@ -1007,14 +1006,14 @@ Model {
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Constant5"
+      SrcBlock		      "t_rise"
       SrcPort		      1
       Points		      [85, 0; 0, -50]
       DstBlock		      "EPSP filter"
       DstPort		      3
     }
     Line {
-      SrcBlock		      "Constant6"
+      SrcBlock		      "t_fall"
       SrcPort		      1
       Points		      [120, 0]
       DstBlock		      "EPSP filter"
@@ -1092,9 +1091,9 @@ Stateflow {
       "z) \n\n% a = 48144*128;\n% b = 45845*128;\ncoder.extrinsic('tf', 'c2d', 'tfdata', 'dfilt.df2sos', 'dfilt', 'df2s"
       "os','filter'); \n\na = mag1;\nb = mag2;\nc = 1/trise;  % tf, tr in seconds. \nd = 1/tfall;\nSAMPLING_RATE = 1024"
       "; % in Hz\nnum = [0 (a-b) (a*d - b*c)];\nden = [1 (c+d) c*d];\ntf_a = tf(num, den);\n\ntf_a_digital = c2d(tf_a, "
-      "1/SAMPLING_RATE, 'zoh');\n[num den] = tfdata(tf_a_digital, 'v');\n% \n% a1=den(1)\n% a2=den(2)\n% a3=den(3)\n% b"
-      "1=num(1)\n% b2=num(2)\n% b3=num(3)\n% \n% %hd=dfilt.df2sos(b1,a1,b2,a2,b3,a3)\n% bcoeff = [b1 b2 b3]\n% acoeff ="
-      " [a1 a2 a3]\n% \n% y=[0;0]  % type definition for output\n% y = filtfilt(bcoeff, acoeff,  x) \n"
+      "1/SAMPLING_RATE, 'zoh');\n[num den] = tfdata(tf_a_digital, 'v')\n% \n% a1=den(1)\n% a2=den(2)\n% a3=den(3)\n% b1"
+      "=num(1)\n% b2=num(2)\n% b3=num(3)\n% \n% %hd=dfilt.df2sos(b1,a1,b2,a2,b3,a3)\n% bcoeff = [b1 b2 b3]\n% acoeff = "
+      "[a1 a2 a3]\n% \n% y=[0;0]  % type definition for output\n% y = filtfilt(bcoeff, acoeff,  x) \n"
       editorLayout	      "100 M4x1[865 347 1080 733]"
     }
   }

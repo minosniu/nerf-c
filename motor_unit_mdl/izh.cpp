@@ -48,7 +48,7 @@
 #define NPARAMS 2 // {MAGICNUM_PARAM, X0_PARAM}
 
 #define NSTATES   2 // {u, v} in Izhi model. mxGetN(X0_PARAM(S))
-#define NMAGICNUM 4 // {a, b, c, d} in Izh model
+#define NMAGICNUM 5 // {a, b, c, d} in Izh model + {threthold control}
 #define NINPUTS   1 // {I} in Izhi model. mxGetN(B_PARAM(S))
 #define NOUTPUTS  2 // {u, spike} in Izhi model. mxGetM(C_PARAM(S))
 
@@ -215,7 +215,8 @@ static void mdlOutputs(SimStruct *S, int_T tid)
   // Firing threshold randomly distributed 25.0 ~ 35.0
     double TH_RANGE = 10.0;
     //double TH = 30.0 - TH_RANGE + ( 2.0 * TH_RANGE * rand() / ( RAND_MAX + 1.0 ) );
-    double TH = 30.0;
+    //double TH = 10.0;
+    real_T TH = apr[4];
     //*exportTH = TH;
 
     real_T  v = x[0];
