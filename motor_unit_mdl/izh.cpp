@@ -48,7 +48,7 @@
 #define NPARAMS 2 // {MAGICNUM_PARAM, X0_PARAM}
 
 #define NSTATES   2 // {u, v} in Izhi model. mxGetN(X0_PARAM(S))
-#define NMAGICNUM 5 // {a, b, c, d} in Izh model + {threthold control}
+#define NMAGICNUM 6 // {a, b, c, d} in Izh model + {threthold control}
 #define NINPUTS   1 // {I} in Izhi model. mxGetN(B_PARAM(S))
 #define NOUTPUTS  2 // {u, spike} in Izhi model. mxGetM(C_PARAM(S))
 
@@ -217,6 +217,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     //double TH = 30.0 - TH_RANGE + ( 2.0 * TH_RANGE * rand() / ( RAND_MAX + 1.0 ) );
     //double TH = 10.0;
     real_T TH = apr[4];
+    real_T EPSP_WEIGHT = apr[5];
     //*exportTH = TH;
 
     real_T  v = x[0];
@@ -277,6 +278,7 @@ static void mdlDerivatives(SimStruct *S)
     real_T accum;
  
     /* Matrix Multiply: dx = Ax + Bu */
+    real_T EPSP_WEIGHT = apr[5];
     
     real_T  v = x[0];
     real_T  u = x[1];
@@ -284,8 +286,8 @@ static void mdlDerivatives(SimStruct *S)
     real_T  A = apr[0];
     real_T  B = apr[1];
 
-    dx[0] = 1000 * (0.04 * v*v + 5.0 * v + 140.0 - u + U(0)); // U(0) = 1st input, i.e. I;
-    dx[1] = 1000 * A * (B * v - u); // neuron[1] = u; See iZhikevich model
+    dx[0] = 1000 * (0.04 * v*v + 5.0 * v + 140.0 - u + U(0) * EPSP_WEIGHT); // U(0) = 1st input, i.e. I;
+    dx[1] = 1000 * A * (B * v - u) ; // neuron[1] = u; See iZhikevich model
 
 //     for (i = 0; i < nStates; i++) {
 //         accum = 0.0;
