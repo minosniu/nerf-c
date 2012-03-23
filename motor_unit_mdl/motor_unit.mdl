@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.120"
+    ComputedModelVersion    "1.136"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "eric"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Mar 23 13:20:53 2012"
+  LastModifiedDate	  "Fri Mar 23 15:22:54 2012"
   RTWModifiedTimeStamp	  254229575
-  ModelVersionFormat	  "1.%<AutoIncrement:120>"
+  ModelVersionFormat	  "1.%<AutoIncrement:136>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -609,7 +609,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 0, 330, 929, 1080 ] 
+      ConfigPrmDlgPosition     [ 0, 0, 929, 750 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -696,6 +696,41 @@ Model {
       RTWStateStorageClass    "Auto"
     }
     Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutputFunctionCall      off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
       BlockType		      S-Function
       FunctionName	      "system"
       SFunctionModules	      "''"
@@ -720,6 +755,29 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      "FromPortIcon"
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      TreatAsAtomicUnit	      off
+      CheckFcnCallInpInsideContextMsg off
+      SystemSampleTime	      "-1"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      DataTypeOverrideAppliesTo	"AllNumericTypes"
+      MinMaxOverflowLogging   "UseLocalSettings"
+      SFBlockType	      "NONE"
+      Variant		      off
+      GeneratePreprocessorConditionals off
+    }
+    Block {
       BlockType		      Sum
       IconShape		      "rectangular"
       Inputs		      "++"
@@ -735,10 +793,18 @@ Model {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
+    Block {
+      BlockType		      ZeroPole
+      Zeros		      "[1]"
+      Poles		      "[0 1]"
+      Gain		      "[1]"
+      AbsoluteTolerance	      "auto"
+      ContinuousStateAttributes	"''"
+    }
   }
   System {
     Name		    "motor_unit"
-    Location		    [-52, 64, 1739, 647]
+    Location		    [60, 150, 1730, 997]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -752,13 +818,35 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "97"
+    SIDHighWatermark	    "141"
     Block {
       BlockType		      Sum
       Name		      "Add"
       SID		      "96"
       Ports		      [2, 1]
-      Position		      [1520, 257, 1550, 288]
+      Position		      [1520, 497, 1550, 528]
+      ZOrder		      -2
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Add1"
+      SID		      "141"
+      Ports		      [2, 1]
+      Position		      [1590, 457, 1620, 488]
+      ZOrder		      -2
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Add3"
+      SID		      "107"
+      Ports		      [2, 1]
+      Position		      [1200, 1022, 1230, 1053]
       ZOrder		      -2
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -768,34 +856,47 @@ Model {
       BlockType		      Constant
       Name		      "Constant1"
       SID		      "35"
-      Position		      [1120, 185, 1150, 215]
+      Position		      [1120, 425, 1150, 455]
     }
     Block {
       BlockType		      Constant
       Name		      "Constant2"
       SID		      "37"
-      Position		      [1120, 245, 1150, 275]
+      Position		      [1120, 485, 1150, 515]
       Value		      "0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant3"
+      SID		      "120"
+      Position		      [1130, 185, 1160, 215]
     }
     Block {
       BlockType		      Constant
       Name		      "Constant4"
       SID		      "61"
-      Position		      [1115, 510, 1145, 540]
+      Position		      [1115, 750, 1145, 780]
     }
     Block {
       BlockType		      Constant
       Name		      "Constant5"
       SID		      "62"
-      Position		      [1115, 570, 1145, 600]
+      Position		      [1115, 810, 1145, 840]
+      Value		      "0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant6"
+      SID		      "121"
+      Position		      [1130, 245, 1160, 275]
       Value		      "0"
     }
     Block {
       BlockType		      DiscreteTransferFcn
       Name		      "Discrete\nTransfer Fcn"
       SID		      "12"
-      Position		      [465, 92, 570, 158]
-      Numerator		      "[4 0]/1024"
+      Position		      [465, 332, 570, 398]
+      Numerator		      "[3 0]/1024"
       Denominator	      "[1 -0.875]"
       SampleTime	      "1/1024"
     }
@@ -803,9 +904,9 @@ Model {
       BlockType		      DiscreteTransferFcn
       Name		      "Discrete\nTransfer Fcn1"
       SID		      "58"
-      Position		      [895, 119, 1015, 191]
+      Position		      [895, 359, 1015, 431]
       ZOrder		      -2
-      Numerator		      "[0 2.185 -2.176] "
+      Numerator		      "[0 2.185 -2.176] * 4"
       Denominator	      "[1 -1.942 0.943]"
       SampleTime	      "1/1024"
     }
@@ -813,8 +914,9 @@ Model {
       BlockType		      DiscreteTransferFcn
       Name		      "Discrete\nTransfer Fcn2"
       SID		      "63"
-      Position		      [465, 417, 570, 483]
-      Numerator		      "[2 0]/1024"
+      Position		      [465, 662, 570, 728]
+      NamePlacement	      "alternate"
+      Numerator		      "[6 0]/1024"
       Denominator	      "[1 -0.875]"
       SampleTime	      "1/1024"
     }
@@ -822,11 +924,253 @@ Model {
       BlockType		      DiscreteTransferFcn
       Name		      "Discrete\nTransfer Fcn3"
       SID		      "95"
-      Position		      [950, 444, 1070, 516]
+      Position		      [915, 684, 1035, 756]
       ZOrder		      -2
-      Numerator		      "[0 2.185 -2.176] * 4"
+      Numerator		      "[0 2.185 -2.176] *2"
       Denominator	      "[1 -1.942 0.943]"
       SampleTime	      "1/1024"
+    }
+    Block {
+      BlockType		      DiscreteTransferFcn
+      Name		      "Discrete\nTransfer Fcn4"
+      SID		      "122"
+      Position		      [475, 92, 580, 158]
+      Numerator		      "[2 0]/1024"
+      Denominator	      "[1 -0.875]"
+      SampleTime	      "1/1024"
+      Port {
+	PortNumber		1
+	Name			"big"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      DiscreteTransferFcn
+      Name		      "Discrete\nTransfer Fcn5"
+      SID		      "123"
+      Position		      [905, 119, 1025, 191]
+      ZOrder		      -2
+      Numerator		      "[0 2.185 -2.176]  * 8"
+      Denominator	      "[1 -1.942 0.943]"
+      SampleTime	      "1/1024"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "EMG reponse"
+      SID		      "109"
+      Ports		      [1, 1]
+      Position		      [1000, 920, 1040, 980]
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"EMG reponse"
+	Location		[75, 547, 610, 823]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  "110"
+	  Position		  [25, 68, 55, 82]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Add1"
+	  SID			  "98"
+	  Ports			  [2, 1]
+	  Position		  [295, 137, 325, 168]
+	  ZOrder		  -2
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  ZeroPole
+	  Name			  "Zero-Pole"
+	  SID			  "101"
+	  Position		  [90, 28, 215, 122]
+	  ZOrder		  -13
+	  Zeros			  "[]"
+	  Poles			  "[-33 -33]"
+	  Gain			  "[2]"
+	}
+	Block {
+	  BlockType		  ZeroPole
+	  Name			  "Zero-Pole1"
+	  SID			  "102"
+	  Position		  [90, 158, 215, 252]
+	  ZOrder		  -13
+	  Zeros			  "[]"
+	  Poles			  "[-33 -33 -33]"
+	  Gain			  "[-2 * 33]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  SID			  "112"
+	  Position		  [390, 148, 420, 162]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Zero-Pole"
+	  SrcPort		  1
+	  Points		  [50, 0; 0, 70]
+	  DstBlock		  "Add1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Zero-Pole1"
+	  SrcPort		  1
+	  Points		  [50, 0; 0, -45]
+	  DstBlock		  "Add1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Add1"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    DstBlock		    "Zero-Pole"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Zero-Pole1"
+	    DstPort		    1
+	  }
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "EMG response"
+      SID		      "116"
+      Ports		      [1, 1]
+      Position		      [1005, 830, 1045, 890]
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"EMG response"
+	Location		[1233, 619, 1723, 895]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  "117"
+	  Position		  [25, 68, 55, 82]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Add2"
+	  SID			  "103"
+	  Ports			  [2, 1]
+	  Position		  [380, 137, 410, 168]
+	  ZOrder		  -2
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  ZeroPole
+	  Name			  "Zero-Pole2"
+	  SID			  "105"
+	  Position		  [175, 28, 300, 122]
+	  ZOrder		  -13
+	  Zeros			  "[]"
+	  Poles			  "[-33 -33]"
+	  Gain			  "[2]"
+	}
+	Block {
+	  BlockType		  ZeroPole
+	  Name			  "Zero-Pole3"
+	  SID			  "106"
+	  Position		  [175, 158, 300, 252]
+	  ZOrder		  -13
+	  Zeros			  "[]"
+	  Poles			  "[-33 -33 -33]"
+	  Gain			  "[-2 * 33]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  SID			  "118"
+	  Position		  [435, 148, 465, 162]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Zero-Pole3"
+	  SrcPort		  1
+	  Points		  [50, 0; 0, -45]
+	  DstBlock		  "Add2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Zero-Pole2"
+	  SrcPort		  1
+	  Points		  [50, 0; 0, 70]
+	  DstBlock		  "Add2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    DstBlock		    "Zero-Pole2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 130]
+	    DstBlock		    "Zero-Pole3"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Add2"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
+	}
+      }
     }
     Block {
       BlockType		      Reference
@@ -846,7 +1190,7 @@ Model {
       Name		      "Scope"
       SID		      "4"
       Ports		      [1]
-      Position		      [490, 39, 520, 71]
+      Position		      [490, 269, 520, 301]
       Floating		      off
       Location		      [459, 584, 1091, 823]
       Open		      off
@@ -871,11 +1215,11 @@ Model {
     Block {
       BlockType		      Scope
       Name		      "Scope1"
-      SID		      "5"
+      SID		      "138"
       Ports		      [1]
-      Position		      [410, 209, 440, 241]
+      Position		      [480, 469, 510, 501]
       Floating		      off
-      Location		      [67, 816, 880, 1052]
+      Location		      [2021, 730, 2693, 1016]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -892,6 +1236,7 @@ Model {
 	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
 	MarkerStyles		"none|none|none|none|none|none"
       }
+      TimeRange		      "1"
       SaveName		      "ScopeData1"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
@@ -901,9 +1246,9 @@ Model {
       Name		      "Scope10"
       SID		      "68"
       Ports		      [1]
-      Position		      [855, 369, 885, 401]
+      Position		      [895, 609, 925, 641]
       Floating		      off
-      Location		      [2074, 762, 2746, 1048]
+      Location		      [2668, 768, 3340, 1054]
       Open		      on
       NumInputPorts	      "1"
       List {
@@ -926,12 +1271,70 @@ Model {
     }
     Block {
       BlockType		      Scope
+      Name		      "Scope11"
+      SID		      "119"
+      Ports		      [1]
+      Position		      [1265, 934, 1295, 966]
+      ZOrder		      -16
+      Floating		      off
+      Location		      [188, 390, 512, 629]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      SaveName		      "ScopeData9"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope12"
+      SID		      "104"
+      Ports		      [1]
+      Position		      [1265, 844, 1295, 876]
+      ZOrder		      -16
+      Floating		      off
+      Location		      [188, 390, 512, 629]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      SaveName		      "ScopeData13"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
       Name		      "Scope13"
       SID		      "71"
       Ports		      [1]
-      Position		      [1105, 464, 1135, 496]
+      Position		      [1105, 704, 1135, 736]
       Floating		      off
-      Location		      [1176, 752, 1848, 1038]
+      Location		      [1244, 753, 1916, 1039]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -960,7 +1363,7 @@ Model {
       Name		      "Scope14"
       SID		      "77"
       Ports		      [1]
-      Position		      [200, 209, 230, 241]
+      Position		      [200, 449, 230, 481]
       Floating		      off
       Location		      [91, 368, 756, 655]
       Open		      off
@@ -987,17 +1390,103 @@ Model {
     }
     Block {
       BlockType		      Scope
-      Name		      "Scope2"
-      SID		      "26"
+      Name		      "Scope15"
+      SID		      "108"
       Ports		      [1]
-      Position		      [665, 229, 695, 261]
+      Position		      [1290, 1024, 1320, 1056]
+      ZOrder		      -16
+      NamePlacement	      "alternate"
       Floating		      off
-      Location		      [75, 565, 747, 851]
+      Location		      [1578, 681, 1902, 920]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      SaveName		      "ScopeData15"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope16"
+      SID		      "124"
+      Ports		      [1]
+      Position		      [500, 39, 530, 71]
+      Floating		      off
+      Location		      [459, 584, 1091, 823]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      SaveName		      "ScopeData16"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope19"
+      SID		      "127"
+      Ports		      [1]
+      Position		      [870, 44, 900, 76]
+      Floating		      off
+      Location		      [2665, 88, 3337, 374]
       Open		      on
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      SaveName		      "ScopeData19"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope2"
+      SID		      "26"
+      Ports		      [1]
+      Position		      [660, 509, 690, 541]
+      Floating		      off
+      Location		      [2022, 425, 2681, 714]
+      Open		      on
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			" "
       }
       List {
 	ListType		ScopeGraphics
@@ -1015,13 +1504,44 @@ Model {
     }
     Block {
       BlockType		      Scope
+      Name		      "Scope22"
+      SID		      "130"
+      Ports		      [1]
+      Position		      [1070, 139, 1100, 171]
+      Floating		      off
+      Location		      [1236, 79, 1908, 365]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      TimeRange		      "0.4"
+      YMin		      "-1000"
+      YMax		      "5000"
+      SaveName		      "ScopeData22"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
       Name		      "Scope3"
       SID		      "42"
       Ports		      [1]
-      Position		      [860, 44, 890, 76]
+      Position		      [905, 299, 935, 331]
       Floating		      off
-      Location		      [2108, 86, 2780, 372]
-      Open		      off
+      Location		      [2668, 437, 3340, 723]
+      Open		      on
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1046,14 +1566,15 @@ Model {
       Name		      "Scope4"
       SID		      "29"
       Ports		      [1]
-      Position		      [925, 244, 955, 276]
+      Position		      [925, 484, 955, 516]
       Floating		      off
-      Location		      [2434, 139, 3446, 602]
+      Location		      [2024, 88, 2681, 364]
       Open		      on
       NumInputPorts	      "1"
+      ZoomMode		      "yonly"
       List {
 	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
+	axes1			"%<big>"
       }
       List {
 	ListType		ScopeGraphics
@@ -1074,9 +1595,9 @@ Model {
       Name		      "Scope5"
       SID		      "88"
       Ports		      [1]
-      Position		      [1560, 108, 1590, 142]
+      Position		      [1590, 273, 1620, 307]
       Floating		      off
-      Location		      [951, 723, 1616, 1009]
+      Location		      [3350, 127, 4015, 413]
       Open		      on
       NumInputPorts	      "1"
       TickLabels	      "on"
@@ -1106,9 +1627,9 @@ Model {
       Name		      "Scope6"
       SID		      "59"
       Ports		      [1]
-      Position		      [1060, 139, 1090, 171]
+      Position		      [1060, 379, 1090, 411]
       Floating		      off
-      Location		      [1248, 543, 1920, 829]
+      Location		      [1249, 407, 1921, 693]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1137,7 +1658,7 @@ Model {
       Name		      "Scope7"
       SID		      "65"
       Ports		      [1]
-      Position		      [480, 384, 510, 416]
+      Position		      [465, 599, 495, 631]
       Floating		      off
       Location		      [459, 839, 1091, 1078]
       Open		      off
@@ -1162,40 +1683,12 @@ Model {
     }
     Block {
       BlockType		      Scope
-      Name		      "Scope8"
-      SID		      "66"
-      Ports		      [1]
-      Position		      [410, 534, 440, 566]
-      Floating		      off
-      Location		      [63, 538, 876, 774]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      SaveName		      "ScopeData12"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
       Name		      "Scope9"
       SID		      "97"
       Ports		      [1]
-      Position		      [1605, 258, 1635, 292]
+      Position		      [1655, 458, 1685, 492]
       Floating		      off
-      Location		      [1080, 361, 1745, 647]
+      Location		      [3350, 473, 4023, 784]
       Open		      on
       NumInputPorts	      "1"
       TickLabels	      "on"
@@ -1222,29 +1715,42 @@ Model {
     }
     Block {
       BlockType		      Concatenate
-      Name		      "Vector\nConcatenate"
-      SID		      "89"
-      Ports		      [2, 1]
-      Position		      [1475, 91, 1480, 129]
-      ZOrder		      -36
-      Mode		      "Vector"
-    }
-    Block {
-      BlockType		      Concatenate
       Name		      "Vector\nConcatenate1"
-      SID		      "93"
-      Ports		      [2, 1]
-      Position		      [610, 266, 615, 304]
+      SID		      "137"
+      Ports		      [3, 1]
+      Position		      [430, 466, 435, 504]
       ZOrder		      -36
+      NumInputs		      "3"
       Mode		      "Vector"
     }
     Block {
       BlockType		      Concatenate
       Name		      "Vector\nConcatenate2"
-      SID		      "94"
-      Ports		      [2, 1]
-      Position		      [875, 256, 880, 294]
+      SID		      "139"
+      Ports		      [3, 1]
+      Position		      [880, 501, 885, 539]
       ZOrder		      -36
+      NumInputs		      "3"
+      Mode		      "Vector"
+    }
+    Block {
+      BlockType		      Concatenate
+      Name		      "Vector\nConcatenate3"
+      SID		      "136"
+      Ports		      [3, 1]
+      Position		      [615, 506, 620, 544]
+      ZOrder		      -36
+      NumInputs		      "3"
+      Mode		      "Vector"
+    }
+    Block {
+      BlockType		      Concatenate
+      Name		      "Vector\nConcatenate4"
+      SID		      "140"
+      Ports		      [3, 1]
+      Position		      [1490, 271, 1495, 309]
+      ZOrder		      -36
+      NumInputs		      "3"
       Mode		      "Vector"
     }
     Block {
@@ -1252,7 +1758,7 @@ Model {
       Name		      "motor neuron"
       SID		      "27"
       Ports		      [1, 2]
-      Position		      [645, 59, 825, 186]
+      Position		      [645, 299, 825, 426]
       BackgroundColor	      "lightBlue"
       FunctionName	      "izh"
       Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
@@ -1270,7 +1776,25 @@ Model {
       Name		      "motor neuron1"
       SID		      "72"
       Ports		      [1, 2]
-      Position		      [645, 384, 825, 511]
+      Position		      [645, 629, 825, 756]
+      BackgroundColor	      "lightBlue"
+      FunctionName	      "izh"
+      Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
+      EnableBusSupport	      off
+      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label"
+      "('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "autoscale"
+    }
+    Block {
+      BlockType		      S-Function
+      Name		      "motor neuron2"
+      SID		      "133"
+      Ports		      [1, 2]
+      Position		      [655, 59, 835, 186]
       BackgroundColor	      "lightBlue"
       FunctionName	      "izh"
       Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
@@ -1288,7 +1812,7 @@ Model {
       Name		      "muscle"
       SID		      "33"
       Ports		      [3, 1]
-      Position		      [1195, 64, 1360, 176]
+      Position		      [1195, 304, 1360, 416]
       ZOrder		      -5
       FunctionName	      "muscle"
       Parameters	      "[136.0 75.0 50.0] [0]"
@@ -1306,7 +1830,25 @@ Model {
       Name		      "muscle1"
       SID		      "73"
       Ports		      [3, 1]
-      Position		      [1195, 389, 1360, 501]
+      Position		      [1195, 629, 1360, 741]
+      ZOrder		      -5
+      FunctionName	      "muscle"
+      Parameters	      "[136.0 75.0 50.0] [0]"
+      EnableBusSupport	      off
+      MaskDisplay	      "port_label('input', 1, 'Active state');\nport_label('input', 2, 'length');\nport_label('input"
+      "', 3, 'vel');\nport_label('output', 1, 'tension');\ndisp('muscle model \\n(S-Function)');"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "autoscale"
+    }
+    Block {
+      BlockType		      S-Function
+      Name		      "muscle2"
+      SID		      "134"
+      Ports		      [3, 1]
+      Position		      [1205, 64, 1370, 176]
       ZOrder		      -5
       FunctionName	      "muscle"
       Parameters	      "[136.0 75.0 50.0] [0]"
@@ -1324,7 +1866,7 @@ Model {
       Name		      "sensory neuron"
       SID		      "1"
       Ports		      [1, 2]
-      Position		      [205, 44, 385, 171]
+      Position		      [205, 284, 385, 411]
       BackgroundColor	      "lightBlue"
       FunctionName	      "izh"
       Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
@@ -1342,7 +1884,25 @@ Model {
       Name		      "sensory neuron1"
       SID		      "74"
       Ports		      [1, 2]
-      Position		      [200, 369, 380, 496]
+      Position		      [200, 609, 380, 736]
+      BackgroundColor	      "lightBlue"
+      FunctionName	      "izh"
+      Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
+      EnableBusSupport	      off
+      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label"
+      "('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "autoscale"
+    }
+    Block {
+      BlockType		      S-Function
+      Name		      "sensory neuron2"
+      SID		      "135"
+      Ports		      [1, 2]
+      Position		      [215, 44, 395, 171]
       BackgroundColor	      "lightBlue"
       FunctionName	      "izh"
       Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
@@ -1356,29 +1916,6 @@ Model {
       MaskIconUnits	      "autoscale"
     }
     Line {
-      Labels		      [0, 0]
-      SrcBlock		      "Repeating\nSequence"
-      SrcPort		      1
-      Points		      [30, 0]
-      Branch {
-	DstBlock		"sensory neuron"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 110]
-	Branch {
-	  Points		  [0, 215]
-	  DstBlock		  "sensory neuron1"
-	  DstPort		  1
-	}
-	Branch {
-	  Points		  [0, 5]
-	  DstBlock		  "Scope14"
-	  DstPort		  1
-	}
-      }
-    }
-    Line {
       SrcBlock		      "sensory neuron"
       SrcPort		      1
       Points		      [85, 0]
@@ -1388,16 +1925,16 @@ Model {
     Line {
       SrcBlock		      "sensory neuron"
       SrcPort		      2
-      Points		      [15, 0]
+      Points		      [10, 0]
       Branch {
-	Points			[-10, 0]
-	DstBlock		"Scope1"
+	Points			[50, 0]
+	DstBlock		"Discrete\nTransfer Fcn"
 	DstPort			1
       }
       Branch {
-	Points			[45, 0]
-	DstBlock		"Discrete\nTransfer Fcn"
-	DstPort			1
+	Points			[0, 105]
+	DstBlock		"Vector\nConcatenate1"
+	DstPort			2
       }
     }
     Line {
@@ -1417,13 +1954,14 @@ Model {
     Line {
       SrcBlock		      "motor neuron"
       SrcPort		      1
-      Points		      [15, 0]
+      Points		      [60, 0]
       DstBlock		      "Scope3"
       DstPort		      1
     }
     Line {
       SrcBlock		      "sensory neuron1"
       SrcPort		      1
+      Points		      [65, 0]
       DstBlock		      "Scope7"
       DstPort		      1
     }
@@ -1432,22 +1970,15 @@ Model {
       SrcPort		      2
       Points		      [15, 0]
       Branch {
-	Points			[-5, 0]
-	DstBlock		"Scope8"
-	DstPort			1
+	Points			[0, -210]
+	DstBlock		"Vector\nConcatenate1"
+	DstPort			3
       }
       Branch {
 	Points			[50, 0]
 	DstBlock		"Discrete\nTransfer Fcn2"
 	DstPort			1
       }
-    }
-    Line {
-      SrcBlock		      "Constant4"
-      SrcPort		      1
-      Points		      [10, 0; 0, -80]
-      DstBlock		      "muscle1"
-      DstPort		      2
     }
     Line {
       SrcBlock		      "Constant5"
@@ -1459,7 +1990,7 @@ Model {
     Line {
       SrcBlock		      "motor neuron1"
       SrcPort		      1
-      Points		      [10, 0]
+      Points		      [50, 0]
       DstBlock		      "Scope10"
       DstPort		      1
     }
@@ -1468,13 +1999,14 @@ Model {
       SrcPort		      1
       Points		      [0, -20; 30, 0]
       Branch {
-	DstBlock		"Vector\nConcatenate"
-	DstPort			1
-      }
-      Branch {
 	Points			[0, 165]
 	DstBlock		"Add"
 	DstPort			1
+      }
+      Branch {
+	Points			[0, -50]
+	DstBlock		"Vector\nConcatenate4"
+	DstPort			2
       }
     }
     Line {
@@ -1482,36 +2014,44 @@ Model {
       SrcPort		      1
       Points		      [30, 0]
       Branch {
-	Points			[65, 0]
-	DstBlock		"Vector\nConcatenate"
-	DstPort			2
-      }
-      Branch {
 	Points			[0, -165]
 	DstBlock		"Add"
 	DstPort			2
       }
+      Branch {
+	Points			[65, 0; 0, -385]
+	DstBlock		"Vector\nConcatenate4"
+	DstPort			3
+      }
     }
     Line {
-      SrcBlock		      "Vector\nConcatenate"
+      SrcBlock		      "Vector\nConcatenate4"
       SrcPort		      1
-      Points		      [30, 0; 0, 15]
       DstBlock		      "Scope5"
       DstPort		      1
     }
     Line {
       SrcBlock		      "motor neuron1"
       SrcPort		      2
-      Points		      [10, 0; 0, -5; 10, 0]
+      Points		      [20, 0]
       Branch {
-	Points			[0, -190]
-	DstBlock		"Vector\nConcatenate2"
-	DstPort			2
+	Points			[20, 0]
+	Branch {
+	  Points		  [30, 0]
+	  DstBlock		  "Discrete\nTransfer Fcn3"
+	  DstPort		  1
+	}
+	Branch {
+	  Labels		  [0, 0]
+	  Points		  [0, 225]
+	  DstBlock		  "EMG reponse"
+	  DstPort		  1
+	}
       }
       Branch {
-	Points			[85, 0]
-	DstBlock		"Discrete\nTransfer Fcn3"
-	DstPort			1
+	Points			[0, -195]
+	DstBlock		"Vector\nConcatenate2"
+	DstPort			3
       }
     }
     Line {
@@ -1531,7 +2071,7 @@ Model {
     Line {
       SrcBlock		      "Discrete\nTransfer Fcn3"
       SrcPort		      1
-      Points		      [10, 0]
+      Points		      [45, 0]
       Branch {
 	DstBlock		"Scope13"
 	DstPort			1
@@ -1545,78 +2085,280 @@ Model {
     Line {
       SrcBlock		      "motor neuron"
       SrcPort		      2
-      Points		      [20, 0]
-      Branch {
-	DstBlock		"Discrete\nTransfer Fcn1"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 110]
-	DstBlock		"Vector\nConcatenate2"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Discrete\nTransfer Fcn2"
-      SrcPort		      1
       Points		      [10, 0]
       Branch {
-	DstBlock		"motor neuron1"
-	DstPort			1
+	Points			[15, 0]
+	Branch {
+	  Points		  [0, 125]
+	  DstBlock		  "Vector\nConcatenate2"
+	  DstPort		  2
+	}
+	Branch {
+	  DstBlock		  "Discrete\nTransfer Fcn1"
+	  DstPort		  1
+	}
       }
       Branch {
-	Points			[0, -155]
-	DstBlock		"Vector\nConcatenate1"
-	DstPort			2
+	Points			[0, 465]
+	DstBlock		"EMG response"
+	DstPort			1
       }
     }
     Line {
       SrcBlock		      "Discrete\nTransfer Fcn"
       SrcPort		      1
-      Points		      [10, 0]
+      Points		      [5, 0]
       Branch {
 	DstBlock		"motor neuron"
 	DstPort			1
       }
       Branch {
-	Points			[0, 150]
+	Points			[0, 160]
+	DstBlock		"Vector\nConcatenate3"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "Vector\nConcatenate2"
+      SrcPort		      1
+      Points		      [5, 0; 0, -20]
+      DstBlock		      "Scope4"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Constant4"
+      SrcPort		      1
+      Points		      [15, 0; 0, -80]
+      DstBlock		      "muscle1"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Add3"
+      SrcPort		      1
+      DstBlock		      "Scope15"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "EMG reponse"
+      SrcPort		      1
+      Points		      [130, 0]
+      Branch {
+	Points			[0, 80]
+	DstBlock		"Add3"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Scope11"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "EMG response"
+      SrcPort		      1
+      Points		      [105, 0]
+      Branch {
+	DstBlock		"Scope12"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 185]
+	DstBlock		"Add3"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "Repeating\nSequence"
+      SrcPort		      1
+      Points		      [75, 0]
+      Branch {
+	Points			[0, 225]
+	Branch {
+	  Points		  [0, 15]
+	  DstBlock		  "sensory neuron"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, 130]
+	  Branch {
+	    Points		    [0, 210]
+	    DstBlock		    "sensory neuron1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Scope14"
+	    DstPort		    1
+	  }
+	}
+      }
+      Branch {
+	DstBlock		"sensory neuron2"
+	DstPort			1
+      }
+    }
+    Line {
+      Labels		      [0, 0]
+      SrcBlock		      "sensory neuron2"
+      SrcPort		      1
+      Points		      [85, 0]
+      DstBlock		      "Scope16"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "sensory neuron2"
+      SrcPort		      2
+      Points		      [20, 0]
+      Branch {
+	Points			[40, 0]
+	DstBlock		"Discrete\nTransfer Fcn4"
+	DstPort			1
+      }
+      Branch {
+	Labels			[2, 0]
+	Points			[-5, 0]
 	DstBlock		"Vector\nConcatenate1"
 	DstPort			1
       }
     }
     Line {
-      SrcBlock		      "Vector\nConcatenate1"
+      SrcBlock		      "Constant3"
       SrcPort		      1
-      Points		      [15, 0; 0, -40]
+      Points		      [0, -80]
+      DstBlock		      "muscle2"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Constant6"
+      SrcPort		      1
+      Points		      [25, 0]
+      DstBlock		      "muscle2"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "motor neuron2"
+      SrcPort		      1
+      Points		      [15, 0]
+      DstBlock		      "Scope19"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Discrete\nTransfer Fcn5"
+      SrcPort		      1
+      Points		      [5, 0]
+      Branch {
+	Points			[0, -70]
+	DstBlock		"muscle2"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Scope22"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "motor neuron2"
+      SrcPort		      2
+      Points		      [35, 0]
+      Branch {
+	DstBlock		"Discrete\nTransfer Fcn5"
+	DstPort			1
+      }
+      Branch {
+	Points			[-10, 0]
+	DstBlock		"Vector\nConcatenate2"
+	DstPort			1
+      }
+    }
+    Line {
+      Name		      "big"
+      SrcBlock		      "Discrete\nTransfer Fcn4"
+      SrcPort		      1
+      Points		      [5, 0]
+      Branch {
+	DstBlock		"motor neuron2"
+	DstPort			1
+      }
+      Branch {
+	Labels			[1, 0]
+	Points			[0, 390]
+	DstBlock		"Vector\nConcatenate3"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Vector\nConcatenate3"
+      SrcPort		      1
       DstBlock		      "Scope2"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Vector\nConcatenate2"
+      SrcBlock		      "Vector\nConcatenate1"
       SrcPort		      1
-      Points		      [10, 0; 0, -15]
-      DstBlock		      "Scope4"
+      DstBlock		      "Scope1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "muscle2"
+      SrcPort		      1
+      Points		      [50, 0; 0, 150]
+      Branch {
+	Points			[0, 195]
+	DstBlock		"Add1"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 10]
+	DstBlock		"Vector\nConcatenate4"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Add1"
+      SrcPort		      1
+      DstBlock		      "Scope9"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Add"
       SrcPort		      1
-      DstBlock		      "Scope9"
-      DstPort		      1
+      Points		      [10, 0; 0, -35]
+      DstBlock		      "Add1"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Discrete\nTransfer Fcn2"
+      SrcPort		      1
+      Points		      [0, -5; 10, 0]
+      Branch {
+	Points			[45, 0]
+	DstBlock		"motor neuron1"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -155]
+	DstBlock		"Vector\nConcatenate3"
+	DstPort			3
+      }
     }
     Annotation {
-      Position		      [542, 556]
+      Position		      [542, 796]
     }
     Annotation {
-      Position		      [537, 941]
+      Position		      [537, 901]
     }
     Annotation {
       Name		      "BIG"
-      Position		      [126, 37]
+      Position		      [161, 62]
+    }
+    Annotation {
+      Name		      "MEDIUM"
+      Position		      [146, 359]
+    }
+    Annotation {
+      Position		      [860, 897]
     }
     Annotation {
       Name		      "SMALL"
-      Position		      [91, 379]
+      Position		      [161, 707]
     }
   }
 }
