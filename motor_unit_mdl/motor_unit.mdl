@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.136"
+    ComputedModelVersion    "1.144"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "eric"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Mar 23 15:22:54 2012"
-  RTWModifiedTimeStamp	  254229575
-  ModelVersionFormat	  "1.%<AutoIncrement:136>"
+  LastModifiedDate	  "Fri Mar 23 16:00:54 2012"
+  RTWModifiedTimeStamp	  254418518
+  ModelVersionFormat	  "1.%<AutoIncrement:144>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -67,6 +67,7 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "motor_unit"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -804,7 +805,7 @@ Model {
   }
   System {
     Name		    "motor_unit"
-    Location		    [60, 150, 1730, 997]
+    Location		    [7, 147, 1837, 981]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -893,31 +894,12 @@ Model {
     }
     Block {
       BlockType		      DiscreteTransferFcn
-      Name		      "Discrete\nTransfer Fcn"
-      SID		      "12"
-      Position		      [465, 332, 570, 398]
-      Numerator		      "[3 0]/1024"
-      Denominator	      "[1 -0.875]"
-      SampleTime	      "1/1024"
-    }
-    Block {
-      BlockType		      DiscreteTransferFcn
       Name		      "Discrete\nTransfer Fcn1"
       SID		      "58"
       Position		      [895, 359, 1015, 431]
       ZOrder		      -2
       Numerator		      "[0 2.185 -2.176] * 4"
       Denominator	      "[1 -1.942 0.943]"
-      SampleTime	      "1/1024"
-    }
-    Block {
-      BlockType		      DiscreteTransferFcn
-      Name		      "Discrete\nTransfer Fcn2"
-      SID		      "63"
-      Position		      [465, 662, 570, 728]
-      NamePlacement	      "alternate"
-      Numerator		      "[6 0]/1024"
-      Denominator	      "[1 -0.875]"
       SampleTime	      "1/1024"
     }
     Block {
@@ -935,15 +917,9 @@ Model {
       Name		      "Discrete\nTransfer Fcn4"
       SID		      "122"
       Position		      [475, 92, 580, 158]
-      Numerator		      "[2 0]/1024"
+      Numerator		      "[1 0]/1024"
       Denominator	      "[1 -0.875]"
       SampleTime	      "1/1024"
-      Port {
-	PortNumber		1
-	Name			"big"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-      }
     }
     Block {
       BlockType		      DiscreteTransferFcn
@@ -1177,7 +1153,7 @@ Model {
       Name		      "Repeating\nSequence"
       SID		      "75"
       Ports		      [0, 1]
-      Position		      [70, 95, 100, 125]
+      Position		      [100, 95, 130, 125]
       ZOrder		      -16
       LibraryVersion	      "1.256"
       SourceBlock	      "simulink/Sources/Repeating\nSequence"
@@ -1187,69 +1163,13 @@ Model {
     }
     Block {
       BlockType		      Scope
-      Name		      "Scope"
-      SID		      "4"
-      Ports		      [1]
-      Position		      [490, 269, 520, 301]
-      Floating		      off
-      Location		      [459, 584, 1091, 823]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope1"
-      SID		      "138"
-      Ports		      [1]
-      Position		      [480, 469, 510, 501]
-      Floating		      off
-      Location		      [2021, 730, 2693, 1016]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      TimeRange		      "1"
-      SaveName		      "ScopeData1"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
       Name		      "Scope10"
       SID		      "68"
       Ports		      [1]
       Position		      [895, 609, 925, 641]
       Floating		      off
-      Location		      [2668, 768, 3340, 1054]
-      Open		      on
+      Location		      [2670, 510, 3342, 796]
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1363,9 +1283,9 @@ Model {
       Name		      "Scope14"
       SID		      "77"
       Ports		      [1]
-      Position		      [200, 449, 230, 481]
+      Position		      [165, 194, 195, 226]
       Floating		      off
-      Location		      [91, 368, 756, 655]
+      Location		      [2023, 88, 2688, 375]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1423,9 +1343,9 @@ Model {
       Name		      "Scope16"
       SID		      "124"
       Ports		      [1]
-      Position		      [500, 39, 530, 71]
+      Position		      [550, 44, 580, 76]
       Floating		      off
-      Location		      [459, 584, 1091, 823]
+      Location		      [1263, 58, 1889, 297]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1453,8 +1373,8 @@ Model {
       Ports		      [1]
       Position		      [870, 44, 900, 76]
       Floating		      off
-      Location		      [2665, 88, 3337, 374]
-      Open		      on
+      Location		      [2672, 88, 3344, 374]
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1481,8 +1401,8 @@ Model {
       Ports		      [1]
       Position		      [660, 509, 690, 541]
       Floating		      off
-      Location		      [2022, 425, 2681, 714]
-      Open		      on
+      Location		      [2026, 436, 2683, 725]
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1540,8 +1460,8 @@ Model {
       Ports		      [1]
       Position		      [905, 299, 935, 331]
       Floating		      off
-      Location		      [2668, 437, 3340, 723]
-      Open		      on
+      Location		      [2641, 342, 3313, 628]
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1568,8 +1488,8 @@ Model {
       Ports		      [1]
       Position		      [925, 484, 955, 516]
       Floating		      off
-      Location		      [2024, 88, 2681, 364]
-      Open		      on
+      Location		      [2653, 754, 3310, 1030]
+      Open		      off
       NumInputPorts	      "1"
       ZoomMode		      "yonly"
       List {
@@ -1597,7 +1517,7 @@ Model {
       Ports		      [1]
       Position		      [1590, 273, 1620, 307]
       Floating		      off
-      Location		      [3350, 127, 4015, 413]
+      Location		      [3269, 97, 3934, 382]
       Open		      on
       NumInputPorts	      "1"
       TickLabels	      "on"
@@ -1655,40 +1575,12 @@ Model {
     }
     Block {
       BlockType		      Scope
-      Name		      "Scope7"
-      SID		      "65"
-      Ports		      [1]
-      Position		      [465, 599, 495, 631]
-      Floating		      off
-      Location		      [459, 839, 1091, 1078]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      SaveName		      "ScopeData11"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
       Name		      "Scope9"
       SID		      "97"
       Ports		      [1]
       Position		      [1655, 458, 1685, 492]
       Floating		      off
-      Location		      [3350, 473, 4023, 784]
+      Location		      [3264, 452, 3937, 763]
       Open		      on
       NumInputPorts	      "1"
       TickLabels	      "on"
@@ -1715,30 +1607,10 @@ Model {
     }
     Block {
       BlockType		      Concatenate
-      Name		      "Vector\nConcatenate1"
-      SID		      "137"
-      Ports		      [3, 1]
-      Position		      [430, 466, 435, 504]
-      ZOrder		      -36
-      NumInputs		      "3"
-      Mode		      "Vector"
-    }
-    Block {
-      BlockType		      Concatenate
       Name		      "Vector\nConcatenate2"
       SID		      "139"
       Ports		      [3, 1]
       Position		      [880, 501, 885, 539]
-      ZOrder		      -36
-      NumInputs		      "3"
-      Mode		      "Vector"
-    }
-    Block {
-      BlockType		      Concatenate
-      Name		      "Vector\nConcatenate3"
-      SID		      "136"
-      Ports		      [3, 1]
-      Position		      [615, 506, 620, 544]
       ZOrder		      -36
       NumInputs		      "3"
       Mode		      "Vector"
@@ -1761,7 +1633,7 @@ Model {
       Position		      [645, 299, 825, 426]
       BackgroundColor	      "lightBlue"
       FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
+      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 3.0] [-70.0 -14.0]"
       EnableBusSupport	      off
       MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label"
       "('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -1776,10 +1648,10 @@ Model {
       Name		      "motor neuron1"
       SID		      "72"
       Ports		      [1, 2]
-      Position		      [645, 629, 825, 756]
+      Position		      [645, 624, 825, 751]
       BackgroundColor	      "lightBlue"
       FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
+      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 6.0] [-70.0 -14.0]"
       EnableBusSupport	      off
       MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label"
       "('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -1797,7 +1669,7 @@ Model {
       Position		      [655, 59, 835, 186]
       BackgroundColor	      "lightBlue"
       FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
+      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 2.0] [-70.0 -14.0]"
       EnableBusSupport	      off
       MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label"
       "('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -1863,49 +1735,13 @@ Model {
     }
     Block {
       BlockType		      S-Function
-      Name		      "sensory neuron"
-      SID		      "1"
-      Ports		      [1, 2]
-      Position		      [205, 284, 385, 411]
-      BackgroundColor	      "lightBlue"
-      FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
-      EnableBusSupport	      off
-      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label"
-      "('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-      MaskIconFrame	      on
-      MaskIconOpaque	      on
-      MaskIconRotate	      "none"
-      MaskPortRotate	      "default"
-      MaskIconUnits	      "autoscale"
-    }
-    Block {
-      BlockType		      S-Function
-      Name		      "sensory neuron1"
-      SID		      "74"
-      Ports		      [1, 2]
-      Position		      [200, 609, 380, 736]
-      BackgroundColor	      "lightBlue"
-      FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
-      EnableBusSupport	      off
-      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label"
-      "('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-      MaskIconFrame	      on
-      MaskIconOpaque	      on
-      MaskIconRotate	      "none"
-      MaskPortRotate	      "default"
-      MaskIconUnits	      "autoscale"
-    }
-    Block {
-      BlockType		      S-Function
       Name		      "sensory neuron2"
       SID		      "135"
       Ports		      [1, 2]
-      Position		      [215, 44, 395, 171]
+      Position		      [245, 44, 425, 171]
       BackgroundColor	      "lightBlue"
       FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0] [-70.0 -14.0]"
+      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 1.0] [-70.0 -14.0]"
       EnableBusSupport	      off
       MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label"
       "('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -1914,28 +1750,6 @@ Model {
       MaskIconRotate	      "none"
       MaskPortRotate	      "default"
       MaskIconUnits	      "autoscale"
-    }
-    Line {
-      SrcBlock		      "sensory neuron"
-      SrcPort		      1
-      Points		      [85, 0]
-      DstBlock		      "Scope"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "sensory neuron"
-      SrcPort		      2
-      Points		      [10, 0]
-      Branch {
-	Points			[50, 0]
-	DstBlock		"Discrete\nTransfer Fcn"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 105]
-	DstBlock		"Vector\nConcatenate1"
-	DstPort			2
-      }
     }
     Line {
       SrcBlock		      "Constant1"
@@ -1957,28 +1771,6 @@ Model {
       Points		      [60, 0]
       DstBlock		      "Scope3"
       DstPort		      1
-    }
-    Line {
-      SrcBlock		      "sensory neuron1"
-      SrcPort		      1
-      Points		      [65, 0]
-      DstBlock		      "Scope7"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "sensory neuron1"
-      SrcPort		      2
-      Points		      [15, 0]
-      Branch {
-	Points			[0, -210]
-	DstBlock		"Vector\nConcatenate1"
-	DstPort			3
-      }
-      Branch {
-	Points			[50, 0]
-	DstBlock		"Discrete\nTransfer Fcn2"
-	DstPort			1
-      }
     }
     Line {
       SrcBlock		      "Constant5"
@@ -2033,7 +1825,7 @@ Model {
     Line {
       SrcBlock		      "motor neuron1"
       SrcPort		      2
-      Points		      [20, 0]
+      Points		      [0, 5; 20, 0]
       Branch {
 	Points			[20, 0]
 	Branch {
@@ -2105,20 +1897,6 @@ Model {
       }
     }
     Line {
-      SrcBlock		      "Discrete\nTransfer Fcn"
-      SrcPort		      1
-      Points		      [5, 0]
-      Branch {
-	DstBlock		"motor neuron"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 160]
-	DstBlock		"Vector\nConcatenate3"
-	DstPort			2
-      }
-    }
-    Line {
       SrcBlock		      "Vector\nConcatenate2"
       SrcPort		      1
       Points		      [5, 0; 0, -20]
@@ -2169,29 +1947,14 @@ Model {
     Line {
       SrcBlock		      "Repeating\nSequence"
       SrcPort		      1
-      Points		      [75, 0]
-      Branch {
-	Points			[0, 225]
-	Branch {
-	  Points		  [0, 15]
-	  DstBlock		  "sensory neuron"
-	  DstPort		  1
-	}
-	Branch {
-	  Points		  [0, 130]
-	  Branch {
-	    Points		    [0, 210]
-	    DstBlock		    "sensory neuron1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    DstBlock		    "Scope14"
-	    DstPort		    1
-	  }
-	}
-      }
+      Points		      [25, 0]
       Branch {
 	DstBlock		"sensory neuron2"
+	DstPort			1
+      }
+      Branch {
+	Points			[-10, 0]
+	DstBlock		"Scope14"
 	DstPort			1
       }
     }
@@ -2199,25 +1962,9 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "sensory neuron2"
       SrcPort		      1
-      Points		      [85, 0]
+      Points		      [85, 0; 0, -15]
       DstBlock		      "Scope16"
       DstPort		      1
-    }
-    Line {
-      SrcBlock		      "sensory neuron2"
-      SrcPort		      2
-      Points		      [20, 0]
-      Branch {
-	Points			[40, 0]
-	DstBlock		"Discrete\nTransfer Fcn4"
-	DstPort			1
-      }
-      Branch {
-	Labels			[2, 0]
-	Points			[-5, 0]
-	DstBlock		"Vector\nConcatenate1"
-	DstPort			1
-      }
     }
     Line {
       SrcBlock		      "Constant3"
@@ -2269,7 +2016,6 @@ Model {
       }
     }
     Line {
-      Name		      "big"
       SrcBlock		      "Discrete\nTransfer Fcn4"
       SrcPort		      1
       Points		      [5, 0]
@@ -2279,22 +2025,26 @@ Model {
       }
       Branch {
 	Labels			[1, 0]
-	Points			[0, 390]
-	DstBlock		"Vector\nConcatenate3"
-	DstPort			1
+	Points			[0, 235]
+	Branch {
+	  Points		  [0, 5]
+	  DstBlock		  "motor neuron"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, 170]
+	  Branch {
+	    Points		    [0, 160]
+	    DstBlock		    "motor neuron1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -5]
+	    DstBlock		    "Scope2"
+	    DstPort		    1
+	  }
+	}
       }
-    }
-    Line {
-      SrcBlock		      "Vector\nConcatenate3"
-      SrcPort		      1
-      DstBlock		      "Scope2"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Vector\nConcatenate1"
-      SrcPort		      1
-      DstBlock		      "Scope1"
-      DstPort		      1
     }
     Line {
       SrcBlock		      "muscle2"
@@ -2325,19 +2075,11 @@ Model {
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Discrete\nTransfer Fcn2"
-      SrcPort		      1
-      Points		      [0, -5; 10, 0]
-      Branch {
-	Points			[45, 0]
-	DstBlock		"motor neuron1"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -155]
-	DstBlock		"Vector\nConcatenate3"
-	DstPort			3
-      }
+      SrcBlock		      "sensory neuron2"
+      SrcPort		      2
+      Points		      [15, 0; 0, -15]
+      DstBlock		      "Discrete\nTransfer Fcn4"
+      DstPort		      1
     }
     Annotation {
       Position		      [542, 796]
@@ -2347,18 +2089,13 @@ Model {
     }
     Annotation {
       Name		      "BIG"
-      Position		      [161, 62]
-    }
-    Annotation {
-      Name		      "MEDIUM"
-      Position		      [146, 359]
+      Position		      [191, 62]
     }
     Annotation {
       Position		      [860, 897]
     }
     Annotation {
-      Name		      "SMALL"
-      Position		      [161, 707]
+      Position		      [216, 150]
     }
   }
 }
@@ -2376,8 +2113,6 @@ Stateflow {
     created		    "21-Mar-2012 11:18:50"
     isLibrary		    0
     firstTarget		    2
-    debug {
-    }
     sfVersion		    76014001.0002
   }
   target {
