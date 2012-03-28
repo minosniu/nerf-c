@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.182"
+    ComputedModelVersion    "1.189"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -21,15 +21,16 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
+  StopFcn		  "incrementVars('motor_unit')"
   Created		  "Sat Mar 17 16:12:43 2012"
   Creator		  "minos_niu"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "minos_niu"
+  LastModifiedBy	  "eric"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Mar 26 19:20:51 2012"
-  RTWModifiedTimeStamp	  254685470
-  ModelVersionFormat	  "1.%<AutoIncrement:182>"
+  LastModifiedDate	  "Tue Mar 27 17:00:03 2012"
+  RTWModifiedTimeStamp	  254768391
+  ModelVersionFormat	  "1.%<AutoIncrement:189>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -67,6 +68,7 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "motor_unit"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -609,7 +611,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 501, 181, 1400, 980 ] 
+      ConfigPrmDlgPosition     [ 0, 0, 901, 829 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -848,7 +850,7 @@ Model {
   }
   System {
     Name		    "motor_unit"
-    Location		    [1920, 50, 3840, 1200]
+    Location		    [2193, 101, 3836, 1020]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -862,7 +864,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "265"
+    SIDHighWatermark	    "266"
     Block {
       BlockType		      Abs
       Name		      "Abs2"
@@ -926,7 +928,7 @@ Model {
       BlockType		      Constant
       Name		      "Constant"
       SID		      "178"
-      Position		      [545, 710, 575, 740]
+      Position		      [510, 700, 540, 730]
       Value		      "80"
     }
     Block {
@@ -1363,7 +1365,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"762"
+	SIDHighWatermark	"779"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In"
@@ -1375,7 +1377,7 @@ Model {
 	Block {
 	  BlockType		  Reference
 	  Name			  "Generated Filter Block"
-	  SID			  "217:762"
+	  SID			  "217:779"
 	  Tag			  "BlockMethodSubSystem"
 	  Ports			  [1, 1]
 	  Position		  [220, 90, 295, 130]
@@ -1390,22 +1392,22 @@ Model {
 	  AllPoleFiltStruct	  "Direct form"
 	  FIRFiltStruct		  "Direct form"
 	  CoeffSource		  "Specify via dialog"
-	  NumCoeffs		  "[0.000821343113298553 0.000860441837741384 0.00116507777294478 0.00139896051971533 0.0014807379825975"
-	  "5 0.00133051719232521 0.00088137992881824 9.3966665944644e-05 -0.00102427649336679 -0.00241508381296073 -0.00396005"
-	  "761838719 -0.00548791113381279 -0.00678957165103651 -0.00764301763584719 -0.00784363593055864 -0.00724034355165256 "
-	  "-0.00576737385536099 -0.00347179427273648 -0.000526738025008314 0.00277189505493066 0.00602772399348037 0.008783844"
-	  "11363102 0.0105793849551558 0.0110144101671425 0.00981730876000811 0.00690368741433789 0.0024180557419036 -0.003249"
-	  "79313849791 -0.00947842883556184 -0.0154612118882062 -0.0202815328070714 -0.0230109852998383 -0.0228194406688834 -0"
-	  ".0190843479651619 -0.0114852033107793 -7.04588646032729e-05 0.0147140504913441 0.032040450344853 0.0507590050669597"
-	  " 0.0694980891161205 0.0867940010093986 0.101236365407667 0.111612741087645 0.117035389882844 0.117035389882844 0.11"
-	  "1612741087645 0.101236365407667 0.0867940010093986 0.0694980891161205 0.0507590050669597 0.032040450344853 0.014714"
-	  "0504913441 -7.04588646032729e-05 -0.0114852033107793 -0.0190843479651619 -0.0228194406688834 -0.0230109852998383 -0"
-	  ".0202815328070714 -0.0154612118882062 -0.00947842883556184 -0.00324979313849791 0.0024180557419036 0.00690368741433"
-	  "789 0.00981730876000811 0.0110144101671425 0.0105793849551558 0.00878384411363102 0.00602772399348037 0.00277189505"
-	  "493066 -0.000526738025008314 -0.00347179427273648 -0.00576737385536099 -0.00724034355165256 -0.00784363593055864 -0"
-	  ".00764301763584719 -0.00678957165103651 -0.00548791113381279 -0.00396005761838719 -0.00241508381296073 -0.001024276"
-	  "49336679 9.3966665944644e-05 0.00088137992881824 0.00133051719232521 0.00148073798259755 0.00139896051971533 0.0011"
-	  "6507777294478 0.000860441837741384 0.000821343113298553]"
+	  NumCoeffs		  "[0.000821343113298547 0.000860441837741378 0.00116507777294478 0.00139896051971533 0.0014807379825975"
+	  "5 0.00133051719232521 0.000881379928818245 9.39666659446509e-05 -0.00102427649336678 -0.00241508381296073 -0.003960"
+	  "05761838719 -0.00548791113381279 -0.00678957165103652 -0.0076430176358472 -0.00784363593055865 -0.00724034355165257"
+	  " -0.005767373855361 -0.00347179427273649 -0.000526738025008321 0.00277189505493066 0.00602772399348037 0.0087838441"
+	  "1363102 0.0105793849551558 0.0110144101671425 0.00981730876000813 0.00690368741433791 0.00241805574190362 -0.003249"
+	  "79313849789 -0.00947842883556182 -0.0154612118882062 -0.0202815328070714 -0.0230109852998383 -0.0228194406688834 -0"
+	  ".0190843479651619 -0.0114852033107793 -7.04588646032872e-05 0.0147140504913441 0.0320404503448529 0.050759005066959"
+	  "7 0.0694980891161205 0.0867940010093986 0.101236365407667 0.111612741087645 0.117035389882844 0.117035389882844 0.1"
+	  "11612741087645 0.101236365407667 0.0867940010093986 0.0694980891161205 0.0507590050669597 0.0320404503448529 0.0147"
+	  "140504913441 -7.04588646032872e-05 -0.0114852033107793 -0.0190843479651619 -0.0228194406688834 -0.0230109852998383 "
+	  "-0.0202815328070714 -0.0154612118882062 -0.00947842883556182 -0.00324979313849789 0.00241805574190362 0.00690368741"
+	  "433791 0.00981730876000813 0.0110144101671425 0.0105793849551558 0.00878384411363102 0.00602772399348037 0.00277189"
+	  "505493066 -0.000526738025008321 -0.00347179427273649 -0.005767373855361 -0.00724034355165257 -0.00784363593055865 -"
+	  "0.0076430176358472 -0.00678957165103652 -0.00548791113381279 -0.00396005761838719 -0.00241508381296073 -0.001024276"
+	  "49336678 9.39666659446509e-05 0.000881379928818245 0.00133051719232521 0.00148073798259755 0.00139896051971533 0.00"
+	  "116507777294478 0.000860441837741378 0.000821343113298547]"
 	  DenCoeffs		  "[1 0.1]"
 	  BiQuadCoeffs		  "[1 0.3 0.4 1 0.1 0.2]"
 	  LatticeCoeffs		  "[0.2 0.4]"
@@ -1514,9 +1516,9 @@ Model {
       Name		      "Scope"
       SID		      "179"
       Ports		      [1]
-      Position		      [890, 724, 920, 756]
+      Position		      [890, 714, 920, 746]
       Floating		      off
-      Location		      [503, 206, 827, 445]
+      Location		      [1200, 111, 1524, 350]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1542,7 +1544,7 @@ Model {
       Name		      "Scope1"
       SID		      "180"
       Ports		      [1]
-      Position		      [890, 799, 920, 831]
+      Position		      [890, 789, 920, 821]
       Floating		      off
       Location		      [887, 209, 1211, 448]
       Open		      off
@@ -1550,6 +1552,16 @@ Model {
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
       }
       SaveName		      "ScopeData17"
       DataFormat	      "StructureWithTime"
@@ -1676,7 +1688,7 @@ Model {
       Name		      "Scope3"
       SID		      "187"
       Ports		      [1]
-      Position		      [560, 849, 590, 881]
+      Position		      [560, 839, 590, 871]
       Floating		      off
       Location		      [503, 206, 827, 445]
       Open		      off
@@ -1717,7 +1729,7 @@ Model {
       Ports		      [1]
       Position		      [1555, 250, 1615, 280]
       ZOrder		      -7
-      VariableName	      "emg"
+      VariableName	      "emg0"
       MaxDataPoints	      "inf"
       SampleTime	      "-1"
       SaveFormat	      "Structure With Time"
@@ -1737,10 +1749,10 @@ Model {
       Name		      "combined\n muscle force"
       SID		      "97"
       Ports		      [1]
-      Position		      [1235, 368, 1265, 402]
+      Position		      [1235, 353, 1265, 387]
       Floating		      off
       Location		      [384, 338, 1057, 649]
-      Open		      on
+      Open		      off
       NumInputPorts	      "1"
       TickLabels	      "on"
       List {
@@ -1771,7 +1783,7 @@ Model {
       Ports		      [1]
       Position		      [1235, 209, 1265, 241]
       Floating		      off
-      Location		      [640, 485, 1183, 768]
+      Location		      [1157, 441, 1700, 724]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1800,8 +1812,8 @@ Model {
       Ports		      [1]
       Position		      [1530, 184, 1560, 216]
       Floating		      off
-      Location		      [1341, 347, 1884, 630]
-      Open		      on
+      Location		      [1342, 411, 1885, 694]
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1817,6 +1829,7 @@ Model {
 	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
 	MarkerStyles		"none|none|none|none|none|none"
       }
+      TimeRange		      "1"
       YMin		      "0"
       YMax		      "225"
       SaveName		      "ScopeData2"
@@ -1832,8 +1845,8 @@ Model {
       ZOrder		      -16
       NamePlacement	      "alternate"
       Floating		      off
-      Location		      [1330, 690, 1834, 983]
-      Open		      on
+      Location		      [1386, 752, 1890, 1045]
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1863,7 +1876,7 @@ Model {
       Ports		      [1]
       Position		      [1405, 119, 1435, 151]
       Floating		      off
-      Location		      [560, 169, 1103, 452]
+      Location		      [1345, 762, 1888, 1045]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1888,15 +1901,49 @@ Model {
     }
     Block {
       BlockType		      Scope
+      Name		      "emgs4"
+      SID		      "266"
+      Ports		      [1]
+      Position		      [655, 589, 685, 621]
+      ZOrder		      -16
+      NamePlacement	      "alternate"
+      Floating		      off
+      Location		      [1282, 751, 1786, 1044]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      TimeRange		      "1"
+      YMin		      "-0.03"
+      YMax		      "0.03"
+      SaveName		      "ScopeData6"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
       Name		      "individual \nmuslc forces"
       SID		      "88"
       Ports		      [1]
       Position		      [1235, 273, 1265, 307]
       Floating		      off
-      Location		      [1054, 484, 1719, 769]
-      Open		      on
+      Location		      [1343, 63, 1882, 338]
+      Open		      off
       NumInputPorts	      "1"
       TickLabels	      "on"
+      ZoomMode		      "yonly"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
@@ -1933,7 +1980,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"motor unit1"
-	Location		[427, 79, 1564, 760]
+	Location		[1, 332, 1138, 1013]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2045,7 +2092,7 @@ Model {
 	  Position		  [90, 44, 270, 171]
 	  BackgroundColor	  "lightBlue"
 	  FunctionName		  "izh"
-	  Parameters		  "[0.02 0.2 -65.0 6.0 30.0 2.0] [-70.0 -14.0]"
+	  Parameters		  "[0.02 0.2 -65.0 6.0 30.0 1.0] [-70.0 -14.0]"
 	  EnableBusSupport	  off
 	  MaskDisplay		  "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('outp"
 	  "ut', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -2159,7 +2206,7 @@ Model {
       Name		      "motor unit2"
       SID		      "201"
       Ports		      [2, 2]
-      Position		      [640, 179, 695, 241]
+      Position		      [640, 184, 695, 246]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -2169,7 +2216,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"motor unit2"
-	Location		[427, 101, 1564, 782]
+	Location		[-339, 149, 798, 830]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2281,7 +2328,7 @@ Model {
 	  Position		  [90, 44, 270, 171]
 	  BackgroundColor	  "lightBlue"
 	  FunctionName		  "izh"
-	  Parameters		  "[0.02 0.2 -65.0 6.0 30.0 3.0] [-70.0 -14.0]"
+	  Parameters		  "[0.02 0.2 -65.0 6.0 30.0 1.2] [-70.0 -14.0]"
 	  EnableBusSupport	  off
 	  MaskDisplay		  "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('outp"
 	  "ut', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -2405,7 +2452,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"motor unit3"
-	Location		[427, 123, 1559, 558]
+	Location		[1, 94, 1133, 529]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2517,7 +2564,7 @@ Model {
 	  Position		  [90, 44, 270, 171]
 	  BackgroundColor	  "lightBlue"
 	  FunctionName		  "izh"
-	  Parameters		  "[0.02 0.2 -65.0 6.0 30.0 6.0] [-70.0 -14.0]"
+	  Parameters		  "[0.02 0.2 -65.0 6.0 30.0 3.0] [-70.0 -14.0]"
 	  EnableBusSupport	  off
 	  MaskDisplay		  "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('outp"
 	  "ut', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -2693,7 +2740,7 @@ Model {
       Ports		      [1]
       Position		      [800, 239, 830, 271]
       Floating		      off
-      Location		      [562, 645, 1227, 932]
+      Location		      [1259, 504, 1924, 791]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -2739,7 +2786,7 @@ Model {
       Name		      "spindle"
       SID		      "182"
       Ports		      [3, 2]
-      Position		      [615, 701, 860, 849]
+      Position		      [615, 691, 860, 839]
       BackgroundColor	      "lightBlue"
       FunctionName	      "dynamic_spindle_mod"
       Parameters	      "[10.4649 10.4649 10.4649] [0.1127 0.1623 0.1623] [0.0605 0.0822 0.0822] [0.2356 -0.046 -0.069]"
@@ -2836,7 +2883,6 @@ Model {
     Line {
       SrcBlock		      "Add5"
       SrcPort		      1
-      Points		      [0, 15]
       DstBlock		      "combined\n muscle force"
       DstPort		      1
     }
@@ -2897,7 +2943,7 @@ Model {
     Line {
       SrcBlock		      "motor unit2"
       SrcPort		      2
-      Points		      [65, 0]
+      Points		      [0, -5; 65, 0]
       Branch {
 	DstBlock		"LTI System1"
 	DstPort			1
@@ -2911,7 +2957,7 @@ Model {
     Line {
       SrcBlock		      "motor unit2"
       SrcPort		      1
-      Points		      [55, 0]
+      Points		      [0, -5; 55, 0]
       Branch {
 	Points			[280, 0]
 	Branch {
@@ -2983,7 +3029,7 @@ Model {
     Line {
       SrcBlock		      "Constant"
       SrcPort		      1
-      Points		      [10, 0]
+      Points		      [45, 0]
       Branch {
 	DstBlock		"spindle"
 	DstPort			1
@@ -3019,19 +3065,6 @@ Model {
       SrcPort		      1
       Points		      [0, 5]
       Branch {
-	Points			[0, 225; -110, 0]
-	Branch {
-	  Points		  [25, 0; 0, 55]
-	  DstBlock		  "spindle"
-	  DstPort		  3
-	}
-	Branch {
-	  Points		  [0, 95]
-	  DstBlock		  "Scope3"
-	  DstPort		  1
-	}
-      }
-      Branch {
 	Points			[0, -225]
 	Branch {
 	  Points		  [0, -95]
@@ -3047,6 +3080,26 @@ Model {
 	Branch {
 	  DstBlock		  "motor unit3"
 	  DstPort		  2
+	}
+      }
+      Branch {
+	Points			[0, 60]
+	Branch {
+	  Points		  [0, 145; -110, 0; 0, 10]
+	  Branch {
+	    Points		    [25, 0; 0, 55]
+	    DstBlock		    "spindle"
+	    DstPort		    3
+	  }
+	  Branch {
+	    Points		    [0, 95]
+	    DstBlock		    "Scope3"
+	    DstPort		    1
+	  }
+	}
+	Branch {
+	  DstBlock		  "emgs4"
+	  DstPort		  1
 	}
       }
     }
@@ -3082,6 +3135,7 @@ Model {
 	  DstPort		  1
 	}
 	Branch {
+	  Points		  [15, 0]
 	  DstBlock		  "motor unit2"
 	  DstPort		  1
 	}
@@ -3125,13 +3179,13 @@ Model {
       Position		      [206, 62]
     }
     Annotation {
-      Position		      [615, 797]
+      Position		      [615, 787]
     }
     Annotation {
       Position		      [231, 150]
     }
     Annotation {
-      Position		      [752, 861]
+      Position		      [752, 851]
     }
   }
 }
@@ -3143,19 +3197,19 @@ MatData {
     "YH97)I=&5D3W!T:6]N     &9I;'1E<D-O;G-T<G5C=&]R      !F:6QT97)#;VYS=')U8W1O<D%R9W, 24-$871A                      X "
     "   P    !@    @    ) @        4    (     0    $    !          (  0 !    #@   $     &    \"     0         !0    @  "
     "  !    \"P    $         $     L   !D9FEL=\"YD9F9I<@      #@   \" #   &    \"     $         !0    @    !     0    $"
-    "         #@   / \"   &    \"     8         !0    @    !    6     $         \"0   , \"  !^E;OG[.E*/Z>0S\\;H,4P_\"6^"
-    "GN[ 64S_\\?XYKJNM6/ZJ.8TVJ0E@_:[?Z])?,53](K1S\\C.%,/_MB40?_H1@_(^R@@B#(4+_L[,P_S,ACOSY&8=]K.'\"_K4%][7UZ=K]/[1[#8<"
-    "][OXF3GNQ(3G^_W89M_E(0@+_8*$+L#*A]OQ@V>Z&'GW>_$=:#6^%P;+^#ZJ1+F4)!OZ_?>],5M68_9+*]UH:P>#^8$IR90_V!/UE,)P.EJH4_8O\""
-    ">&[F.AC_1Q'C@&!N$/X&&J7H*1WP_2*R:R@?/8S_$I/1G3Y]JOPG[[2YM:8._W;I4NR\"JC[]0^WF@KL24O^\\$/Q4QD)>_FR\"+O?I=E[\\!X(#IV"
-    "(J3OP66W.2-A8>_X ^E$VIX$K_Z4S=M9B*./]NPPAR;9Z _&NUZE17]J3\\=8^-SH,JQ/R )T[,A.+8_B(*77J#JN3];T<D0IY*\\/P]\\!00(]KT_"
-    "#WP%! CVO3];T<D0IY*\\/XB\"EUZ@ZKD_( G3LR$XMC\\=8^-SH,JQ/QKM>I45_:D_V[#\"')MGH#_Z4S=M9B*./^ /I1-J>!*_!9;<Y(V%A[\\!X"
-    "(#IV(J3OYL@B[WZ79>_[P0_%3&0E[]0^WF@KL24O]VZ5+L@JH^_\"?OM+FUI@[_$I/1G3Y]JOTBLFLH'SV,_@8:I>@I'?#_1Q'C@&!N$/V+PGANYCH"
-    "8_64PG Z6JA3^8$IR90_V!/V2RO=:&L'@_K]][TQ6U9C^#ZJ1+F4)!OQ'6@UOA<&R_&#9[H8>?=[_8*$+L#*A]O]V&;?Y2$(\"_B9.>[$A.?[]/[1["
-    "#8<][OZU!?>U]>G:_/D9AWVLX<+_L[,P_S,ACOR/LH((@R%\"_^V)1!_^A&#](K1S\\C.%,/VNW^O27S%4_JHYC3:I\"6#_\\?XYKJNM6/PEOI[NP%"
-    "E,_IY#/QN@Q3#]^E;OG[.E*/PX    0 0  !@    @    \"          4    (     0    $    !          4 !  &     0   !(   !)0V"
-    "YU;0!)0V1E;@!)0P             .    .     8    (    !@         %    \"     $    !     0         )    \"             "
-    "  #@   #@    &    \"     8         !0    @    !     0    $         \"0    @               X    X    !@    @    &  "
-    "        4    (     0    $    !          D    (               "
+    "         #@   / \"   &    \"     8         !0    @    !    6     $         \"0   , \"  !&E;OG[.E*/W\"0S\\;H,4P_\"6"
+    "^GN[ 64S_\\?XYKJNM6/ZJ.8TVJ0E@_:[?Z])?,53]VK1S\\C.%,/_ED40?_H1@_].N@@B#(4+_L[,P_S,ACOSY&8=]K.'\"_K4%][7UZ=K];[1[#8"
+    "<][OY23GNQ(3G^_XX9M_E(0@+_C*$+L#*A]OR0V>Z&'GW>_*-:#6^%P;+_#ZJ1+F4)!OZ_?>],5M68_9+*]UH:P>#^8$IR90_V!/UE,)P.EJH4_8O\""
+    ">&[F.AC_<Q'C@&!N$/YB&J7H*1WP_=JR:R@?/8S^6I/1G3Y]JO_WZ[2YM:8._W;I4NR\"JC[]0^WF@KL24O^\\$/Q4QD)>_FR\"+O?I=E[\\!X(#IV"
+    "(J3OP66W.2-A8>__Q.E$VIX$K_Z4S=M9B*./\\VPPAR;9Z _&NUZE17]J3\\=8^-SH,JQ/R )T[,A.+8_B(*77J#JN3];T<D0IY*\\/P]\\!00(]KT"
+    "_#WP%! CVO3];T<D0IY*\\/XB\"EUZ@ZKD_( G3LR$XMC\\=8^-SH,JQ/QKM>I45_:D_S;#\"')MGH#_Z4S=M9B*./_\\3I1-J>!*_!9;<Y(V%A[\\"
+    "!X(#IV(J3OYL@B[WZ79>_[P0_%3&0E[]0^WF@KL24O]VZ5+L@JH^__?KM+FUI@[^6I/1G3Y]JOW:LFLH'SV,_F(:I>@I'?#_<Q'C@&!N$/V+PGANYC"
+    "H8_64PG Z6JA3^8$IR90_V!/V2RO=:&L'@_K]][TQ6U9C_#ZJ1+F4)!ORC6@UOA<&R_)#9[H8>?=[_C*$+L#*A]O^.&;?Y2$(\"_E).>[$A.?[];[1"
+    "[#8<][OZU!?>U]>G:_/D9AWVLX<+_L[,P_S,ACO_3KH((@R%\"_^611!_^A&#]VK1S\\C.%,/VNW^O27S%4_JHYC3:I\"6#_\\?XYKJNM6/PEOI[NP"
+    "%E,_<)#/QN@Q3#]&E;OG[.E*/PX    0 0  !@    @    \"          4    (     0    $    !          4 !  &     0   !(   !)0"
+    "VYU;0!)0V1E;@!)0P             .    .     8    (    !@         %    \"     $    !     0         )    \"            "
+    "   #@   #@    &    \"     8         !0    @    !     0    $         \"0    @               X    X    !@    @    & "
+    "         4    (     0    $    !          D    (               "
   }
   DataRecord {
     Tag			    DataTag1
@@ -4491,7 +4545,7 @@ MatData {
 }
 # Finite State Machines
 #
-#    Stateflow Version 7.6 (R2011b) dated Aug  6 2011, 09:49:11
+#    Stateflow Version 7.6 (R2011b) dated Aug  6 2011, 03:32:36
 #
 #
 
