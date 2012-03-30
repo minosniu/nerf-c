@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.33"
+    ComputedModelVersion    "1.34"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "eric"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Mar 21 15:01:28 2012"
-  RTWModifiedTimeStamp	  254242880
-  ModelVersionFormat	  "1.%<AutoIncrement:33>"
+  LastModifiedDate	  "Fri Mar 30 12:51:28 2012"
+  RTWModifiedTimeStamp	  255012658
+  ModelVersionFormat	  "1.%<AutoIncrement:34>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -67,6 +67,7 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "calc_filter_coeff"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -746,7 +747,7 @@ Model {
   }
   System {
     Name		    "calc_filter_coeff"
-    Location		    [2899, 563, 3689, 1004]
+    Location		    [1129, 577, 1919, 1018]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -818,7 +819,7 @@ Model {
       MaskDescription	      "Embedded MATLAB block"
       MaskSelfModifiable      on
       MaskDisplay	      "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('pr"
-      "ivate/eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'fcn']);"
+      "ivate/eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'active_state']);"
       MaskIconFrame	      on
       MaskIconOpaque	      off
       MaskIconRotate	      "none"
@@ -1069,7 +1070,7 @@ Stateflow {
     chartFileNumber	    2
     disableImplicitCasting  1
     eml {
-      name		      "fcn"
+      name		      "active_state"
     }
   }
   state {
@@ -1086,14 +1087,14 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function [num, den] = fcn(mag1, mag2, trise, tfall)\n%#codegen\n\n% Shadmehr muscle model gives t"
-      "he h(t) of active_state\n% h(t) = a*exp(-t/c) + b*exp(-t/d)\n% H(s) = a/(s+c) + b/(s+d)\n% This func: H(s) -> H("
-      "z) \n\n% a = 48144*128;\n% b = 45845*128;\ncoder.extrinsic('tf', 'c2d', 'tfdata', 'dfilt.df2sos', 'dfilt', 'df2s"
-      "os','filter'); \n\na = mag1;\nb = mag2;\nc = 1/trise;  % tf, tr in seconds. \nd = 1/tfall;\nSAMPLING_RATE = 1024"
-      "; % in Hz\nnum = [0 (a-b) (a*d - b*c)];\nden = [1 (c+d) c*d];\ntf_a = tf(num, den);\n\ntf_a_digital = c2d(tf_a, "
-      "1/SAMPLING_RATE, 'zoh');\n[num den] = tfdata(tf_a_digital, 'v')\n% \n% a1=den(1)\n% a2=den(2)\n% a3=den(3)\n% b1"
-      "=num(1)\n% b2=num(2)\n% b3=num(3)\n% \n% %hd=dfilt.df2sos(b1,a1,b2,a2,b3,a3)\n% bcoeff = [b1 b2 b3]\n% acoeff = "
-      "[a1 a2 a3]\n% \n% y=[0;0]  % type definition for output\n% y = filtfilt(bcoeff, acoeff,  x) \n"
+      script		      "function [num, den] = active_state(mag1, mag2, trise, tfall)\n%#codegen\n\n% Shadmehr muscle mode"
+      "l gives the h(t) of active_state\n% h(t) = a*exp(-t/c) + b*exp(-t/d)\n% H(s) = a/(s+c) + b/(s+d)\n% This func: H"
+      "(s) -> H(z) \n\n% a = 48144*128;\n% b = 45845*128;\ncoder.extrinsic('tf', 'c2d', 'tfdata', 'dfilt.df2sos', 'dfil"
+      "t', 'df2sos','filter'); \n\na = mag1;\nb = mag2;\nc = 1/trise;  % tf, tr in seconds. \nd = 1/tfall;\nSAMPLING_RA"
+      "TE = 1024; % in Hz\nnum = [0 (a-b) (a*d - b*c)];\nden = [1 (c+d) c*d];\ntf_a = tf(num, den);\n\ntf_a_digital = c"
+      "2d(tf_a, 1/SAMPLING_RATE, 'zoh');\n[num den] = tfdata(tf_a_digital, 'v')\n% \n% a1=den(1)\n% a2=den(2)\n% a3=den"
+      "(3)\n% b1=num(1)\n% b2=num(2)\n% b3=num(3)\n% \n% %hd=dfilt.df2sos(b1,a1,b2,a2,b3,a3)\n% bcoeff = [b1 b2 b3]\n% "
+      "acoeff = [a1 a2 a3]\n% \n% y=[0;0]  % type definition for output\n% y = filtfilt(bcoeff, acoeff,  x) \n"
       editorLayout	      "100 M4x1[865 347 1080 733]"
     }
   }
