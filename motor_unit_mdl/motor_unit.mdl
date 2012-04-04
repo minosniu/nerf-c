@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.220"
+    ComputedModelVersion    "1.241"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -21,7 +21,8 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  InitFcn		  "[A tau T] = emg_filter()\n[mag1 mag2 A_rise A_fall T] = get_active_function_coeff()"
+  InitFcn		  "[A tau T] = emg_filter()\n[A_twitch T_twitch tau_twitch P e] = twitch_filter()\n[mag1 mag2 A_rise A_fall"
+  " T] = get_active_function_coeff()\nset_trfcn()"
   StopFcn		  "incrementVars('motor_unit')"
   Created		  "Sat Mar 17 16:12:43 2012"
   Creator		  "minos_niu"
@@ -29,9 +30,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "eric"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Apr 02 16:07:10 2012"
-  RTWModifiedTimeStamp	  255278046
-  ModelVersionFormat	  "1.%<AutoIncrement:220>"
+  LastModifiedDate	  "Tue Apr 03 18:07:56 2012"
+  RTWModifiedTimeStamp	  255369003
+  ModelVersionFormat	  "1.%<AutoIncrement:241>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -69,7 +70,6 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "motor_unit"
-    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -838,7 +838,7 @@ Model {
   }
   System {
     Name		    "motor_unit"
-    Location		    [2442, 89, 4085, 1008]
+    Location		    [181, 152, 1722, 805]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -852,13 +852,13 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "604"
+    SIDHighWatermark	    "684"
     Block {
       BlockType		      SubSystem
       Name		      "NORMAL"
       SID		      "417"
       Ports		      [2, 3]
-      Position		      [685, 216, 790, 304]
+      Position		      [680, 216, 785, 304]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -868,7 +868,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"NORMAL"
-	Location		[1, 86, 1465, 934]
+	Location		[2457, 184, 3921, 1032]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -892,7 +892,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "In2"
 	  SID			  "419"
-	  Position		  [470, 550, 500, 565]
+	  Position		  [515, 535, 545, 550]
 	  BlockRotation		  270
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -955,287 +955,6 @@ Model {
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "BIG Motor unit"
-	  SID			  "462"
-	  Ports			  [2, 2]
-	  Position		  [510, 79, 565, 141]
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "BIG Motor unit"
-	    Location		    [30, 273, 1366, 885]
-	    Open		    off
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "synI"
-	      SID		      "463"
-	      Position		      [25, 103, 55, 117]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Lce"
-	      SID		      "464"
-	      Position		      [530, 98, 560, 112]
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant6"
-	      SID		      "465"
-	      Position		      [565, 230, 595, 260]
-	      Value		      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope1"
-	      SID		      "466"
-	      Ports		      [1]
-	      Position		      [400, 209, 430, 241]
-	      Floating		      off
-	      Location		      [531, 115, 1203, 401]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      TimeRange		      "0.4"
-	      YMin		      "-1000"
-	      YMax		      "5000"
-	      SaveName		      "ScopeData10"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope19"
-	      SID		      "467"
-	      Ports		      [1]
-	      Position		      [305, 29, 335, 61]
-	      Floating		      off
-	      Location		      [1243, 88, 1915, 374]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      SaveName		      "ScopeData19"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope22"
-	      SID		      "468"
-	      Ports		      [1]
-	      Position		      [505, 124, 535, 156]
-	      Floating		      off
-	      Location		      [901, 95, 1573, 381]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      TimeRange		      "0.4"
-	      YMin		      "-1000"
-	      YMax		      "5000"
-	      SaveName		      "ScopeData22"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "active state (filter)"
-	      SID		      "469"
-	      Ports		      [1, 1]
-	      Position		      [350, 107, 440, 173]
-	      ZOrder		      -1
-	      LibraryVersion	      "1.108"
-	      SourceBlock	      "cstblocks/LTI System"
-	      SourceType	      "LTI Block"
-	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.04),  mag2*8, T)"
-	      IC		      "[]"
-	    }
-	    Block {
-	      BlockType		      S-Function
-	      Name		      "motor neuron2"
-	      SID		      "470"
-	      Ports		      [1, 2]
-	      Position		      [90, 44, 270, 171]
-	      BackgroundColor	      "lightBlue"
-	      FunctionName	      "izh"
-	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 0.45] [-70.0 -14.0]"
-	      EnableBusSupport	      off
-	      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_labe"
-	      "l('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      on
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	    }
-	    Block {
-	      BlockType		      S-Function
-	      Name		      "muscle2"
-	      SID		      "471"
-	      Ports		      [3, 1]
-	      Position		      [640, 49, 805, 161]
-	      ZOrder		      -5
-	      FunctionName	      "muscle"
-	      Parameters	      "[136.0 75.0 50.0] [0]"
-	      EnableBusSupport	      off
-	      MaskDisplay	      "port_label('input', 1, 'Active state');\nport_label('input', 2, 'length');\nport_label('inpu"
-	      "t', 3, 'vel');\nport_label('output', 1, 'tension');\ndisp('muscle model \\n(S-Function)');"
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      on
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "T"
-	      SID		      "472"
-	      Position		      [920, 98, 950, 112]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Spk"
-	      SID		      "473"
-	      Position		      [285, 208, 315, 222]
-	      BlockMirror	      on
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "Constant6"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      DstBlock		      "muscle2"
-	      DstPort		      3
-	    }
-	    Line {
-	      SrcBlock		      "motor neuron2"
-	      SrcPort		      1
-	      Points		      [15, 0]
-	      DstBlock		      "Scope19"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "active state (filter)"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      Branch {
-		DstBlock		"Scope22"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, -70; 100, 0]
-		Branch {
-		  DstBlock		  "muscle2"
-		  DstPort		  1
-		}
-		Branch {
-		  Points		  [0, -50; 290, 0; 0, 85]
-		  DstBlock		  "T"
-		  DstPort		  1
-		}
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "motor neuron2"
-	      SrcPort		      2
-	      Points		      [35, 0]
-	      Branch {
-		DstBlock		"active state (filter)"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[20, 0; 0, 55]
-		Branch {
-		  DstBlock		  "Spk"
-		  DstPort		  1
-		}
-		Branch {
-		  Points		  [0, 30]
-		  DstBlock		  "Scope1"
-		  DstPort		  1
-		}
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "synI"
-	      SrcPort		      1
-	      DstBlock		      "motor neuron2"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Lce"
-	      SrcPort		      1
-	      DstBlock		      "muscle2"
-	      DstPort		      2
-	    }
-	    Annotation {
-	      Position		      [362, 581]
-	    }
-	    Annotation {
-	      Position		      [463, 119]
-	    }
-	  }
 	}
 	Block {
 	  BlockType		  Constant
@@ -1489,7 +1208,7 @@ Model {
 	  Name			  "EMG response"
 	  SID			  "441"
 	  Ports			  [1, 1]
-	  Position		  [660, 398, 705, 432]
+	  Position		  [645, 398, 690, 432]
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
 	  RTWSystemCode		  "Auto"
@@ -1594,6 +1313,96 @@ Model {
 	  }
 	}
 	Block {
+	  BlockType		  Scope
+	  Name			  "Fuglevand twitch"
+	  SID			  "498"
+	  Ports			  [1]
+	  Position		  [645, 34, 675, 66]
+	  Floating		  off
+	  Location		  [51, 114, 716, 401]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  YMin			  "0"
+	  YMax			  "225"
+	  SaveName		  "ScopeData1"
+	  DataFormat		  "StructureWithTime"
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Fuglevand twitch1"
+	  SID			  "680"
+	  Ports			  [1]
+	  Position		  [645, 139, 675, 171]
+	  Floating		  off
+	  Location		  [51, 114, 716, 401]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  YMin			  "0"
+	  YMax			  "225"
+	  SaveName		  "ScopeData27"
+	  DataFormat		  "StructureWithTime"
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Fuglevand twitch2"
+	  SID			  "681"
+	  Ports			  [1]
+	  Position		  [645, 229, 675, 261]
+	  Floating		  off
+	  Location		  [51, 114, 716, 401]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  YMin			  "0"
+	  YMax			  "225"
+	  SaveName		  "ScopeData28"
+	  DataFormat		  "StructureWithTime"
+	  SampleTime		  "0"
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "LTI System"
 	  SID			  "447"
@@ -1678,7 +1487,7 @@ Model {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "900"
+	    SIDHighWatermark	    "922"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "In"
@@ -1690,7 +1499,7 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "Generated Filter Block"
-	      SID		      "450:900"
+	      SID		      "450:922"
 	      Tag		      "BlockMethodSubSystem"
 	      Ports		      [1, 1]
 	      Position		      [220, 90, 295, 130]
@@ -1796,287 +1605,6 @@ Model {
 	      SrcPort		      1
 	      DstBlock		      "Out"
 	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "Med motor unit"
-	  SID			  "474"
-	  Ports			  [2, 2]
-	  Position		  [510, 169, 565, 231]
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "Med motor unit"
-	    Location		    [30, 587, 1366, 1199]
-	    Open		    off
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "synI"
-	      SID		      "475"
-	      Position		      [25, 103, 55, 117]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Lce"
-	      SID		      "476"
-	      Position		      [530, 98, 560, 112]
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant6"
-	      SID		      "477"
-	      Position		      [565, 230, 595, 260]
-	      Value		      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope1"
-	      SID		      "478"
-	      Ports		      [1]
-	      Position		      [400, 209, 430, 241]
-	      Floating		      off
-	      Location		      [853, 218, 1525, 504]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      TimeRange		      "0.4"
-	      YMin		      "-1000"
-	      YMax		      "5000"
-	      SaveName		      "ScopeData10"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope19"
-	      SID		      "479"
-	      Ports		      [1]
-	      Position		      [305, 29, 335, 61]
-	      Floating		      off
-	      Location		      [1243, 88, 1915, 374]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      SaveName		      "ScopeData19"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope22"
-	      SID		      "480"
-	      Ports		      [1]
-	      Position		      [505, 124, 535, 156]
-	      Floating		      off
-	      Location		      [1206, 123, 1878, 409]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      TimeRange		      "0.4"
-	      YMin		      "-1000"
-	      YMax		      "5000"
-	      SaveName		      "ScopeData22"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "active state (filter)"
-	      SID		      "481"
-	      Ports		      [1, 1]
-	      Position		      [350, 107, 440, 173]
-	      ZOrder		      -1
-	      LibraryVersion	      "1.108"
-	      SourceBlock	      "cstblocks/LTI System"
-	      SourceType	      "LTI Block"
-	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.06),  mag2*3.5, T)"
-	      IC		      "[]"
-	    }
-	    Block {
-	      BlockType		      S-Function
-	      Name		      "motor neuron2"
-	      SID		      "482"
-	      Ports		      [1, 2]
-	      Position		      [90, 44, 270, 171]
-	      BackgroundColor	      "lightBlue"
-	      FunctionName	      "izh"
-	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 0.64] [-70.0 -14.0]"
-	      EnableBusSupport	      off
-	      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_labe"
-	      "l('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      on
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	    }
-	    Block {
-	      BlockType		      S-Function
-	      Name		      "muscle2"
-	      SID		      "483"
-	      Ports		      [3, 1]
-	      Position		      [640, 49, 805, 161]
-	      ZOrder		      -5
-	      FunctionName	      "muscle"
-	      Parameters	      "[136.0 75.0 50.0] [0]"
-	      EnableBusSupport	      off
-	      MaskDisplay	      "port_label('input', 1, 'Active state');\nport_label('input', 2, 'length');\nport_label('inpu"
-	      "t', 3, 'vel');\nport_label('output', 1, 'tension');\ndisp('muscle model \\n(S-Function)');"
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      on
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "T"
-	      SID		      "484"
-	      Position		      [905, 98, 935, 112]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Spk"
-	      SID		      "485"
-	      Position		      [285, 208, 315, 222]
-	      BlockMirror	      on
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "Lce"
-	      SrcPort		      1
-	      DstBlock		      "muscle2"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "synI"
-	      SrcPort		      1
-	      DstBlock		      "motor neuron2"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "motor neuron2"
-	      SrcPort		      2
-	      Points		      [35, 0]
-	      Branch {
-		Points			[20, 0; 0, 55]
-		Branch {
-		  Points		  [0, 30]
-		  DstBlock		  "Scope1"
-		  DstPort		  1
-		}
-		Branch {
-		  DstBlock		  "Spk"
-		  DstPort		  1
-		}
-	      }
-	      Branch {
-		DstBlock		"active state (filter)"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "active state (filter)"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      Branch {
-		DstBlock		"Scope22"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, -70; 100, 0]
-		Branch {
-		  DstBlock		  "muscle2"
-		  DstPort		  1
-		}
-		Branch {
-		  Points		  [0, -40; 270, 0; 0, 75]
-		  DstBlock		  "T"
-		  DstPort		  1
-		}
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "motor neuron2"
-	      SrcPort		      1
-	      Points		      [15, 0]
-	      DstBlock		      "Scope19"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Constant6"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      DstBlock		      "muscle2"
-	      DstPort		      3
-	    }
-	    Annotation {
-	      Position		      [463, 119]
-	    }
-	    Annotation {
-	      Position		      [362, 581]
 	    }
 	  }
 	}
@@ -2254,11 +1782,33 @@ Model {
 	  SampleTime		  "0"
 	}
 	Block {
+	  BlockType		  ToWorkspace
+	  Name			  "To Workspace"
+	  SID			  "457"
+	  Ports			  [1]
+	  Position		  [1325, 315, 1385, 345]
+	  ZOrder		  -7
+	  VariableName		  "emg_normal86"
+	  MaxDataPoints		  "inf"
+	  SampleTime		  "-1"
+	  SaveFormat		  "Structure With Time"
+	}
+	Block {
+	  BlockType		  Concatenate
+	  Name			  "Vector\nConcatenate4"
+	  SID			  "458"
+	  Ports			  [3, 1]
+	  Position		  [1000, 256, 1005, 294]
+	  ZOrder		  -36
+	  NumInputs		  "3"
+	  Mode			  "Vector"
+	}
+	Block {
 	  BlockType		  SubSystem
-	  Name			  "Small motor unit"
-	  SID			  "486"
-	  Ports			  [2, 2]
-	  Position		  [510, 259, 565, 321]
+	  Name			  "big motor unit"
+	  SID			  "462"
+	  Ports			  [2, 3]
+	  Position		  [510, 79, 565, 141]
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
 	  RTWSystemCode		  "Auto"
@@ -2267,8 +1817,8 @@ Model {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  System {
-	    Name		    "Small motor unit"
-	    Location		    [193, 402, 1529, 1014]
+	    Name		    "big motor unit"
+	    Location		    [1, 123, 1337, 735]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -2284,14 +1834,14 @@ Model {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "synI"
-	      SID		      "487"
+	      SID		      "463"
 	      Position		      [25, 103, 55, 117]
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Lce"
-	      SID		      "488"
+	      SID		      "464"
 	      Position		      [530, 98, 560, 112]
 	      Port		      "2"
 	      IconDisplay	      "Port number"
@@ -2299,18 +1849,31 @@ Model {
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Constant6"
-	      SID		      "489"
-	      Position		      [565, 230, 595, 260]
+	      SID		      "465"
+	      Position		      [580, 125, 610, 155]
 	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Fuglevand twitch"
+	      SID		      "636"
+	      Ports		      [1, 1]
+	      Position		      [485, 207, 595, 243]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.108"
+	      SourceBlock	      "cstblocks/LTI System"
+	      SourceType	      "LTI Block"
+	      sys		      "zpk([0], [A_twitch A_twitch], P*e*T_twitch*A/tau_twitch, T_twitch)"
+	      IC		      "[]"
 	    }
 	    Block {
 	      BlockType		      Scope
 	      Name		      "Scope1"
-	      SID		      "490"
+	      SID		      "466"
 	      Ports		      [1]
 	      Position		      [400, 209, 430, 241]
 	      Floating		      off
-	      Location		      [985, 58, 1657, 344]
+	      Location		      [531, 115, 1203, 401]
 	      Open		      off
 	      NumInputPorts	      "1"
 	      List {
@@ -2337,7 +1900,7 @@ Model {
 	    Block {
 	      BlockType		      Scope
 	      Name		      "Scope19"
-	      SID		      "491"
+	      SID		      "467"
 	      Ports		      [1]
 	      Position		      [305, 29, 335, 61]
 	      Floating		      off
@@ -2364,12 +1927,40 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Scope
+	      Name		      "Scope2"
+	      SID		      "684"
+	      Ports		      [1]
+	      Position		      [130, 199, 160, 231]
+	      Floating		      off
+	      Location		      [253, 73, 925, 359]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      SaveName		      "ScopeData29"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Scope
 	      Name		      "Scope22"
-	      SID		      "492"
+	      SID		      "468"
 	      Ports		      [1]
 	      Position		      [505, 124, 535, 156]
 	      Floating		      off
-	      Location		      [1226, 71, 1898, 357]
+	      Location		      [901, 95, 1573, 381]
 	      Open		      off
 	      NumInputPorts	      "1"
 	      List {
@@ -2395,26 +1986,26 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Reference
-	      Name		      "active state (filter)"
-	      SID		      "493"
+	      Name		      "active state"
+	      SID		      "469"
 	      Ports		      [1, 1]
 	      Position		      [350, 107, 440, 173]
 	      ZOrder		      -1
 	      LibraryVersion	      "1.108"
 	      SourceBlock	      "cstblocks/LTI System"
 	      SourceType	      "LTI Block"
-	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.09),  mag2*1.5, T)"
+	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.04),  mag2*8, T)"
 	      IC		      "[]"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      "motor neuron2"
-	      SID		      "494"
+	      SID		      "470"
 	      Ports		      [1, 2]
 	      Position		      [90, 44, 270, 171]
 	      BackgroundColor	      "lightBlue"
 	      FunctionName	      "izh"
-	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 0.70] [-70.0 -14.0]"
+	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 0.45] [-70.0 -14.0]"
 	      EnableBusSupport	      off
 	      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_labe"
 	      "l('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -2427,7 +2018,7 @@ Model {
 	    Block {
 	      BlockType		      S-Function
 	      Name		      "muscle2"
-	      SID		      "495"
+	      SID		      "471"
 	      Ports		      [3, 1]
 	      Position		      [640, 49, 805, 161]
 	      ZOrder		      -5
@@ -2445,23 +2036,30 @@ Model {
 	    Block {
 	      BlockType		      Outport
 	      Name		      "T"
-	      SID		      "496"
-	      Position		      [940, 98, 970, 112]
+	      SID		      "472"
+	      Position		      [920, 98, 950, 112]
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
 	      Name		      "Spk"
-	      SID		      "497"
+	      SID		      "473"
 	      Position		      [285, 208, 315, 222]
 	      BlockMirror	      on
 	      Port		      "2"
 	      IconDisplay	      "Port number"
 	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Fubglevant \ntwitch normal"
+	      SID		      "637"
+	      Position		      [675, 218, 705, 232]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
 	    Line {
 	      SrcBlock		      "Constant6"
 	      SrcPort		      1
-	      Points		      [25, 0]
 	      DstBlock		      "muscle2"
 	      DstPort		      3
 	    }
@@ -2473,7 +2071,7 @@ Model {
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "active state (filter)"
+	      SrcBlock		      "active state"
 	      SrcPort		      1
 	      Points		      [25, 0]
 	      Branch {
@@ -2481,16 +2079,13 @@ Model {
 		DstPort			1
 	      }
 	      Branch {
-		Points			[0, -70; 90, 0]
-		Branch {
-		  DstBlock		  "muscle2"
-		  DstPort		  1
-		}
-		Branch {
-		  Points		  [0, -45; 310, 0; 0, 80]
-		  DstBlock		  "T"
-		  DstPort		  1
-		}
+		Points			[0, -70; 100, 0; 0, -50; 290, 0; 0, 85]
+		DstBlock		"T"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Fuglevand twitch"
+		DstPort			1
 	      }
 	    }
 	    Line {
@@ -2498,7 +2093,7 @@ Model {
 	      SrcPort		      2
 	      Points		      [35, 0]
 	      Branch {
-		DstBlock		"active state (filter)"
+		DstBlock		"active state"
 		DstPort			1
 	      }
 	      Branch {
@@ -2517,14 +2112,28 @@ Model {
 	    Line {
 	      SrcBlock		      "synI"
 	      SrcPort		      1
-	      DstBlock		      "motor neuron2"
-	      DstPort		      1
+	      Points		      [10, 0]
+	      Branch {
+		DstBlock		"motor neuron2"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 105]
+		DstBlock		"Scope2"
+		DstPort			1
+	      }
 	    }
 	    Line {
 	      SrcBlock		      "Lce"
 	      SrcPort		      1
 	      DstBlock		      "muscle2"
 	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Fuglevand twitch"
+	      SrcPort		      1
+	      DstBlock		      "Fubglevant \ntwitch normal"
+	      DstPort		      1
 	    }
 	    Annotation {
 	      Position		      [362, 581]
@@ -2533,28 +2142,6 @@ Model {
 	      Position		      [463, 119]
 	    }
 	  }
-	}
-	Block {
-	  BlockType		  ToWorkspace
-	  Name			  "To Workspace"
-	  SID			  "457"
-	  Ports			  [1]
-	  Position		  [1325, 315, 1385, 345]
-	  ZOrder		  -7
-	  VariableName		  "emg_normal67"
-	  MaxDataPoints		  "inf"
-	  SampleTime		  "-1"
-	  SaveFormat		  "Structure With Time"
-	}
-	Block {
-	  BlockType		  Concatenate
-	  Name			  "Vector\nConcatenate4"
-	  SID			  "458"
-	  Ports			  [3, 1]
-	  Position		  [1000, 256, 1005, 294]
-	  ZOrder		  -36
-	  NumInputs		  "3"
-	  Mode			  "Vector"
 	}
 	Block {
 	  BlockType		  Scope
@@ -2649,124 +2236,308 @@ Model {
 	  SampleTime		  "0"
 	}
 	Block {
-	  BlockType		  Scope
-	  Name			  "muscle force 1"
-	  SID			  "498"
-	  Ports			  [1]
-	  Position		  [650, 44, 680, 76]
-	  Floating		  off
-	  Location		  [51, 114, 716, 401]
-	  Open			  off
-	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
+	  BlockType		  SubSystem
+	  Name			  "med motor unit"
+	  SID			  "652"
+	  Ports			  [2, 3]
+	  Position		  [510, 169, 565, 231]
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "med motor unit"
+	    Location		    [1, 422, 1337, 1034]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "synI"
+	      SID		      "653"
+	      Position		      [25, 103, 55, 117]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Lce"
+	      SID		      "654"
+	      Position		      [530, 98, 560, 112]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant6"
+	      SID		      "655"
+	      Position		      [580, 125, 610, 155]
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Fuglevand\ntwitch"
+	      SID		      "656"
+	      Ports		      [1, 1]
+	      Position		      [485, 207, 595, 243]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.108"
+	      SourceBlock	      "cstblocks/LTI System"
+	      SourceType	      "LTI Block"
+	      sys		      "zpk([0], [A_twitch A_twitch], P*e*T_twitch*A/tau_twitch, T_twitch)"
+	      IC		      "[]"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope1"
+	      SID		      "657"
+	      Ports		      [1]
+	      Position		      [400, 209, 430, 241]
+	      Floating		      off
+	      Location		      [531, 115, 1203, 401]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      TimeRange		      "0.4"
+	      YMin		      "-1000"
+	      YMax		      "5000"
+	      SaveName		      "ScopeData10"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope19"
+	      SID		      "658"
+	      Ports		      [1]
+	      Position		      [305, 29, 335, 61]
+	      Floating		      off
+	      Location		      [1243, 88, 1915, 374]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      SaveName		      "ScopeData19"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope22"
+	      SID		      "659"
+	      Ports		      [1]
+	      Position		      [505, 124, 535, 156]
+	      Floating		      off
+	      Location		      [901, 95, 1573, 381]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      TimeRange		      "0.4"
+	      YMin		      "-1000"
+	      YMax		      "5000"
+	      SaveName		      "ScopeData22"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "active state"
+	      SID		      "660"
+	      Ports		      [1, 1]
+	      Position		      [350, 107, 440, 173]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.108"
+	      SourceBlock	      "cstblocks/LTI System"
+	      SourceType	      "LTI Block"
+	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.06),  mag2*3.5, T)"
+	      IC		      "[]"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      "motor neuron2"
+	      SID		      "661"
+	      Ports		      [1, 2]
+	      Position		      [90, 44, 270, 171]
+	      BackgroundColor	      "lightBlue"
+	      FunctionName	      "izh"
+	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 0.50] [-70.0 -14.0]"
+	      EnableBusSupport	      off
+	      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_labe"
+	      "l('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      "muscle2"
+	      SID		      "662"
+	      Ports		      [3, 1]
+	      Position		      [640, 49, 805, 161]
+	      ZOrder		      -5
+	      FunctionName	      "muscle"
+	      Parameters	      "[136.0 75.0 50.0] [0]"
+	      EnableBusSupport	      off
+	      MaskDisplay	      "port_label('input', 1, 'Active state');\nport_label('input', 2, 'length');\nport_label('inpu"
+	      "t', 3, 'vel');\nport_label('output', 1, 'tension');\ndisp('muscle model \\n(S-Function)');"
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "T"
+	      SID		      "663"
+	      Position		      [920, 98, 950, 112]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Spk"
+	      SID		      "664"
+	      Position		      [285, 208, 315, 222]
+	      BlockMirror	      on
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Fubglevant \ntwitch normal"
+	      SID		      "665"
+	      Position		      [675, 218, 705, 232]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Fuglevand\ntwitch"
+	      SrcPort		      1
+	      DstBlock		      "Fubglevant \ntwitch normal"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Lce"
+	      SrcPort		      1
+	      DstBlock		      "muscle2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "synI"
+	      SrcPort		      1
+	      DstBlock		      "motor neuron2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "motor neuron2"
+	      SrcPort		      2
+	      Points		      [35, 0]
+	      Branch {
+		Points			[20, 0; 0, 55]
+		Branch {
+		  Points		  [0, 30]
+		  DstBlock		  "Scope1"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Spk"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		DstBlock		"active state"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "active state"
+	      SrcPort		      1
+	      Points		      [25, 0]
+	      Branch {
+		DstBlock		"Fuglevand\ntwitch"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -70; 100, 0; 0, -50; 290, 0; 0, 85]
+		DstBlock		"T"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Scope22"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "motor neuron2"
+	      SrcPort		      1
+	      Points		      [15, 0]
+	      DstBlock		      "Scope19"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Constant6"
+	      SrcPort		      1
+	      DstBlock		      "muscle2"
+	      DstPort		      3
+	    }
+	    Annotation {
+	      Position		      [463, 119]
+	    }
+	    Annotation {
+	      Position		      [362, 581]
+	    }
 	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  YMin			  "0"
-	  YMax			  "225"
-	  SaveName		  "ScopeData1"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "muscle force 2"
-	  SID			  "499"
-	  Ports			  [1]
-	  Position		  [630, 129, 660, 161]
-	  Floating		  off
-	  Location		  [1206, 441, 1871, 728]
-	  Open			  off
-	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  YMin			  "0"
-	  YMax			  "225"
-	  SaveName		  "ScopeData4"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "muscle force 3"
-	  SID			  "500"
-	  Ports			  [1]
-	  Position		  [650, 224, 680, 256]
-	  Floating		  off
-	  Location		  [1208, 777, 1873, 1064]
-	  Open			  off
-	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  YMin			  "0"
-	  YMax			  "225"
-	  SaveName		  "ScopeData11"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "muscle force 4"
-	  SID			  "501"
-	  Ports			  [1]
-	  Position		  [515, 409, 545, 441]
-	  Floating		  off
-	  Location		  [1255, 504, 1920, 791]
-	  Open			  off
-	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  YMin			  "0"
-	  YMax			  "225"
-	  SaveName		  "ScopeData7"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
 	}
 	Block {
 	  BlockType		  S-Function
@@ -2785,6 +2556,310 @@ Model {
 	  MaskIconRotate	  "none"
 	  MaskPortRotate	  "default"
 	  MaskIconUnits		  "autoscale"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "small motor unit"
+	  SID			  "666"
+	  Ports			  [2, 3]
+	  Position		  [505, 254, 560, 316]
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "small motor unit"
+	    Location		    [84, 595, 1420, 1207]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "synI"
+	      SID		      "667"
+	      Position		      [25, 103, 55, 117]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Lce"
+	      SID		      "668"
+	      Position		      [530, 98, 560, 112]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant6"
+	      SID		      "669"
+	      Position		      [580, 125, 610, 155]
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Fuglevand\ntwitch"
+	      SID		      "670"
+	      Ports		      [1, 1]
+	      Position		      [485, 207, 595, 243]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.108"
+	      SourceBlock	      "cstblocks/LTI System"
+	      SourceType	      "LTI Block"
+	      sys		      "zpk([0], [A_twitch A_twitch], P*e*T_twitch*A/tau_twitch, T_twitch)"
+	      IC		      "[]"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope1"
+	      SID		      "671"
+	      Ports		      [1]
+	      Position		      [400, 209, 430, 241]
+	      Floating		      off
+	      Location		      [531, 115, 1203, 401]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      TimeRange		      "0.4"
+	      YMin		      "-1000"
+	      YMax		      "5000"
+	      SaveName		      "ScopeData10"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope19"
+	      SID		      "672"
+	      Ports		      [1]
+	      Position		      [305, 29, 335, 61]
+	      Floating		      off
+	      Location		      [1243, 88, 1915, 374]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      SaveName		      "ScopeData19"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope22"
+	      SID		      "673"
+	      Ports		      [1]
+	      Position		      [505, 124, 535, 156]
+	      Floating		      off
+	      Location		      [901, 95, 1573, 381]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      TimeRange		      "0.4"
+	      YMin		      "-1000"
+	      YMax		      "5000"
+	      SaveName		      "ScopeData22"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "active state"
+	      SID		      "674"
+	      Ports		      [1, 1]
+	      Position		      [350, 107, 440, 173]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.108"
+	      SourceBlock	      "cstblocks/LTI System"
+	      SourceType	      "LTI Block"
+	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.09),  mag2, T)"
+	      IC		      "[]"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      "motor neuron2"
+	      SID		      "675"
+	      Ports		      [1, 2]
+	      Position		      [90, 44, 270, 171]
+	      BackgroundColor	      "lightBlue"
+	      FunctionName	      "izh"
+	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 0.55] [-70.0 -14.0]"
+	      EnableBusSupport	      off
+	      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_labe"
+	      "l('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      "muscle2"
+	      SID		      "676"
+	      Ports		      [3, 1]
+	      Position		      [640, 49, 805, 161]
+	      ZOrder		      -5
+	      FunctionName	      "muscle"
+	      Parameters	      "[136.0 75.0 50.0] [0]"
+	      EnableBusSupport	      off
+	      MaskDisplay	      "port_label('input', 1, 'Active state');\nport_label('input', 2, 'length');\nport_label('inpu"
+	      "t', 3, 'vel');\nport_label('output', 1, 'tension');\ndisp('muscle model \\n(S-Function)');"
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "T"
+	      SID		      "677"
+	      Position		      [920, 98, 950, 112]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Spk"
+	      SID		      "678"
+	      Position		      [285, 208, 315, 222]
+	      BlockMirror	      on
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Fubglevant \ntwitch normal"
+	      SID		      "679"
+	      Position		      [675, 218, 705, 232]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Constant6"
+	      SrcPort		      1
+	      DstBlock		      "muscle2"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "motor neuron2"
+	      SrcPort		      1
+	      Points		      [15, 0]
+	      DstBlock		      "Scope19"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "active state"
+	      SrcPort		      1
+	      Points		      [25, 0]
+	      Branch {
+		DstBlock		"Scope22"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -70; 100, 0; 0, -50; 290, 0; 0, 85]
+		DstBlock		"T"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Fuglevand\ntwitch"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "motor neuron2"
+	      SrcPort		      2
+	      Points		      [35, 0]
+	      Branch {
+		DstBlock		"active state"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[20, 0; 0, 55]
+		Branch {
+		  DstBlock		  "Spk"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, 30]
+		  DstBlock		  "Scope1"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "synI"
+	      SrcPort		      1
+	      DstBlock		      "motor neuron2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Lce"
+	      SrcPort		      1
+	      DstBlock		      "muscle2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Fuglevand\ntwitch"
+	      SrcPort		      1
+	      DstBlock		      "Fubglevant \ntwitch normal"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      Position		      [362, 581]
+	    }
+	    Annotation {
+	      Position		      [463, 119]
+	    }
+	  }
 	}
 	Block {
 	  BlockType		  S-Function
@@ -2897,18 +2972,18 @@ Model {
 	    Points		    [0, -5]
 	    Branch {
 	      Points		      [0, -85]
-	      DstBlock		      "BIG Motor unit"
+	      DstBlock		      "big motor unit"
 	      DstPort		      1
 	    }
 	    Branch {
 	      Points		      [25, 0]
-	      DstBlock		      "Med motor unit"
+	      DstBlock		      "med motor unit"
 	      DstPort		      1
 	    }
 	  }
 	  Branch {
-	    Points		    [0, 90]
-	    DstBlock		    "Small motor unit"
+	    Points		    [0, 85]
+	    DstBlock		    "small motor unit"
 	    DstPort		    1
 	  }
 	}
@@ -2935,7 +3010,7 @@ Model {
 	Line {
 	  SrcBlock		  "In2"
 	  SrcPort		  1
-	  Points		  [0, -15]
+	  Points		  [-45, 0]
 	  Branch {
 	    Points		    [0, 170; -110, 0; 0, 10]
 	    Branch {
@@ -2952,21 +3027,22 @@ Model {
 	  Branch {
 	    Points		    [0, -225]
 	    Branch {
-	      DstBlock		      "Small motor unit"
-	      DstPort		      2
-	    }
-	    Branch {
 	      Points		      [0, -95]
 	      Branch {
-		Points			[0, 5]
-		DstBlock		"Med motor unit"
+		Points			[0, -85]
+		DstBlock		"big motor unit"
 		DstPort			2
 	      }
 	      Branch {
-		Points			[0, -85]
-		DstBlock		"BIG Motor unit"
+		Points			[0, 5]
+		DstBlock		"med motor unit"
 		DstPort			2
 	      }
+	    }
+	    Branch {
+	      Points		      [0, -5]
+	      DstBlock		      "small motor unit"
+	      DstPort		      2
 	    }
 	  }
 	}
@@ -3018,96 +3094,16 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Small motor unit"
-	  SrcPort		  1
-	  Points		  [65, 0]
-	  Branch {
-	    DstBlock		    "muscle force 3"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [220, 0]
-	    Branch {
-	      Points		      [110, 0; 0, 10]
-	      DstBlock		      "Vector\nConcatenate4"
-	      DstPort		      3
-	    }
-	    Branch {
-	      Points		      [-5, 0; 0, 115]
-	      DstBlock		      "Add5"
-	      DstPort		      3
-	    }
-	  }
-	}
-	Line {
-	  SrcBlock		  "Small motor unit"
+	  SrcBlock		  "big motor unit"
 	  SrcPort		  2
-	  Points		  [10, 0]
-	  Branch {
-	    DstBlock		    "LTI System2"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, 60]
-	    Branch {
-	      Points		      [0, 165]
-	      DstBlock		      "EMG reponse1"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [-80, 0]
-	      DstBlock		      "muscle force 4"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Line {
-	  SrcBlock		  "Med motor unit"
-	  SrcPort		  1
-	  Points		  [0, -5; 45, 0]
-	  Branch {
-	    Points		    [280, 0]
-	    Branch {
-	      Points		      [85, 0; 0, 95]
-	      DstBlock		      "Vector\nConcatenate4"
-	      DstPort		      2
-	    }
-	    Branch {
-	      Points		      [0, 175]
-	      DstBlock		      "Add5"
-	      DstPort		      2
-	    }
-	  }
-	  Branch {
-	    DstBlock		    "muscle force 2"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "Med motor unit"
-	  SrcPort		  2
-	  Points		  [0, -5; 55, 0]
-	  Branch {
-	    DstBlock		    "LTI System1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, 205]
-	    DstBlock		    "EMG response"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "BIG Motor unit"
-	  SrcPort		  2
-	  Points		  [0, -5; 25, 0]
+	  Points		  [0, 10; 25, 0]
 	  Branch {
 	    DstBlock		    "LTI System"
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, 350]
-	    DstBlock		    "EMG reponse"
+	    Points		    [0, 295]
+	    DstBlock		    "EMG response"
 	    DstPort		    1
 	  }
 	}
@@ -3159,28 +3155,6 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "BIG Motor unit"
-	  SrcPort		  1
-	  Points		  [0, -5; 65, 0]
-	  Branch {
-	    Points		    [300, 0; 0, 165]
-	    Branch {
-	      Points		      [0, 10]
-	      DstBlock		      "Vector\nConcatenate4"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, 65]
-	      DstBlock		      "Add5"
-	      DstPort		      1
-	    }
-	  }
-	  Branch {
-	    DstBlock		    "muscle force 1"
-	    DstPort		    1
-	  }
-	}
-	Line {
 	  Labels		  [0, 0]
 	  SrcBlock		  "sensory neuron2"
 	  SrcPort		  1
@@ -3204,7 +3178,7 @@ Model {
 	Line {
 	  SrcBlock		  "EMG response"
 	  SrcPort		  1
-	  Points		  [0, 15; 15, 0]
+	  Points		  [0, 15; 30, 0]
 	  Branch {
 	    DstBlock		    "Scope12"
 	    DstPort		    1
@@ -3235,6 +3209,81 @@ Model {
 	  Points		  [80, 0; 0, 20]
 	  DstBlock		  "Out2"
 	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "big motor unit"
+	  SrcPort		  3
+	  Points		  [15, 0; 0, -45]
+	  Branch {
+	    Points		    [400, 0]
+	    DstBlock		    "Vector\nConcatenate4"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -35]
+	    DstBlock		    "Fuglevand twitch"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "med motor unit"
+	  SrcPort		  2
+	  Points		  [15, 0]
+	  Branch {
+	    Points		    [115, 0]
+	    DstBlock		    "LTI System1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 270]
+	    DstBlock		    "EMG reponse"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "small motor unit"
+	  SrcPort		  2
+	  Points		  [50, 0]
+	  Branch {
+	    Points		    [85, 0]
+	    DstBlock		    "LTI System2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 245]
+	    DstBlock		    "EMG reponse1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "med motor unit"
+	  SrcPort		  3
+	  Points		  [40, 0]
+	  Branch {
+	    Points		    [100, 0; 0, 55]
+	    DstBlock		    "Vector\nConcatenate4"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, -65]
+	    DstBlock		    "Fuglevand twitch1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "small motor unit"
+	  SrcPort		  3
+	  Points		  [70, 0]
+	  Branch {
+	    Points		    [60, 0; 0, -25; 285, 0; 0, 5]
+	    DstBlock		    "Vector\nConcatenate4"
+	    DstPort		    3
+	  }
+	  Branch {
+	    Points		    [-5, 0]
+	    DstBlock		    "Fuglevand twitch2"
+	    DstPort		    1
+	  }
 	}
 	Annotation {
 	  Position		  [612, 801]
@@ -3311,7 +3360,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Spastic"
-	Location		[1, 86, 1465, 934]
+	Location		[2474, 152, 3938, 1000]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -3339,6 +3388,96 @@ Model {
 	  BlockRotation		  270
 	  Port			  "2"
 	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  " Fuglevant\ntwitch"
+	  SID			  "607"
+	  Ports			  [1]
+	  Position		  [685, 24, 715, 56]
+	  Floating		  off
+	  Location		  [840, 58, 1505, 345]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  YMin			  "0"
+	  YMax			  "225"
+	  SaveName		  "ScopeData26"
+	  DataFormat		  "StructureWithTime"
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  " Fuglevant\ntwitch1"
+	  SID			  "682"
+	  Ports			  [1]
+	  Position		  [670, 129, 700, 161]
+	  Floating		  off
+	  Location		  [840, 58, 1505, 345]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  YMin			  "0"
+	  YMax			  "225"
+	  SaveName		  "ScopeData4"
+	  DataFormat		  "StructureWithTime"
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  " Fuglevant\ntwitch2"
+	  SID			  "683"
+	  Ports			  [1]
+	  Position		  [660, 224, 690, 256]
+	  Floating		  off
+	  Location		  [840, 58, 1505, 345]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  YMin			  "0"
+	  YMax			  "225"
+	  SaveName		  "ScopeData11"
+	  DataFormat		  "StructureWithTime"
+	  SampleTime		  "0"
 	}
 	Block {
 	  BlockType		  Abs
@@ -3391,294 +3530,13 @@ Model {
 	  Name			  "Add5"
 	  SID			  "520"
 	  Ports			  [3, 1]
-	  Position		  [1030, 335, 1060, 375]
+	  Position		  [990, 360, 1020, 400]
 	  ZOrder		  -2
 	  IconShape		  "round"
 	  Inputs		  "+++"
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "BIG Motor unit"
-	  SID			  "521"
-	  Ports			  [2, 2]
-	  Position		  [510, 79, 565, 141]
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "BIG Motor unit"
-	    Location		    [29, 366, 1365, 978]
-	    Open		    on
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "synI"
-	      SID		      "522"
-	      Position		      [25, 103, 55, 117]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Lce"
-	      SID		      "523"
-	      Position		      [530, 98, 560, 112]
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant6"
-	      SID		      "524"
-	      Position		      [565, 230, 595, 260]
-	      Value		      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope1"
-	      SID		      "525"
-	      Ports		      [1]
-	      Position		      [400, 209, 430, 241]
-	      Floating		      off
-	      Location		      [531, 115, 1203, 401]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      TimeRange		      "0.4"
-	      YMin		      "-1000"
-	      YMax		      "5000"
-	      SaveName		      "ScopeData10"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope19"
-	      SID		      "526"
-	      Ports		      [1]
-	      Position		      [305, 29, 335, 61]
-	      Floating		      off
-	      Location		      [1243, 88, 1915, 374]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      SaveName		      "ScopeData19"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope22"
-	      SID		      "527"
-	      Ports		      [1]
-	      Position		      [505, 124, 535, 156]
-	      Floating		      off
-	      Location		      [901, 95, 1573, 381]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      TimeRange		      "0.4"
-	      YMin		      "-1000"
-	      YMax		      "5000"
-	      SaveName		      "ScopeData22"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "active state (filter)"
-	      SID		      "528"
-	      Ports		      [1, 1]
-	      Position		      [350, 107, 440, 173]
-	      ZOrder		      -1
-	      LibraryVersion	      "1.108"
-	      SourceBlock	      "cstblocks/LTI System"
-	      SourceType	      "LTI Block"
-	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.04),  mag2*8, T)"
-	      IC		      "[]"
-	    }
-	    Block {
-	      BlockType		      S-Function
-	      Name		      "motor neuron2"
-	      SID		      "529"
-	      Ports		      [1, 2]
-	      Position		      [90, 44, 270, 171]
-	      BackgroundColor	      "lightBlue"
-	      FunctionName	      "izh"
-	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 0.8] [-70.0 -14.0]"
-	      EnableBusSupport	      off
-	      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_labe"
-	      "l('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      on
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	    }
-	    Block {
-	      BlockType		      S-Function
-	      Name		      "muscle2"
-	      SID		      "530"
-	      Ports		      [3, 1]
-	      Position		      [640, 49, 805, 161]
-	      ZOrder		      -5
-	      FunctionName	      "muscle"
-	      Parameters	      "[136.0 75.0 50.0] [0]"
-	      EnableBusSupport	      off
-	      MaskDisplay	      "port_label('input', 1, 'Active state');\nport_label('input', 2, 'length');\nport_label('inpu"
-	      "t', 3, 'vel');\nport_label('output', 1, 'tension');\ndisp('muscle model \\n(S-Function)');"
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      on
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "T"
-	      SID		      "531"
-	      Position		      [920, 98, 950, 112]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Spk"
-	      SID		      "532"
-	      Position		      [285, 208, 315, 222]
-	      BlockMirror	      on
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "Lce"
-	      SrcPort		      1
-	      DstBlock		      "muscle2"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "synI"
-	      SrcPort		      1
-	      DstBlock		      "motor neuron2"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "motor neuron2"
-	      SrcPort		      2
-	      Points		      [35, 0]
-	      Branch {
-		Points			[20, 0; 0, 55]
-		Branch {
-		  Points		  [0, 30]
-		  DstBlock		  "Scope1"
-		  DstPort		  1
-		}
-		Branch {
-		  DstBlock		  "Spk"
-		  DstPort		  1
-		}
-	      }
-	      Branch {
-		DstBlock		"active state (filter)"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "active state (filter)"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      Branch {
-		Points			[0, -70; 100, 0]
-		Branch {
-		  Points		  [0, -50; 290, 0; 0, 85]
-		  DstBlock		  "T"
-		  DstPort		  1
-		}
-		Branch {
-		  DstBlock		  "muscle2"
-		  DstPort		  1
-		}
-	      }
-	      Branch {
-		DstBlock		"Scope22"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "motor neuron2"
-	      SrcPort		      1
-	      Points		      [15, 0]
-	      DstBlock		      "Scope19"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Constant6"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      DstBlock		      "muscle2"
-	      DstPort		      3
-	    }
-	    Annotation {
-	      Position		      [463, 119]
-	    }
-	    Annotation {
-	      Position		      [362, 581]
-	    }
-	  }
 	}
 	Block {
 	  BlockType		  Constant
@@ -4041,7 +3899,7 @@ Model {
 	  Name			  "LTI System"
 	  SID			  "555"
 	  Ports			  [1, 1]
-	  Position		  [715, 102, 825, 138]
+	  Position		  [740, 102, 850, 138]
 	  ZOrder		  -1
 	  LibraryVersion	  "1.108"
 	  SourceBlock		  "cstblocks/LTI System"
@@ -4054,7 +3912,7 @@ Model {
 	  Name			  "LTI System1"
 	  SID			  "556"
 	  Ports			  [1, 1]
-	  Position		  [715, 192, 830, 228]
+	  Position		  [740, 192, 855, 228]
 	  ZOrder		  -1
 	  LibraryVersion	  "1.108"
 	  SourceBlock		  "cstblocks/LTI System"
@@ -4067,7 +3925,7 @@ Model {
 	  Name			  "LTI System2"
 	  SID			  "557"
 	  Ports			  [1, 1]
-	  Position		  [715, 287, 825, 323]
+	  Position		  [740, 247, 850, 283]
 	  ZOrder		  -1
 	  LibraryVersion	  "1.108"
 	  SourceBlock		  "cstblocks/LTI System"
@@ -4121,7 +3979,7 @@ Model {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "900"
+	    SIDHighWatermark	    "922"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "In"
@@ -4133,7 +3991,7 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "Generated Filter Block"
-	      SID		      "558:900"
+	      SID		      "558:922"
 	      Tag		      "BlockMethodSubSystem"
 	      Ports		      [1, 1]
 	      Position		      [220, 90, 295, 130]
@@ -4148,22 +4006,22 @@ Model {
 	      AllPoleFiltStruct	      "Direct form"
 	      FIRFiltStruct	      "Direct form"
 	      CoeffSource	      "Specify via dialog"
-	      NumCoeffs		      "[0.000821343113298547 0.000860441837741377 0.00116507777294478 0.00139896051971533 0.00148073"
-	      "798259755 0.00133051719232521 0.000881379928818245 9.39666659446522e-05 -0.00102427649336678 -0.002415083812960"
+	      NumCoeffs		      "[0.000821343113298547 0.000860441837741378 0.00116507777294478 0.00139896051971533 0.00148073"
+	      "798259755 0.00133051719232521 0.000881379928818245 9.39666659446509e-05 -0.00102427649336678 -0.002415083812960"
 	      "73 -0.00396005761838719 -0.00548791113381279 -0.00678957165103652 -0.0076430176358472 -0.00784363593055865 -0.0"
 	      "0724034355165257 -0.005767373855361 -0.00347179427273649 -0.000526738025008321 0.00277189505493066 0.0060277239"
 	      "9348037 0.00878384411363102 0.0105793849551558 0.0110144101671425 0.00981730876000813 0.00690368741433791 0.002"
 	      "41805574190362 -0.00324979313849789 -0.00947842883556182 -0.0154612118882062 -0.0202815328070714 -0.02301098529"
-	      "98383 -0.0228194406688834 -0.0190843479651619 -0.0114852033107793 -7.04588646032911e-05 0.0147140504913441 0.03"
+	      "98383 -0.0228194406688834 -0.0190843479651619 -0.0114852033107793 -7.04588646032872e-05 0.0147140504913441 0.03"
 	      "20404503448529 0.0507590050669597 0.0694980891161205 0.0867940010093986 0.101236365407667 0.111612741087645 0.1"
 	      "17035389882844 0.117035389882844 0.111612741087645 0.101236365407667 0.0867940010093986 0.0694980891161205 0.05"
-	      "07590050669597 0.0320404503448529 0.0147140504913441 -7.04588646032911e-05 -0.0114852033107793 -0.0190843479651"
+	      "07590050669597 0.0320404503448529 0.0147140504913441 -7.04588646032872e-05 -0.0114852033107793 -0.0190843479651"
 	      "619 -0.0228194406688834 -0.0230109852998383 -0.0202815328070714 -0.0154612118882062 -0.00947842883556182 -0.003"
 	      "24979313849789 0.00241805574190362 0.00690368741433791 0.00981730876000813 0.0110144101671425 0.010579384955155"
 	      "8 0.00878384411363102 0.00602772399348037 0.00277189505493066 -0.000526738025008321 -0.00347179427273649 -0.005"
 	      "767373855361 -0.00724034355165257 -0.00784363593055865 -0.0076430176358472 -0.00678957165103652 -0.005487911133"
-	      "81279 -0.00396005761838719 -0.00241508381296073 -0.00102427649336678 9.39666659446522e-05 0.000881379928818245 "
-	      "0.00133051719232521 0.00148073798259755 0.00139896051971533 0.00116507777294478 0.000860441837741377 0.00082134"
+	      "81279 -0.00396005761838719 -0.00241508381296073 -0.00102427649336678 9.39666659446509e-05 0.000881379928818245 "
+	      "0.00133051719232521 0.00148073798259755 0.00139896051971533 0.00116507777294478 0.000860441837741378 0.00082134"
 	      "3113298547]"
 	      DenCoeffs		      "[1 0.1]"
 	      BiQuadCoeffs	      "[1 0.3 0.4 1 0.1 0.2]"
@@ -4239,287 +4097,6 @@ Model {
 	      SrcPort		      1
 	      DstBlock		      "Generated Filter Block"
 	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "Med motor unit"
-	  SID			  "559"
-	  Ports			  [2, 2]
-	  Position		  [510, 169, 565, 231]
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "Med motor unit"
-	    Location		    [59, 404, 1395, 1016]
-	    Open		    on
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "synI"
-	      SID		      "560"
-	      Position		      [25, 103, 55, 117]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Lce"
-	      SID		      "561"
-	      Position		      [530, 98, 560, 112]
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant6"
-	      SID		      "562"
-	      Position		      [565, 230, 595, 260]
-	      Value		      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope1"
-	      SID		      "563"
-	      Ports		      [1]
-	      Position		      [400, 209, 430, 241]
-	      Floating		      off
-	      Location		      [853, 218, 1525, 504]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      TimeRange		      "0.4"
-	      YMin		      "-1000"
-	      YMax		      "5000"
-	      SaveName		      "ScopeData10"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope19"
-	      SID		      "564"
-	      Ports		      [1]
-	      Position		      [305, 29, 335, 61]
-	      Floating		      off
-	      Location		      [1243, 88, 1915, 374]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      SaveName		      "ScopeData19"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Scope
-	      Name		      "Scope22"
-	      SID		      "565"
-	      Ports		      [1]
-	      Position		      [505, 124, 535, 156]
-	      Floating		      off
-	      Location		      [1206, 123, 1878, 409]
-	      Open		      off
-	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      TimeRange		      "0.4"
-	      YMin		      "-1000"
-	      YMax		      "5000"
-	      SaveName		      "ScopeData22"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "active state (filter)"
-	      SID		      "566"
-	      Ports		      [1, 1]
-	      Position		      [350, 107, 440, 173]
-	      ZOrder		      -1
-	      LibraryVersion	      "1.108"
-	      SourceBlock	      "cstblocks/LTI System"
-	      SourceType	      "LTI Block"
-	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.06),  mag2*3.5, T)"
-	      IC		      "[]"
-	    }
-	    Block {
-	      BlockType		      S-Function
-	      Name		      "motor neuron2"
-	      SID		      "567"
-	      Ports		      [1, 2]
-	      Position		      [90, 44, 270, 171]
-	      BackgroundColor	      "lightBlue"
-	      FunctionName	      "izh"
-	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 0.9] [-70.0 -14.0]"
-	      EnableBusSupport	      off
-	      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_labe"
-	      "l('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      on
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	    }
-	    Block {
-	      BlockType		      S-Function
-	      Name		      "muscle2"
-	      SID		      "568"
-	      Ports		      [3, 1]
-	      Position		      [640, 49, 805, 161]
-	      ZOrder		      -5
-	      FunctionName	      "muscle"
-	      Parameters	      "[136.0 75.0 50.0] [0]"
-	      EnableBusSupport	      off
-	      MaskDisplay	      "port_label('input', 1, 'Active state');\nport_label('input', 2, 'length');\nport_label('inpu"
-	      "t', 3, 'vel');\nport_label('output', 1, 'tension');\ndisp('muscle model \\n(S-Function)');"
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      on
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "T"
-	      SID		      "569"
-	      Position		      [905, 98, 935, 112]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Spk"
-	      SID		      "570"
-	      Position		      [285, 208, 315, 222]
-	      BlockMirror	      on
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "Constant6"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      DstBlock		      "muscle2"
-	      DstPort		      3
-	    }
-	    Line {
-	      SrcBlock		      "motor neuron2"
-	      SrcPort		      1
-	      Points		      [15, 0]
-	      DstBlock		      "Scope19"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "active state (filter)"
-	      SrcPort		      1
-	      Points		      [25, 0]
-	      Branch {
-		Points			[0, -70; 100, 0]
-		Branch {
-		  Points		  [0, -40; 270, 0; 0, 75]
-		  DstBlock		  "T"
-		  DstPort		  1
-		}
-		Branch {
-		  DstBlock		  "muscle2"
-		  DstPort		  1
-		}
-	      }
-	      Branch {
-		DstBlock		"Scope22"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "motor neuron2"
-	      SrcPort		      2
-	      Points		      [35, 0]
-	      Branch {
-		DstBlock		"active state (filter)"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[20, 0; 0, 55]
-		Branch {
-		  DstBlock		  "Spk"
-		  DstPort		  1
-		}
-		Branch {
-		  Points		  [0, 30]
-		  DstBlock		  "Scope1"
-		  DstPort		  1
-		}
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "synI"
-	      SrcPort		      1
-	      DstBlock		      "motor neuron2"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Lce"
-	      SrcPort		      1
-	      DstBlock		      "muscle2"
-	      DstPort		      2
-	    }
-	    Annotation {
-	      Position		      [362, 581]
-	    }
-	    Annotation {
-	      Position		      [463, 119]
 	    }
 	  }
 	}
@@ -4697,11 +4274,33 @@ Model {
 	  SampleTime		  "0"
 	}
 	Block {
+	  BlockType		  ToWorkspace
+	  Name			  "To Workspace"
+	  SID			  "589"
+	  Ports			  [1]
+	  Position		  [1325, 315, 1385, 345]
+	  ZOrder		  -7
+	  VariableName		  "emg_spastic33"
+	  MaxDataPoints		  "inf"
+	  SampleTime		  "-1"
+	  SaveFormat		  "Structure With Time"
+	}
+	Block {
+	  BlockType		  Concatenate
+	  Name			  "Vector\nConcatenate4"
+	  SID			  "590"
+	  Ports			  [3, 1]
+	  Position		  [1000, 276, 1005, 314]
+	  ZOrder		  -36
+	  NumInputs		  "3"
+	  Mode			  "Vector"
+	}
+	Block {
 	  BlockType		  SubSystem
-	  Name			  "Small motor unit"
-	  SID			  "577"
-	  Ports			  [2, 2]
-	  Position		  [510, 259, 565, 321]
+	  Name			  "big motor unit"
+	  SID			  "521"
+	  Ports			  [2, 3]
+	  Position		  [510, 79, 565, 141]
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
 	  RTWSystemCode		  "Auto"
@@ -4710,9 +4309,9 @@ Model {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  System {
-	    Name		    "Small motor unit"
-	    Location		    [91, 431, 1427, 1043]
-	    Open		    on
+	    Name		    "big motor unit"
+	    Location		    [392, 169, 1727, 647]
+	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -4727,14 +4326,14 @@ Model {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "synI"
-	      SID		      "578"
+	      SID		      "522"
 	      Position		      [25, 103, 55, 117]
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Lce"
-	      SID		      "579"
+	      SID		      "523"
 	      Position		      [530, 98, 560, 112]
 	      Port		      "2"
 	      IconDisplay	      "Port number"
@@ -4742,18 +4341,31 @@ Model {
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Constant6"
-	      SID		      "580"
-	      Position		      [565, 230, 595, 260]
+	      SID		      "524"
+	      Position		      [575, 125, 605, 155]
 	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Fuglevand twitch"
+	      SID		      "605"
+	      Ports		      [1, 1]
+	      Position		      [495, 207, 605, 243]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.108"
+	      SourceBlock	      "cstblocks/LTI System"
+	      SourceType	      "LTI Block"
+	      sys		      "zpk([0], [A_twitch A_twitch], P*e*T_twitch*A/tau_twitch, T_twitch)"
+	      IC		      "[]"
 	    }
 	    Block {
 	      BlockType		      Scope
 	      Name		      "Scope1"
-	      SID		      "581"
+	      SID		      "525"
 	      Ports		      [1]
 	      Position		      [400, 209, 430, 241]
 	      Floating		      off
-	      Location		      [985, 58, 1657, 344]
+	      Location		      [531, 115, 1203, 401]
 	      Open		      off
 	      NumInputPorts	      "1"
 	      List {
@@ -4780,7 +4392,7 @@ Model {
 	    Block {
 	      BlockType		      Scope
 	      Name		      "Scope19"
-	      SID		      "582"
+	      SID		      "526"
 	      Ports		      [1]
 	      Position		      [305, 29, 335, 61]
 	      Floating		      off
@@ -4808,11 +4420,11 @@ Model {
 	    Block {
 	      BlockType		      Scope
 	      Name		      "Scope22"
-	      SID		      "583"
+	      SID		      "527"
 	      Ports		      [1]
 	      Position		      [505, 124, 535, 156]
 	      Floating		      off
-	      Location		      [1226, 71, 1898, 357]
+	      Location		      [901, 95, 1573, 381]
 	      Open		      off
 	      NumInputPorts	      "1"
 	      List {
@@ -4838,26 +4450,26 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Reference
-	      Name		      "active state (filter)"
-	      SID		      "584"
+	      Name		      "active state"
+	      SID		      "528"
 	      Ports		      [1, 1]
 	      Position		      [350, 107, 440, 173]
 	      ZOrder		      -1
 	      LibraryVersion	      "1.108"
 	      SourceBlock	      "cstblocks/LTI System"
 	      SourceType	      "LTI Block"
-	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.09),  mag2*1.5, T)"
+	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.04),  mag2*8, T)"
 	      IC		      "[]"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      "motor neuron2"
-	      SID		      "585"
+	      SID		      "529"
 	      Ports		      [1, 2]
 	      Position		      [90, 44, 270, 171]
 	      BackgroundColor	      "lightBlue"
 	      FunctionName	      "izh"
-	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 1.0] [-70.0 -14.0]"
+	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 0.8] [-70.0 -14.0]"
 	      EnableBusSupport	      off
 	      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_labe"
 	      "l('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -4870,7 +4482,7 @@ Model {
 	    Block {
 	      BlockType		      S-Function
 	      Name		      "muscle2"
-	      SID		      "586"
+	      SID		      "530"
 	      Ports		      [3, 1]
 	      Position		      [640, 49, 805, 161]
 	      ZOrder		      -5
@@ -4888,17 +4500,25 @@ Model {
 	    Block {
 	      BlockType		      Outport
 	      Name		      "T"
-	      SID		      "587"
-	      Position		      [940, 98, 970, 112]
+	      SID		      "531"
+	      Position		      [920, 98, 950, 112]
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
 	      Name		      "Spk"
-	      SID		      "588"
+	      SID		      "532"
 	      Position		      [285, 208, 315, 222]
 	      BlockMirror	      on
 	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Fubglevant \ntwitch"
+	      SID		      "606"
+	      Position		      [670, 218, 700, 232]
+	      Port		      "3"
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
@@ -4930,29 +4550,30 @@ Model {
 		}
 	      }
 	      Branch {
-		DstBlock		"active state (filter)"
+		DstBlock		"active state"
 		DstPort			1
 	      }
 	    }
 	    Line {
-	      SrcBlock		      "active state (filter)"
+	      SrcBlock		      "active state"
 	      SrcPort		      1
 	      Points		      [25, 0]
 	      Branch {
-		Points			[0, -70; 90, 0]
-		Branch {
-		  Points		  [0, -45; 310, 0; 0, 80]
-		  DstBlock		  "T"
-		  DstPort		  1
-		}
-		Branch {
-		  DstBlock		  "muscle2"
-		  DstPort		  1
-		}
+		Points			[0, -70; 100, 0; 0, -50; 290, 0; 0, 85]
+		DstBlock		"T"
+		DstPort			1
 	      }
 	      Branch {
-		DstBlock		"Scope22"
-		DstPort			1
+		Points			[5, 0]
+		Branch {
+		  DstBlock		  "Scope22"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [5, 0]
+		  DstBlock		  "Fuglevand twitch"
+		  DstPort		  1
+		}
 	      }
 	    }
 	    Line {
@@ -4965,9 +4586,14 @@ Model {
 	    Line {
 	      SrcBlock		      "Constant6"
 	      SrcPort		      1
-	      Points		      [25, 0]
 	      DstBlock		      "muscle2"
 	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Fuglevand twitch"
+	      SrcPort		      1
+	      DstBlock		      "Fubglevant \ntwitch"
+	      DstPort		      1
 	    }
 	    Annotation {
 	      Position		      [463, 119]
@@ -4978,35 +4604,13 @@ Model {
 	  }
 	}
 	Block {
-	  BlockType		  ToWorkspace
-	  Name			  "To Workspace"
-	  SID			  "589"
-	  Ports			  [1]
-	  Position		  [1325, 315, 1385, 345]
-	  ZOrder		  -7
-	  VariableName		  "emg_spastic14"
-	  MaxDataPoints		  "inf"
-	  SampleTime		  "-1"
-	  SaveFormat		  "Structure With Time"
-	}
-	Block {
-	  BlockType		  Concatenate
-	  Name			  "Vector\nConcatenate4"
-	  SID			  "590"
-	  Ports			  [3, 1]
-	  Position		  [1000, 256, 1005, 294]
-	  ZOrder		  -36
-	  NumInputs		  "3"
-	  Mode			  "Vector"
-	}
-	Block {
 	  BlockType		  Scope
 	  Name			  "emgs"
 	  SID			  "591"
 	  Ports			  [1]
-	  Position		  [1095, 194, 1125, 226]
+	  Position		  [1090, 194, 1120, 226]
 	  Floating		  off
-	  Location		  [1157, 441, 1700, 724]
+	  Location		  [1416, 63, 1959, 346]
 	  Open			  off
 	  NumInputPorts		  "1"
 	  List {
@@ -5092,13 +4696,321 @@ Model {
 	  SampleTime		  "0"
 	}
 	Block {
+	  BlockType		  SubSystem
+	  Name			  "med motor unit"
+	  SID			  "608"
+	  Ports			  [2, 3]
+	  Position		  [505, 169, 560, 231]
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "med motor unit"
+	    Location		    [466, 421, 1801, 899]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "synI"
+	      SID		      "609"
+	      Position		      [25, 103, 55, 117]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Lce"
+	      SID		      "610"
+	      Position		      [530, 98, 560, 112]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant6"
+	      SID		      "611"
+	      Position		      [575, 125, 605, 155]
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Fuglevand\ntwitch"
+	      SID		      "612"
+	      Ports		      [1, 1]
+	      Position		      [495, 207, 605, 243]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.108"
+	      SourceBlock	      "cstblocks/LTI System"
+	      SourceType	      "LTI Block"
+	      sys		      "zpk([0], [A_twitch A_twitch], P*e*T_twitch*A/tau_twitch, T_twitch)"
+	      IC		      "[]"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope1"
+	      SID		      "613"
+	      Ports		      [1]
+	      Position		      [400, 209, 430, 241]
+	      Floating		      off
+	      Location		      [531, 115, 1203, 401]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      TimeRange		      "0.4"
+	      YMin		      "-1000"
+	      YMax		      "5000"
+	      SaveName		      "ScopeData10"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope19"
+	      SID		      "614"
+	      Ports		      [1]
+	      Position		      [305, 29, 335, 61]
+	      Floating		      off
+	      Location		      [1243, 88, 1915, 374]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      SaveName		      "ScopeData19"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope22"
+	      SID		      "615"
+	      Ports		      [1]
+	      Position		      [505, 124, 535, 156]
+	      Floating		      off
+	      Location		      [901, 95, 1573, 381]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      TimeRange		      "0.4"
+	      YMin		      "-1000"
+	      YMax		      "5000"
+	      SaveName		      "ScopeData22"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "active state"
+	      SID		      "616"
+	      Ports		      [1, 1]
+	      Position		      [350, 107, 440, 173]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.108"
+	      SourceBlock	      "cstblocks/LTI System"
+	      SourceType	      "LTI Block"
+	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.06),  mag2*3.5, T)"
+	      IC		      "[]"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      "motor neuron2"
+	      SID		      "617"
+	      Ports		      [1, 2]
+	      Position		      [90, 44, 270, 171]
+	      BackgroundColor	      "lightBlue"
+	      FunctionName	      "izh"
+	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 0.9] [-70.0 -14.0]"
+	      EnableBusSupport	      off
+	      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_labe"
+	      "l('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      "muscle2"
+	      SID		      "618"
+	      Ports		      [3, 1]
+	      Position		      [640, 49, 805, 161]
+	      ZOrder		      -5
+	      FunctionName	      "muscle"
+	      Parameters	      "[136.0 75.0 50.0] [0]"
+	      EnableBusSupport	      off
+	      MaskDisplay	      "port_label('input', 1, 'Active state');\nport_label('input', 2, 'length');\nport_label('inpu"
+	      "t', 3, 'vel');\nport_label('output', 1, 'tension');\ndisp('muscle model \\n(S-Function)');"
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "T"
+	      SID		      "619"
+	      Position		      [920, 98, 950, 112]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Spk"
+	      SID		      "620"
+	      Position		      [285, 208, 315, 222]
+	      BlockMirror	      on
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Fubglevant \ntwitch"
+	      SID		      "621"
+	      Position		      [670, 218, 700, 232]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Fuglevand\ntwitch"
+	      SrcPort		      1
+	      DstBlock		      "Fubglevant \ntwitch"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Constant6"
+	      SrcPort		      1
+	      DstBlock		      "muscle2"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "motor neuron2"
+	      SrcPort		      1
+	      Points		      [15, 0]
+	      DstBlock		      "Scope19"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "active state"
+	      SrcPort		      1
+	      Points		      [25, 0]
+	      Branch {
+		Points			[5, 0]
+		Branch {
+		  Points		  [5, 0]
+		  DstBlock		  "Fuglevand\ntwitch"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Scope22"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		Points			[0, -70; 100, 0; 0, -50; 290, 0; 0, 85]
+		DstBlock		"T"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "motor neuron2"
+	      SrcPort		      2
+	      Points		      [35, 0]
+	      Branch {
+		DstBlock		"active state"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[20, 0; 0, 55]
+		Branch {
+		  DstBlock		  "Spk"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, 30]
+		  DstBlock		  "Scope1"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "synI"
+	      SrcPort		      1
+	      DstBlock		      "motor neuron2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Lce"
+	      SrcPort		      1
+	      DstBlock		      "muscle2"
+	      DstPort		      2
+	    }
+	    Annotation {
+	      Position		      [362, 581]
+	    }
+	    Annotation {
+	      Position		      [463, 119]
+	    }
+	  }
+	}
+	Block {
 	  BlockType		  Scope
 	  Name			  "muscle force 1"
 	  SID			  "594"
 	  Ports			  [1]
-	  Position		  [650, 44, 680, 76]
+	  Position		  [595, 14, 625, 46]
 	  Floating		  off
-	  Location		  [51, 114, 716, 401]
+	  Location		  [840, 382, 1505, 669]
 	  Open			  off
 	  NumInputPorts		  "1"
 	  List {
@@ -5118,66 +5030,6 @@ Model {
 	  YMin			  "0"
 	  YMax			  "225"
 	  SaveName		  "ScopeData1"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "muscle force 2"
-	  SID			  "595"
-	  Ports			  [1]
-	  Position		  [630, 129, 660, 161]
-	  Floating		  off
-	  Location		  [1206, 441, 1871, 728]
-	  Open			  off
-	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  YMin			  "0"
-	  YMax			  "225"
-	  SaveName		  "ScopeData4"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "muscle force 3"
-	  SID			  "596"
-	  Ports			  [1]
-	  Position		  [650, 224, 680, 256]
-	  Floating		  off
-	  Location		  [1208, 777, 1873, 1064]
-	  Open			  off
-	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  YMin			  "0"
-	  YMax			  "225"
-	  SaveName		  "ScopeData11"
 	  DataFormat		  "StructureWithTime"
 	  SampleTime		  "0"
 	}
@@ -5230,6 +5082,314 @@ Model {
 	  MaskIconUnits		  "autoscale"
 	}
 	Block {
+	  BlockType		  SubSystem
+	  Name			  "small motor unit"
+	  SID			  "622"
+	  Ports			  [2, 3]
+	  Position		  [505, 254, 560, 316]
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "small motor unit"
+	    Location		    [1, 578, 1336, 1056]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "synI"
+	      SID		      "623"
+	      Position		      [25, 103, 55, 117]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Lce"
+	      SID		      "624"
+	      Position		      [530, 98, 560, 112]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant6"
+	      SID		      "625"
+	      Position		      [575, 125, 605, 155]
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Fuglevand\ntwitch"
+	      SID		      "626"
+	      Ports		      [1, 1]
+	      Position		      [495, 207, 605, 243]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.108"
+	      SourceBlock	      "cstblocks/LTI System"
+	      SourceType	      "LTI Block"
+	      sys		      "zpk([0], [A_twitch A_twitch], P*e*T_twitch*A/tau_twitch, T_twitch)"
+	      IC		      "[]"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope1"
+	      SID		      "627"
+	      Ports		      [1]
+	      Position		      [400, 209, 430, 241]
+	      Floating		      off
+	      Location		      [531, 115, 1203, 401]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      TimeRange		      "0.4"
+	      YMin		      "-1000"
+	      YMax		      "5000"
+	      SaveName		      "ScopeData10"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope19"
+	      SID		      "628"
+	      Ports		      [1]
+	      Position		      [305, 29, 335, 61]
+	      Floating		      off
+	      Location		      [1243, 88, 1915, 374]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      SaveName		      "ScopeData19"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Scope
+	      Name		      "Scope22"
+	      SID		      "629"
+	      Ports		      [1]
+	      Position		      [505, 124, 535, 156]
+	      Floating		      off
+	      Location		      [901, 95, 1573, 381]
+	      Open		      off
+	      NumInputPorts	      "1"
+	      List {
+		ListType		AxesTitles
+		axes1			"%<SignalLabel>"
+	      }
+	      List {
+		ListType		ScopeGraphics
+		FigureColor		"[0.5 0.5 0.5]"
+		AxesColor		"[0 0 0]"
+		AxesTickColor		"[1 1 1]"
+		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+		LineStyles		"-|-|-|-|-|-"
+		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+		MarkerStyles		"none|none|none|none|none|none"
+	      }
+	      TimeRange		      "0.4"
+	      YMin		      "-1000"
+	      YMax		      "5000"
+	      SaveName		      "ScopeData22"
+	      DataFormat	      "StructureWithTime"
+	      SampleTime	      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "active state"
+	      SID		      "630"
+	      Ports		      [1, 1]
+	      Position		      [350, 107, 440, 173]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.108"
+	      SourceBlock	      "cstblocks/LTI System"
+	      SourceType	      "LTI Block"
+	      sys		      "0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/0.09),  mag2, T)"
+	      IC		      "[]"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      "motor neuron2"
+	      SID		      "631"
+	      Ports		      [1, 2]
+	      Position		      [90, 44, 270, 171]
+	      BackgroundColor	      "lightBlue"
+	      FunctionName	      "izh"
+	      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 1.0] [-70.0 -14.0]"
+	      EnableBusSupport	      off
+	      MaskDisplay	      "port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_labe"
+	      "l('output', 2, 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      "muscle2"
+	      SID		      "632"
+	      Ports		      [3, 1]
+	      Position		      [640, 49, 805, 161]
+	      ZOrder		      -5
+	      FunctionName	      "muscle"
+	      Parameters	      "[136.0 75.0 50.0] [0]"
+	      EnableBusSupport	      off
+	      MaskDisplay	      "port_label('input', 1, 'Active state');\nport_label('input', 2, 'length');\nport_label('inpu"
+	      "t', 3, 'vel');\nport_label('output', 1, 'tension');\ndisp('muscle model \\n(S-Function)');"
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskPortRotate	      "default"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "T"
+	      SID		      "633"
+	      Position		      [920, 98, 950, 112]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Spk"
+	      SID		      "634"
+	      Position		      [285, 208, 315, 222]
+	      BlockMirror	      on
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Fubglevant \ntwitch"
+	      SID		      "635"
+	      Position		      [670, 218, 700, 232]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Lce"
+	      SrcPort		      1
+	      DstBlock		      "muscle2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "synI"
+	      SrcPort		      1
+	      DstBlock		      "motor neuron2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "motor neuron2"
+	      SrcPort		      2
+	      Points		      [35, 0]
+	      Branch {
+		Points			[20, 0; 0, 55]
+		Branch {
+		  Points		  [0, 30]
+		  DstBlock		  "Scope1"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Spk"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		DstBlock		"active state"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "active state"
+	      SrcPort		      1
+	      Points		      [25, 0]
+	      Branch {
+		Points			[0, -70; 100, 0; 0, -50; 290, 0; 0, 85]
+		DstBlock		"T"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[5, 0]
+		Branch {
+		  DstBlock		  "Scope22"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [5, 0]
+		  DstBlock		  "Fuglevand\ntwitch"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "motor neuron2"
+	      SrcPort		      1
+	      Points		      [15, 0]
+	      DstBlock		      "Scope19"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Constant6"
+	      SrcPort		      1
+	      DstBlock		      "muscle2"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Fuglevand\ntwitch"
+	      SrcPort		      1
+	      DstBlock		      "Fubglevant \ntwitch"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      Position		      [463, 119]
+	    }
+	    Annotation {
+	      Position		      [362, 581]
+	    }
+	  }
+	}
+	Block {
 	  BlockType		  S-Function
 	  Name			  "spindle"
 	  SID			  "599"
@@ -5258,7 +5418,7 @@ Model {
 	  Position		  [450, 24, 480, 56]
 	  Floating		  off
 	  Location		  [573, 58, 1238, 345]
-	  Open			  on
+	  Open			  off
 	  NumInputPorts		  "1"
 	  List {
 	    ListType		    AxesTitles
@@ -5337,7 +5497,6 @@ Model {
 	Line {
 	  SrcBlock		  "Vector\nConcatenate4"
 	  SrcPort		  1
-	  Points		  [80, 0; 0, 20]
 	  DstBlock		  "Out2"
 	  DstPort		  1
 	}
@@ -5391,31 +5550,9 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "BIG Motor unit"
-	  SrcPort		  1
-	  Points		  [0, -5; 65, 0]
-	  Branch {
-	    DstBlock		    "muscle force 1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [300, 0; 0, 165]
-	    Branch {
-	      Points		      [0, 65]
-	      DstBlock		      "Add5"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, 10]
-	      DstBlock		      "Vector\nConcatenate4"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Line {
 	  SrcBlock		  "Add5"
 	  SrcPort		  1
-	  Points		  [25, 0; 0, 20]
+	  Points		  [65, 0; 0, -5]
 	  DstBlock		  "Out3"
 	  DstPort		  1
 	}
@@ -5442,7 +5579,7 @@ Model {
 	Line {
 	  SrcBlock		  "LTI System"
 	  SrcPort		  1
-	  Points		  [215, 0]
+	  Points		  [190, 0]
 	  DstBlock		  "Add2"
 	  DstPort		  1
 	}
@@ -5455,14 +5592,14 @@ Model {
 	Line {
 	  SrcBlock		  "LTI System2"
 	  SrcPort		  1
-	  Points		  [215, 0]
+	  Points		  [190, 0]
 	  DstBlock		  "Add2"
 	  DstPort		  3
 	}
 	Line {
-	  SrcBlock		  "BIG Motor unit"
+	  SrcBlock		  "big motor unit"
 	  SrcPort		  2
-	  Points		  [0, -5; 25, 0]
+	  Points		  [0, 10; 25, 0]
 	  Branch {
 	    Points		    [0, 350]
 	    DstBlock		    "EMG reponse"
@@ -5474,9 +5611,9 @@ Model {
 	  }
 	}
 	Line {
-	  SrcBlock		  "Med motor unit"
+	  SrcBlock		  "med motor unit"
 	  SrcPort		  2
-	  Points		  [0, -5; 55, 0]
+	  Points		  [5, 0; 0, 10; 55, 0]
 	  Branch {
 	    Points		    [0, 205]
 	    DstBlock		    "EMG response"
@@ -5484,72 +5621,6 @@ Model {
 	  }
 	  Branch {
 	    DstBlock		    "LTI System1"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "Med motor unit"
-	  SrcPort		  1
-	  Points		  [0, -5; 45, 0]
-	  Branch {
-	    DstBlock		    "muscle force 2"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [280, 0]
-	    Branch {
-	      Points		      [0, 175]
-	      DstBlock		      "Add5"
-	      DstPort		      2
-	    }
-	    Branch {
-	      Points		      [85, 0; 0, 95]
-	      DstBlock		      "Vector\nConcatenate4"
-	      DstPort		      2
-	    }
-	  }
-	}
-	Line {
-	  SrcBlock		  "Small motor unit"
-	  SrcPort		  2
-	  Points		  [10, 0]
-	  Branch {
-	    Points		    [0, 60]
-	    Branch {
-	      Points		      [-80, 0]
-	      DstBlock		      "muscle force 4"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, 165]
-	      DstBlock		      "EMG reponse1"
-	      DstPort		      1
-	    }
-	  }
-	  Branch {
-	    DstBlock		    "LTI System2"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "Small motor unit"
-	  SrcPort		  1
-	  Points		  [65, 0]
-	  Branch {
-	    Points		    [220, 0]
-	    Branch {
-	      Points		      [-5, 0; 0, 115]
-	      DstBlock		      "Add5"
-	      DstPort		      3
-	    }
-	    Branch {
-	      Points		      [110, 0; 0, 10]
-	      DstBlock		      "Vector\nConcatenate4"
-	      DstPort		      3
-	    }
-	  }
-	  Branch {
-	    DstBlock		    "muscle force 3"
 	    DstPort		    1
 	  }
 	}
@@ -5605,26 +5676,6 @@ Model {
 	  SrcPort		  1
 	  Points		  [0, -15]
 	  Branch {
-	    Points		    [0, -225]
-	    Branch {
-	      Points		      [0, -95]
-	      Branch {
-		Points			[0, -85]
-		DstBlock		"BIG Motor unit"
-		DstPort			2
-	      }
-	      Branch {
-		Points			[0, 5]
-		DstBlock		"Med motor unit"
-		DstPort			2
-	      }
-	    }
-	    Branch {
-	      DstBlock		      "Small motor unit"
-	      DstPort		      2
-	    }
-	  }
-	  Branch {
 	    Points		    [0, 170; -110, 0; 0, 10]
 	    Branch {
 	      Points		      [25, 0; 0, 55]
@@ -5635,6 +5686,26 @@ Model {
 	      Points		      [0, 95]
 	      DstBlock		      "Scope3"
 	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    Points		    [0, -230]
+	    Branch {
+	      Points		      [0, -90]
+	      Branch {
+		Points			[0, -85]
+		DstBlock		"big motor unit"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, 5]
+		DstBlock		"med motor unit"
+		DstPort			2
+	      }
+	    }
+	    Branch {
+	      DstBlock		      "small motor unit"
+	      DstPort		      2
 	    }
 	  }
 	}
@@ -5663,21 +5734,11 @@ Model {
 	  SrcPort		  1
 	  Points		  [15, 0]
 	  Branch {
-	    Points		    [0, 90]
-	    DstBlock		    "Small motor unit"
-	    DstPort		    1
-	  }
-	  Branch {
 	    Points		    [0, -5]
-	    Branch {
-	      Points		      [25, 0]
-	      DstBlock		      "Med motor unit"
-	      DstPort		      1
-	    }
 	    Branch {
 	      Points		      [0, -85]
 	      Branch {
-		DstBlock		"BIG Motor unit"
+		DstBlock		"big motor unit"
 		DstPort			1
 	      }
 	      Branch {
@@ -5686,6 +5747,16 @@ Model {
 		DstPort			1
 	      }
 	    }
+	    Branch {
+	      Points		      [25, 0; 0, 5]
+	      DstBlock		      "med motor unit"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    Points		    [0, 85]
+	    DstBlock		    "small motor unit"
+	    DstPort		    1
 	  }
 	}
 	Line {
@@ -5715,6 +5786,79 @@ Model {
 	    DstBlock		    "Lowpass Filter"
 	    DstPort		    1
 	  }
+	}
+	Line {
+	  SrcBlock		  "med motor unit"
+	  SrcPort		  3
+	  Points		  [45, 0]
+	  Branch {
+	    Points		    [90, 0; 0, 75; 260, 0]
+	    Branch {
+	      DstBlock		      "Vector\nConcatenate4"
+	      DstPort		      2
+	    }
+	    Branch {
+	      Points		      [0, 85]
+	      DstBlock		      "Add5"
+	      DstPort		      2
+	    }
+	  }
+	  Branch {
+	    Points		    [0, -75]
+	    DstBlock		    " Fuglevant\ntwitch1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "big motor unit"
+	  SrcPort		  3
+	  Points		  [15, 0; 0, -45; 80, 0]
+	  Branch {
+	    Points		    [0, -45]
+	    DstBlock		    " Fuglevant\ntwitch"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [310, 0; 0, 200]
+	    Branch {
+	      DstBlock		      "Vector\nConcatenate4"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 60]
+	      DstBlock		      "Add5"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "small motor unit"
+	  SrcPort		  3
+	  Points		  [75, 0]
+	  Branch {
+	    Points		    [310, 0]
+	    Branch {
+	      DstBlock		      "Vector\nConcatenate4"
+	      DstPort		      3
+	    }
+	    Branch {
+	      Points		      [-10, 0; 0, 110]
+	      DstBlock		      "Add5"
+	      DstPort		      3
+	    }
+	  }
+	  Branch {
+	    Points		    [0, -65]
+	    DstBlock		    " Fuglevant\ntwitch2"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "small motor unit"
+	  SrcPort		  2
+	  Points		  [140, 0; 0, -20]
+	  DstBlock		  "LTI System2"
+	  DstPort		  1
 	}
 	Annotation {
 	  Name			  "BIG"
@@ -5748,7 +5892,7 @@ Model {
       Ports		      [1]
       Position		      [1015, 298, 1045, 332]
       Floating		      off
-      Location		      [549, 244, 1222, 555]
+      Location		      [2047, 459, 2595, 737]
       Open		      off
       NumInputPorts	      "1"
       TickLabels	      "on"
@@ -5780,7 +5924,7 @@ Model {
       Ports		      [1]
       Position		      [1015, 463, 1045, 497]
       Floating		      off
-      Location		      [531, 611, 1204, 922]
+      Location		      [1357, 772, 1939, 1051]
       Open		      off
       NumInputPorts	      "1"
       TickLabels	      "on"
@@ -5844,7 +5988,7 @@ Model {
       Position		      [940, 384, 970, 416]
       Floating		      off
       Location		      [1314, 58, 1857, 341]
-      Open		      on
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -5875,8 +6019,8 @@ Model {
       Position		      [1015, 258, 1045, 292]
       NamePlacement	      "alternate"
       Floating		      off
-      Location		      [1376, 363, 1915, 638]
-      Open		      on
+      Location		      [2052, 800, 2591, 1075]
+      Open		      off
       NumInputPorts	      "1"
       TickLabels	      "on"
       ZoomMode		      "yonly"
@@ -5909,8 +6053,8 @@ Model {
       Position		      [1015, 428, 1045, 462]
       NamePlacement	      "alternate"
       Floating		      off
-      Location		      [1372, 699, 1911, 974]
-      Open		      on
+      Location		      [1365, 422, 1904, 697]
+      Open		      off
       NumInputPorts	      "1"
       TickLabels	      "on"
       ZoomMode		      "yonly"
@@ -5956,7 +6100,7 @@ Model {
       Position		      [610, 168, 640, 202]
       NamePlacement	      "alternate"
       Floating		      off
-      Location		      [2057, 82, 2596, 357]
+      Location		      [2059, 494, 2598, 769]
       Open		      off
       NumInputPorts	      "1"
       TickLabels	      "on"
@@ -6034,19 +6178,20 @@ Model {
     Line {
       SrcBlock		      "NORMAL"
       SrcPort		      2
-      Points		      [100, 0; 0, 15]
+      Points		      [105, 0; 0, 15]
       DstBlock		      "individual \nmuslc forces"
       DstPort		      1
     }
     Line {
       SrcBlock		      "NORMAL"
       SrcPort		      3
-      Points		      [100, 0; 0, 25; 90, 0]
+      Points		      [105, 0; 0, 25; 90, 0]
       Branch {
 	DstBlock		"combined\n muscle force"
 	DstPort			1
       }
       Branch {
+	Labels			[2, 0]
 	Points			[0, 20]
 	DstBlock		"Vector\nConcatenate4"
 	DstPort			1
@@ -6093,16 +6238,16 @@ MatData {
     "YH97)I=&5D3W!T:6]N     &9I;'1E<D-O;G-T<G5C=&]R      !F:6QT97)#;VYS=')U8W1O<D%R9W, 24-$871A                      X "
     "   P    !@    @    ) @        4    (     0    $    !          (  0 !    #@   $     &    \"     0         !0    @  "
     "  !    \"P    $         $     L   !D9FEL=\"YD9F9I<@      #@   \" #   &    \"     $         !0    @    !     0    $"
-    "         #@   / \"   &    \"     8         !0    @    !    6     $         \"0   , \"  !&E;OG[.E*/V>0S\\;H,4P_\"6^"
-    "GN[ 64S_\\?XYKJNM6/ZJ.8TVJ0E@_:[?Z])?,53]VK1S\\C.%,/UAE40?_H1@_].N@@B#(4+_L[,P_S,ACOSY&8=]K.'\"_K4%][7UZ=K];[1[#8<"
-    "][OY23GNQ(3G^_XX9M_E(0@+_C*$+L#*A]OR0V>Z&'GW>_*-:#6^%P;+_#ZJ1+F4)!OZ_?>],5M68_9+*]UH:P>#^8$IR90_V!/UE,)P.EJH4_8O\""
+    "         #@   / \"   &    \"     8         !0    @    !    6     $         \"0   , \"  !&E;OG[.E*/W\"0S\\;H,4P_\"6"
+    "^GN[ 64S_\\?XYKJNM6/ZJ.8TVJ0E@_:[?Z])?,53]VK1S\\C.%,/_ED40?_H1@_].N@@B#(4+_L[,P_S,ACOSY&8=]K.'\"_K4%][7UZ=K];[1[#8"
+    "<][OY23GNQ(3G^_XX9M_E(0@+_C*$+L#*A]OR0V>Z&'GW>_*-:#6^%P;+_#ZJ1+F4)!OZ_?>],5M68_9+*]UH:P>#^8$IR90_V!/UE,)P.EJH4_8O\""
     ">&[F.AC_<Q'C@&!N$/YB&J7H*1WP_=JR:R@?/8S^6I/1G3Y]JO_WZ[2YM:8._W;I4NR\"JC[]0^WF@KL24O^\\$/Q4QD)>_FR\"+O?I=E[\\!X(#IV"
-    "(J3OP66W.2-A8>_'Q6E$VIX$K_Z4S=M9B*./\\VPPAR;9Z _&NUZE17]J3\\=8^-SH,JQ/R )T[,A.+8_B(*77J#JN3];T<D0IY*\\/P]\\!00(]KT"
-    "_#WP%! CVO3];T<D0IY*\\/XB\"EUZ@ZKD_( G3LR$XMC\\=8^-SH,JQ/QKM>I45_:D_S;#\"')MGH#_Z4S=M9B*./Q\\5I1-J>!*_!9;<Y(V%A[\\"
+    "(J3OP66W.2-A8>__Q.E$VIX$K_Z4S=M9B*./\\VPPAR;9Z _&NUZE17]J3\\=8^-SH,JQ/R )T[,A.+8_B(*77J#JN3];T<D0IY*\\/P]\\!00(]KT"
+    "_#WP%! CVO3];T<D0IY*\\/XB\"EUZ@ZKD_( G3LR$XMC\\=8^-SH,JQ/QKM>I45_:D_S;#\"')MGH#_Z4S=M9B*./_\\3I1-J>!*_!9;<Y(V%A[\\"
     "!X(#IV(J3OYL@B[WZ79>_[P0_%3&0E[]0^WF@KL24O]VZ5+L@JH^__?KM+FUI@[^6I/1G3Y]JOW:LFLH'SV,_F(:I>@I'?#_<Q'C@&!N$/V+PGANYC"
     "H8_64PG Z6JA3^8$IR90_V!/V2RO=:&L'@_K]][TQ6U9C_#ZJ1+F4)!ORC6@UOA<&R_)#9[H8>?=[_C*$+L#*A]O^.&;?Y2$(\"_E).>[$A.?[];[1"
-    "[#8<][OZU!?>U]>G:_/D9AWVLX<+_L[,P_S,ACO_3KH((@R%\"_6&51!_^A&#]VK1S\\C.%,/VNW^O27S%4_JHYC3:I\"6#_\\?XYKJNM6/PEOI[NP"
-    "%E,_9Y#/QN@Q3#]&E;OG[.E*/PX    0 0  !@    @    \"          4    (     0    $    !          4 !  &     0   !(   !)0"
+    "[#8<][OZU!?>U]>G:_/D9AWVLX<+_L[,P_S,ACO_3KH((@R%\"_^611!_^A&#]VK1S\\C.%,/VNW^O27S%4_JHYC3:I\"6#_\\?XYKJNM6/PEOI[NP"
+    "%E,_<)#/QN@Q3#]&E;OG[.E*/PX    0 0  !@    @    \"          4    (     0    $    !          4 !  &     0   !(   !)0"
     "VYU;0!)0V1E;@!)0P             .    .     8    (    !@         %    \"     $    !     0         )    \"            "
     "   #@   #@    &    \"     8         !0    @    !     0    $         \"0    @               X    X    !@    @    & "
     "         4    (     0    $    !          D    (               "
