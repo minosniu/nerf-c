@@ -53,7 +53,7 @@ set_param('motor_unit/Spastic/med motor unit/Fuglevand twitch', 'sys', ['zpk([0]
 set_param('motor_unit/Spastic/med motor unit/active state', 'sys', ['0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/' num2str(tau_spastic_med) '),  mag2*' num2str(med_height) ', T)'  ]);
 
 % Spastic small motor unit
-set_param('motor_unit/Spastic/small motor unit/Fuglevand twitch', 'sys', ['zpk([0], [' num2str(A_twitch) ' ' num2str(A_twitch) '], ' num2str(P) '*' num2str(e) '*' num2str(T_twitch) '*' num2str(A_twitch) '/' num2str(tau_twitch) ', T_twitch)']);
+set_param('motor_unit/Spastic/small motor unit/Fuglevand twitch', 'sys', ['zpk([0], [' num2str(A_twitch) ' ' num2str(A_twitch) '], ' num2str(P) '*' num2str(e) '*' num2str(T_twitch) '*' num2str(A_twitch) '/' num2str(tau_twitch) ', ' num2str(T_twitch) ')']);
 set_param('motor_unit/Spastic/small motor unit/active state', 'sys', ['0*zpk([0], A_rise, mag1, T) + zpk([0], exp(-T/' num2str(tau_spastic_small) '),  mag2*' num2str(small_height) ', T)'  ]);
 
 
