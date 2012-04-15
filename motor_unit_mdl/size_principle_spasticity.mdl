@@ -1,12 +1,12 @@
 Model {
-  Name			  "size_principle"
+  Name			  "size_principle_spasticity"
   Version		  7.8
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.18"
+    ComputedModelVersion    "1.19"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -28,9 +28,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "minos001"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Apr 14 22:08:39 2012"
-  RTWModifiedTimeStamp	  256339283
-  ModelVersionFormat	  "1.%<AutoIncrement:18>"
+  LastModifiedDate	  "Sat Apr 14 22:18:22 2012"
+  RTWModifiedTimeStamp	  256342701
+  ModelVersionFormat	  "1.%<AutoIncrement:19>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -68,6 +68,7 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "size_principle"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -769,8 +770,8 @@ Model {
     }
   }
   System {
-    Name		    "size_principle"
-    Location		    [302, 123, 1449, 1014]
+    Name		    "size_principle_spasticity"
+    Location		    [706, 129, 1853, 1020]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
