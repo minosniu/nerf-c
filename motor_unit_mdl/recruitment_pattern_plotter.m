@@ -1,5 +1,6 @@
+function recruitment_pattern_plotter(spikes_g1, spikes_g2, total_force, prob_keep)
+
 raster = [];
-prob_keep = 0.05;
 
 for i = 2 : 11
     p1 = ( spikes_g1.signals(i).values > 0 );
@@ -19,7 +20,7 @@ spiketimes = find(raster > 0);
 
 %PLTRSTPTHSMPL(RSTPTHSMPL(spiketimes, spikes,0,1000),'test',1,1,'test2')
 subplot(211);
-rasterplot(spiketimes,20,length(raster))
+rasterplot(spiketimes,30,length(raster))
 title('MotoNeuron Raster');
 
 subplot(212);
