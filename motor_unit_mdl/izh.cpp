@@ -36,6 +36,7 @@
 #define SAMPLING_RATE 1024.0
 
 #include "simstruc.h"
+#include "math.h"
 
 #define U(element) (*uPtrs[element])  /* Pointer to Input Port0 */
 
@@ -231,7 +232,8 @@ static void mdlOutputs(SimStruct *S, int_T tid)
       x[0] = C;
       x[1] = u + D;
       y[0] = C;             
-      y[1] = 1.0 * SAMPLING_RATE; // 1 = spiking
+      y[1] = 10.0 / (pow(EPSP_WEIGHT, 1.6)) * SAMPLING_RATE; // 1 = spiking
+      //y[1] = 1.0 * SAMPLING_RATE; // 1 = spiking
 
     }
     else
