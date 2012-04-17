@@ -1,6 +1,7 @@
 function incrementVars(sys)
 tos=find_system(sys,'BlockType','ToWorkspace');
-froms=find_system(sys,'BlockType','FromWorkspace');
+%froms=find_system(sys,'BlockType','FromWorkspace');
+froms=[];
 
 for i=1:length(tos)
     cblock=tos(i);
