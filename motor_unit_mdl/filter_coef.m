@@ -1,9 +1,10 @@
-function [num, den] = filter_coef(mag1, mag2, trise, tfall)
+function [num, den] = filter_coef(mag1, mag2, trise, tfall, T)
 %#codegen
 
 % Shadmehr muscle model gives the h(t) of active_state
-% h(t) = a*exp(-t/c) + b*exp(-t/d)
-% H(s) = a/(s+c) + b/(s+d)
+% h(t) = mag1*exp(-t/tfall) - mag2*exp(-t/rise)
+% H(s) = mag1/(s+1/tfall) - mag2/(s+1/trise)
+%      = a/(s+c) - b/(s+d)
 % This func: H(s) -> H(z) 
 
 % a = 48144*128;
@@ -12,14 +13,19 @@ coder.extrinsic('tf', 'c2d', 'tfdata', 'dfilt.df2sos', 'dfilt', 'df2sos','filter
 
 a = mag1;
 b = mag2;
-c = 1/trise;  % tf, tr in seconds. 
-d = 1/tfall;
-SAMPLING_RATE = 1024; % in Hz
-num = [0 (a-b) (a*d - b*c)];
-den = [1 (c+d) c*d];
-tf_a = tf(num, den);
+c = 1/tfall;  % tf, tr in seconds. 
+d = 1/trise;
+num1 = [0 a];
+den1 = [1 c];
+tf1 = tf(num1, den1);
 
-tf_a_digital = c2d(tf_a, 1/SAMPLING_RATE, 'zoh');
+num2 = [0 b];
+den2 = [1 c];
+tf2 = tf(num2, den2);
+
+tf_a = tf1 - tf2;
+
+tf_a_digital = c2d(tf_a, T, 'zoh');
 [num den] = tfdata(tf_a_digital, 'v');
 str = sprintf('[%s]', num2str(num));
 disp(str);
