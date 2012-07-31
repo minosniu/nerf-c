@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.364"
+    ComputedModelVersion    "1.365"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -28,11 +28,11 @@ Model {
   Creator		  "minos_niu"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "minos001"
+  LastModifiedBy	  "eric"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Apr 15 12:56:51 2012"
-  RTWModifiedTimeStamp	  256394511
-  ModelVersionFormat	  "1.%<AutoIncrement:364>"
+  LastModifiedDate	  "Mon Jul 30 17:09:23 2012"
+  RTWModifiedTimeStamp	  265568560
+  ModelVersionFormat	  "1.%<AutoIncrement:365>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -70,7 +70,6 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "motor_unit"
-    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -839,7 +838,7 @@ Model {
   }
   System {
     Name		    "motor_unit"
-    Location		    [1, 84, 1921, 1056]
+    Location		    [113, 163, 1701, 945]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -961,7 +960,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Fast Stretch"
-	Location		[707, 276, 982, 556]
+	Location		[456, 276, 731, 556]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1164,7 +1163,7 @@ Model {
       LibraryVersion	      "1.256"
       SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
       SourceType	      "Manual Switch"
-      sw		      "0"
+      sw		      "1"
       action		      "0"
       varsize		      off
     }
@@ -1183,7 +1182,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"NORMAL"
-	Location		[228, 116, 1692, 964]
+	Location		[1, 87, 1465, 935]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1802,7 +1801,7 @@ Model {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "1012"
+	    SIDHighWatermark	    "1013"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "In"
@@ -1814,7 +1813,7 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "Generated Filter Block"
-	      SID		      "450:1012"
+	      SID		      "450:1013"
 	      Tag		      "BlockMethodSubSystem"
 	      Ports		      [1, 1]
 	      Position		      [220, 90, 295, 130]
@@ -2049,7 +2048,7 @@ Model {
 	  Ports			  [1]
 	  Position		  [80, 179, 110, 211]
 	  Floating		  off
-	  Location		  [2023, 88, 2688, 375]
+	  Location		  [2024, 88, 2689, 375]
 	  Open			  off
 	  NumInputPorts		  "1"
 	  List {
@@ -2079,7 +2078,7 @@ Model {
 	  Ports			  [1]
 	  Position		  [305, 44, 335, 76]
 	  Floating		  off
-	  Location		  [1263, 58, 1889, 297]
+	  Location		  [1262, 59, 1888, 298]
 	  Open			  off
 	  NumInputPorts		  "1"
 	  List {
@@ -2135,7 +2134,7 @@ Model {
 	  Ports			  [1]
 	  Position		  [1325, 315, 1385, 345]
 	  ZOrder		  -7
-	  VariableName		  "emg_normal158"
+	  VariableName		  "emg_normal159"
 	  MaxDataPoints		  "inf"
 	  SampleTime		  "-1"
 	  SaveFormat		  "Structure With Time"
@@ -3521,12 +3520,12 @@ Model {
 	  SrcPort		  1
 	  Points		  [15, 0]
 	  Branch {
-	    Points		    [-10, 0]
-	    DstBlock		    "Scope14"
+	    DstBlock		    "sensory neuron2"
 	    DstPort		    1
 	  }
 	  Branch {
-	    DstBlock		    "sensory neuron2"
+	    Points		    [-10, 0]
+	    DstBlock		    "Scope14"
 	    DstPort		    1
 	  }
 	}
@@ -4470,7 +4469,7 @@ Model {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "1012"
+	    SIDHighWatermark	    "1013"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "In"
@@ -4482,7 +4481,7 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "Generated Filter Block"
-	      SID		      "558:1012"
+	      SID		      "558:1013"
 	      Tag		      "BlockMethodSubSystem"
 	      Ports		      [1, 1]
 	      Position		      [220, 90, 295, 130]
@@ -6981,7 +6980,7 @@ Model {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "1012"
+	    SIDHighWatermark	    "1013"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "In"
@@ -6993,7 +6992,7 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "Generated Filter Block"
-	      SID		      "1190:1012"
+	      SID		      "1190:1013"
 	      Tag		      "BlockMethodSubSystem"
 	      Ports		      [1, 1]
 	      Position		      [220, 90, 295, 130]
@@ -7008,23 +7007,23 @@ Model {
 	      AllPoleFiltStruct	      "Direct form"
 	      FIRFiltStruct	      "Direct form"
 	      CoeffSource	      "Specify via dialog"
-	      NumCoeffs		      "[0.000821343113298559 0.000860441837741389 0.00116507777294478 0.00139896051971534 0.00148073"
-	      "798259756 0.00133051719232521 0.000881379928818246 9.39666659446496e-05 -0.00102427649336678 -0.002415083812960"
+	      NumCoeffs		      "[0.000821343113298547 0.000860441837741378 0.00116507777294478 0.00139896051971533 0.00148073"
+	      "798259755 0.00133051719232521 0.000881379928818245 9.39666659446509e-05 -0.00102427649336678 -0.002415083812960"
 	      "73 -0.00396005761838719 -0.00548791113381279 -0.00678957165103652 -0.0076430176358472 -0.00784363593055865 -0.0"
-	      "0724034355165257 -0.005767373855361 -0.00347179427273649 -0.000526738025008324 0.00277189505493066 0.0060277239"
-	      "9348037 0.00878384411363102 0.0105793849551558 0.0110144101671425 0.00981730876000813 0.00690368741433792 0.002"
+	      "0724034355165257 -0.005767373855361 -0.00347179427273649 -0.000526738025008321 0.00277189505493066 0.0060277239"
+	      "9348037 0.00878384411363102 0.0105793849551558 0.0110144101671425 0.00981730876000813 0.00690368741433791 0.002"
 	      "41805574190362 -0.00324979313849789 -0.00947842883556182 -0.0154612118882062 -0.0202815328070714 -0.02301098529"
-	      "98383 -0.0228194406688834 -0.0190843479651619 -0.0114852033107793 -7.04588646032898e-05 0.0147140504913441 0.03"
-	      "2040450344853 0.0507590050669597 0.0694980891161205 0.0867940010093986 0.101236365407667 0.111612741087645 0.11"
-	      "7035389882844 0.117035389882844 0.111612741087645 0.101236365407667 0.0867940010093986 0.0694980891161205 0.050"
-	      "7590050669597 0.032040450344853 0.0147140504913441 -7.04588646032898e-05 -0.0114852033107793 -0.019084347965161"
-	      "9 -0.0228194406688834 -0.0230109852998383 -0.0202815328070714 -0.0154612118882062 -0.00947842883556182 -0.00324"
-	      "979313849789 0.00241805574190362 0.00690368741433792 0.00981730876000813 0.0110144101671425 0.0105793849551558 "
-	      "0.00878384411363102 0.00602772399348037 0.00277189505493066 -0.000526738025008324 -0.00347179427273649 -0.00576"
-	      "7373855361 -0.00724034355165257 -0.00784363593055865 -0.0076430176358472 -0.00678957165103652 -0.00548791113381"
-	      "279 -0.00396005761838719 -0.00241508381296073 -0.00102427649336678 9.39666659446496e-05 0.000881379928818246 0."
-	      "00133051719232521 0.00148073798259756 0.00139896051971534 0.00116507777294478 0.000860441837741389 0.0008213431"
-	      "13298559]"
+	      "98383 -0.0228194406688834 -0.0190843479651619 -0.0114852033107793 -7.04588646032872e-05 0.0147140504913441 0.03"
+	      "20404503448529 0.0507590050669597 0.0694980891161205 0.0867940010093986 0.101236365407667 0.111612741087645 0.1"
+	      "17035389882844 0.117035389882844 0.111612741087645 0.101236365407667 0.0867940010093986 0.0694980891161205 0.05"
+	      "07590050669597 0.0320404503448529 0.0147140504913441 -7.04588646032872e-05 -0.0114852033107793 -0.0190843479651"
+	      "619 -0.0228194406688834 -0.0230109852998383 -0.0202815328070714 -0.0154612118882062 -0.00947842883556182 -0.003"
+	      "24979313849789 0.00241805574190362 0.00690368741433791 0.00981730876000813 0.0110144101671425 0.010579384955155"
+	      "8 0.00878384411363102 0.00602772399348037 0.00277189505493066 -0.000526738025008321 -0.00347179427273649 -0.005"
+	      "767373855361 -0.00724034355165257 -0.00784363593055865 -0.0076430176358472 -0.00678957165103652 -0.005487911133"
+	      "81279 -0.00396005761838719 -0.00241508381296073 -0.00102427649336678 9.39666659446509e-05 0.000881379928818245 "
+	      "0.00133051719232521 0.00148073798259755 0.00139896051971533 0.00116507777294478 0.000860441837741378 0.00082134"
+	      "3113298547]"
 	      DenCoeffs		      "[1 0.1]"
 	      BiQuadCoeffs	      "[1 0.3 0.4 1 0.1 0.2]"
 	      LatticeCoeffs	      "[0.2 0.4]"
@@ -9110,19 +9109,19 @@ MatData {
     "YH97)I=&5D3W!T:6]N     &9I;'1E<D-O;G-T<G5C=&]R      !F:6QT97)#;VYS=')U8W1O<D%R9W, 24-$871A                      X "
     "   P    !@    @    ) @        4    (     0    $    !          (  0 !    #@   $     &    \"     0         !0    @  "
     "  !    \"P    $         $     L   !D9FEL=\"YD9F9I<@      #@   \" #   &    \"     $         !0    @    !     0    $"
-    "         #@   / \"   &    \"     8         !0    @    !    6     $         \"0   , \"  \"UE;OG[.E*/]:0S\\;H,4P_\"6"
-    "^GN[ 64S\\J@(YKJNM6/]B.8TVJ0E@_:[?Z])?,53]_K1S\\C.%,/YED40?_H1@_].N@@B#(4+_L[,P_S,ACOSY&8=]K.'\"_K4%][7UZ=K];[1[#8"
-    "<][OY23GNQ(3G^_XX9M_E(0@+_C*$+L#*A]OR0V>Z&'GW>_*-:#6^%P;+_?ZJ1+F4)!OZ_?>],5M68_9+*]UH:P>#^8$IR90_V!/UE,)P.EJH4_8O\""
-    ">&[F.AC_<Q'C@&!N$/Z2&J7H*1WP_=JR:R@?/8S^6I/1G3Y]JO_WZ[2YM:8._W;I4NR\"JC[]0^WF@KL24O^\\$/Q4QD)>_FR\"+O?I=E[\\!X(#IV"
-    "(J3OP66W.2-A8>_OQ2E$VIX$K_Z4S=M9B*./]NPPAR;9Z _&NUZE17]J3\\=8^-SH,JQ/R )T[,A.+8_B(*77J#JN3];T<D0IY*\\/P]\\!00(]KT_"
-    "#WP%! CVO3];T<D0IY*\\/XB\"EUZ@ZKD_( G3LR$XMC\\=8^-SH,JQ/QKM>I45_:D_V[#\"')MGH#_Z4S=M9B*./[\\4I1-J>!*_!9;<Y(V%A[\\!"
-    "X(#IV(J3OYL@B[WZ79>_[P0_%3&0E[]0^WF@KL24O]VZ5+L@JH^__?KM+FUI@[^6I/1G3Y]JOW:LFLH'SV,_I(:I>@I'?#_<Q'C@&!N$/V+PGANYCH"
-    "8_64PG Z6JA3^8$IR90_V!/V2RO=:&L'@_K]][TQ6U9C_?ZJ1+F4)!ORC6@UOA<&R_)#9[H8>?=[_C*$+L#*A]O^.&;?Y2$(\"_E).>[$A.?[];[1["
-    "#8<][OZU!?>U]>G:_/D9AWVLX<+_L[,P_S,ACO_3KH((@R%\"_F611!_^A&#]_K1S\\C.%,/VNW^O27S%4_V(YC3:I\"6#\\J@(YKJNM6/PEOI[NP%"
-    "E,_UI#/QN@Q3#^UE;OG[.E*/PX    0 0  !@    @    \"          4    (     0    $    !          4 !  &     0   !(   !)0V"
-    "YU;0!)0V1E;@!)0P             .    .     8    (    !@         %    \"     $    !     0         )    \"             "
-    "  #@   #@    &    \"     8         !0    @    !     0    $         \"0    @               X    X    !@    @    &  "
-    "        4    (     0    $    !          D    (               "
+    "         #@   / \"   &    \"     8         !0    @    !    6     $         \"0   , \"  !&E;OG[.E*/W\"0S\\;H,4P_\"6"
+    "^GN[ 64S_\\?XYKJNM6/ZJ.8TVJ0E@_:[?Z])?,53]VK1S\\C.%,/_ED40?_H1@_].N@@B#(4+_L[,P_S,ACOSY&8=]K.'\"_K4%][7UZ=K];[1[#8"
+    "<][OY23GNQ(3G^_XX9M_E(0@+_C*$+L#*A]OR0V>Z&'GW>_*-:#6^%P;+_#ZJ1+F4)!OZ_?>],5M68_9+*]UH:P>#^8$IR90_V!/UE,)P.EJH4_8O\""
+    ">&[F.AC_<Q'C@&!N$/YB&J7H*1WP_=JR:R@?/8S^6I/1G3Y]JO_WZ[2YM:8._W;I4NR\"JC[]0^WF@KL24O^\\$/Q4QD)>_FR\"+O?I=E[\\!X(#IV"
+    "(J3OP66W.2-A8>__Q.E$VIX$K_Z4S=M9B*./\\VPPAR;9Z _&NUZE17]J3\\=8^-SH,JQ/R )T[,A.+8_B(*77J#JN3];T<D0IY*\\/P]\\!00(]KT"
+    "_#WP%! CVO3];T<D0IY*\\/XB\"EUZ@ZKD_( G3LR$XMC\\=8^-SH,JQ/QKM>I45_:D_S;#\"')MGH#_Z4S=M9B*./_\\3I1-J>!*_!9;<Y(V%A[\\"
+    "!X(#IV(J3OYL@B[WZ79>_[P0_%3&0E[]0^WF@KL24O]VZ5+L@JH^__?KM+FUI@[^6I/1G3Y]JOW:LFLH'SV,_F(:I>@I'?#_<Q'C@&!N$/V+PGANYC"
+    "H8_64PG Z6JA3^8$IR90_V!/V2RO=:&L'@_K]][TQ6U9C_#ZJ1+F4)!ORC6@UOA<&R_)#9[H8>?=[_C*$+L#*A]O^.&;?Y2$(\"_E).>[$A.?[];[1"
+    "[#8<][OZU!?>U]>G:_/D9AWVLX<+_L[,P_S,ACO_3KH((@R%\"_^611!_^A&#]VK1S\\C.%,/VNW^O27S%4_JHYC3:I\"6#_\\?XYKJNM6/PEOI[NP"
+    "%E,_<)#/QN@Q3#]&E;OG[.E*/PX    0 0  !@    @    \"          4    (     0    $    !          4 !  &     0   !(   !)0"
+    "VYU;0!)0V1E;@!)0P             .    .     8    (    !@         %    \"     $    !     0         )    \"            "
+    "   #@   #@    &    \"     8         !0    @    !     0    $         \"0    @               X    X    !@    @    & "
+    "         4    (     0    $    !          D    (               "
   }
   DataRecord {
     Tag			    DataTag7
