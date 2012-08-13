@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7"
+    ComputedModelVersion    "1.11"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -21,17 +21,17 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  InitFcn		  "mag1 = 48144;\nmag2 = 45845;\ntrise = 0.02;\ntfall  = 0.04;\n[num_syn den_syn] = filter_coef(mag1, mag2,"
-  " trise, tfall,T)\n"
+  InitFcn		  "mag1 = 48144;\nmag2 = 45845;\ntrise = 0.02;\ntfall  = 0.04*3;\n\n[num_syn den_syn] = filter_coef(mag1, m"
+  "ag2, trise, tfall,T)\n"
   Created		  "Mon Jul 30 16:54:06 2012"
   Creator		  "eric"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "eric"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Jul 31 14:31:56 2012"
-  RTWModifiedTimeStamp	  265568207
-  ModelVersionFormat	  "1.%<AutoIncrement:7>"
+  LastModifiedDate	  "Mon Aug 06 11:56:28 2012"
+  RTWModifiedTimeStamp	  265812715
+  ModelVersionFormat	  "1.%<AutoIncrement:11>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -69,8 +69,7 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "ART"
-    signals_		    []
-    overrideMode_	    [0U]
+    overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
@@ -694,6 +693,13 @@ Model {
       RTWStateStorageClass    "Auto"
     }
     Block {
+      BlockType		      Display
+      Format		      "short"
+      Decimation	      "10"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      DotProduct
       SampleTime	      "-1"
       InputSameDT	      on
@@ -721,6 +727,160 @@ Model {
       LatchByDelayingOutsideSignal off
       LatchInputForFeedbackSignals off
       Interpolate	      on
+    }
+    Block {
+      BlockType		      Lookup_n-D
+      NumberOfTableDimensions "2"
+      BreakpointsForDimension1 "[10,22,31]"
+      BreakpointsForDimension2 "[10,22,31]"
+      BreakpointsForDimension3 "[1:3]"
+      BreakpointsForDimension4 "[1:3]"
+      BreakpointsForDimension5 "[1:3]"
+      BreakpointsForDimension6 "[1:3]"
+      BreakpointsForDimension7 "[1:3]"
+      BreakpointsForDimension8 "[1:3]"
+      BreakpointsForDimension9 "[1:3]"
+      BreakpointsForDimension10	"[1:3]"
+      BreakpointsForDimension11	"[1:3]"
+      BreakpointsForDimension12	"[1:3]"
+      BreakpointsForDimension13	"[1:3]"
+      BreakpointsForDimension14	"[1:3]"
+      BreakpointsForDimension15	"[1:3]"
+      BreakpointsForDimension16	"[1:3]"
+      BreakpointsForDimension17	"[1:3]"
+      BreakpointsForDimension18	"[1:3]"
+      BreakpointsForDimension19	"[1:3]"
+      BreakpointsForDimension20	"[1:3]"
+      BreakpointsForDimension21	"[1:3]"
+      BreakpointsForDimension22	"[1:3]"
+      BreakpointsForDimension23	"[1:3]"
+      BreakpointsForDimension24	"[1:3]"
+      BreakpointsForDimension25	"[1:3]"
+      BreakpointsForDimension26	"[1:3]"
+      BreakpointsForDimension27	"[1:3]"
+      BreakpointsForDimension28	"[1:3]"
+      BreakpointsForDimension29	"[1:3]"
+      BreakpointsForDimension30	"[1:3]"
+      BreakpointsForDimension1Min "[]"
+      BreakpointsForDimension2Min "[]"
+      BreakpointsForDimension3Min "[]"
+      BreakpointsForDimension4Min "[]"
+      BreakpointsForDimension5Min "[]"
+      BreakpointsForDimension6Min "[]"
+      BreakpointsForDimension7Min "[]"
+      BreakpointsForDimension8Min "[]"
+      BreakpointsForDimension9Min "[]"
+      BreakpointsForDimension10Min "[]"
+      BreakpointsForDimension11Min "[]"
+      BreakpointsForDimension12Min "[]"
+      BreakpointsForDimension13Min "[]"
+      BreakpointsForDimension14Min "[]"
+      BreakpointsForDimension15Min "[]"
+      BreakpointsForDimension16Min "[]"
+      BreakpointsForDimension17Min "[]"
+      BreakpointsForDimension18Min "[]"
+      BreakpointsForDimension19Min "[]"
+      BreakpointsForDimension20Min "[]"
+      BreakpointsForDimension21Min "[]"
+      BreakpointsForDimension22Min "[]"
+      BreakpointsForDimension23Min "[]"
+      BreakpointsForDimension24Min "[]"
+      BreakpointsForDimension25Min "[]"
+      BreakpointsForDimension26Min "[]"
+      BreakpointsForDimension27Min "[]"
+      BreakpointsForDimension28Min "[]"
+      BreakpointsForDimension29Min "[]"
+      BreakpointsForDimension30Min "[]"
+      BreakpointsForDimension1Max "[]"
+      BreakpointsForDimension2Max "[]"
+      BreakpointsForDimension3Max "[]"
+      BreakpointsForDimension4Max "[]"
+      BreakpointsForDimension5Max "[]"
+      BreakpointsForDimension6Max "[]"
+      BreakpointsForDimension7Max "[]"
+      BreakpointsForDimension8Max "[]"
+      BreakpointsForDimension9Max "[]"
+      BreakpointsForDimension10Max "[]"
+      BreakpointsForDimension11Max "[]"
+      BreakpointsForDimension12Max "[]"
+      BreakpointsForDimension13Max "[]"
+      BreakpointsForDimension14Max "[]"
+      BreakpointsForDimension15Max "[]"
+      BreakpointsForDimension16Max "[]"
+      BreakpointsForDimension17Max "[]"
+      BreakpointsForDimension18Max "[]"
+      BreakpointsForDimension19Max "[]"
+      BreakpointsForDimension20Max "[]"
+      BreakpointsForDimension21Max "[]"
+      BreakpointsForDimension22Max "[]"
+      BreakpointsForDimension23Max "[]"
+      BreakpointsForDimension24Max "[]"
+      BreakpointsForDimension25Max "[]"
+      BreakpointsForDimension26Max "[]"
+      BreakpointsForDimension27Max "[]"
+      BreakpointsForDimension28Max "[]"
+      BreakpointsForDimension29Max "[]"
+      BreakpointsForDimension30Max "[]"
+      BreakpointsForDimension1DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension2DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension3DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension4DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension5DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension6DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension7DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension8DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension9DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension10DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension11DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension12DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension13DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension14DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension15DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension16DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension17DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension18DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension19DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension20DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension21DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension22DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension23DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension24DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension25DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension26DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension27DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension28DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension29DataTypeStr "Inherit: Same as corresponding input"
+      BreakpointsForDimension30DataTypeStr "Inherit: Same as corresponding input"
+      IndexSearchMethod	      "Binary search"
+      BeginIndexSearchUsingPreviousIndexResult off
+      UseOneInputPortForAllInputData off
+      Table		      "[4 5 6;16 19 20;10 18 23]"
+      TableMin		      "[]"
+      TableMax		      "[]"
+      TableDataTypeStr	      "Inherit: Same as output"
+      IntermediateResultsDataTypeStr "Inherit: Same as output"
+      InterpMethod	      "Linear"
+      ExtrapMethod	      "Linear"
+      DiagnosticForOutOfRangeInput "None"
+      RemoveProtectionInput   off
+      UseLastTableValue	      off
+      SampleTime	      "-1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      FractionDataTypeStr     "Inherit: Inherit via internal rule"
+      SupportTunableTableSize off
+      MaximumIndicesForEachDimension "[]"
+      LUTDesignTableMode      "Redesign Table"
+      LUTDesignDataSource     "Block Dialog"
+      LUTDesignFunctionName   "sqrt(x)"
+      LUTDesignUseExistingBP  on
+      LUTDesignRelError	      "0.01"
+      LUTDesignAbsError	      "1e-6"
     }
     Block {
       BlockType		      Outport
@@ -813,7 +973,7 @@ Model {
   }
   System {
     Name		    "ART"
-    Location		    [2056, 345, 2901, 885]
+    Location		    [62, 540, 907, 1023]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -827,7 +987,20 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "72"
+    SIDHighWatermark	    "77"
+    Block {
+      BlockType		      Lookup_n-D
+      Name		      "1-D Lookup\nTable"
+      SID		      "73"
+      Ports		      [1, 1]
+      Position		      [365, 253, 430, 317]
+      ZOrder		      -1
+      NumberOfTableDimensions "1"
+      BreakpointsForDimension1 "[0,1,2,3,4,5,6,7,8,9,10]"
+      IndexSearchMethod	      "Binary search"
+      Table		      "[0,0,0.055031,2.0519,3.5299,3.9387,4.4418,4.7248,4.7973,4.8821,4.9135]"
+      RndMeth		      "Simplest"
+    }
     Block {
       BlockType		      Sum
       Name		      "Add1"
@@ -844,13 +1017,13 @@ Model {
       Name		      "Descending1"
       SID		      "54"
       Ports		      [0, 1]
-      Position		      [30, 15, 60, 45]
+      Position		      [25, 20, 55, 50]
       ZOrder		      -16
       LibraryVersion	      "1.256"
       SourceBlock	      "simulink/Sources/Repeating\nSequence"
       SourceType	      "Repeating table"
       rep_seq_t		      "[0 1.1 3.1 6.8 9.5 10 ]"
-      rep_seq_y		      "[0 0 20 20 0 0]*1"
+      rep_seq_y		      "[0 0 20 20 0 0]*0.3"
     }
     Block {
       BlockType		      Reference
@@ -883,8 +1056,8 @@ Model {
       BlockType		      S-Function
       Name		      "SN1"
       SID		      "41"
-      Ports		      [1, 2]
-      Position		      [235, 96, 430, 134]
+      Ports		      [1, 3]
+      Position		      [315, 97, 420, 173]
       BackgroundColor	      "orange"
       FunctionName	      "izh"
       Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_11] [-70.0 -14.0]"
@@ -912,7 +1085,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"SNR21"
-	Location		[614, 333, 1259, 556]
+	Location		[1, 333, 646, 556]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1085,8 +1258,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"SNR3"
-	Location		[2043, 81, 2688, 304]
-	Open			on
+	Location		[990, 58, 1635, 281]
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1139,7 +1312,7 @@ Model {
 	  SID			  "64"
 	  Position		  [410, 115, 440, 145]
 	  ZOrder		  -4
-	  Value			  "15"
+	  Value			  "1.2"
 	}
 	Block {
 	  BlockType		  Scope
@@ -1255,9 +1428,10 @@ Model {
       Position		      [800, 61, 830, 94]
       NamePlacement	      "alternate"
       Floating		      off
-      Location		      [141, 690, 1199, 1262]
-      Open		      on
+      Location		      [935, 588, 1941, 1027]
+      Open		      off
       NumInputPorts	      "2"
+      ZoomMode		      "xonly"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
@@ -1290,8 +1464,8 @@ Model {
       Position		      [225, 171, 255, 204]
       NamePlacement	      "alternate"
       Floating		      off
-      Location		      [895, 506, 1953, 1078]
-      Open		      on
+      Location		      [759, 443, 1817, 1015]
+      Open		      off
       NumInputPorts	      "2"
       List {
 	ListType		AxesTitles
@@ -1319,14 +1493,49 @@ Model {
     }
     Block {
       BlockType		      Scope
+      Name		      "Scope3"
+      SID		      "75"
+      Ports		      [2]
+      Position		      [485, 276, 515, 309]
+      NamePlacement	      "alternate"
+      Floating		      off
+      Location		      [718, 151, 1776, 723]
+      Open		      off
+      NumInputPorts	      "2"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.501960784313725 0.501960784313725 0.501960784313725]"
+	AxesColor		"[1 1 1]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[0 0 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[2 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      TimeRange		      "10"
+      YMin		      "0~-5"
+      YMax		      "37.5~5"
+      SaveToWorkspace	      on
+      SaveName		      "total_force3"
+      DataFormat	      "Structure"
+      LimitDataPoints	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
       Name		      "Scope5"
       SID		      "69"
       Ports		      [2]
-      Position		      [500, 131, 530, 164]
+      Position		      [510, 131, 540, 164]
       NamePlacement	      "alternate"
       Floating		      off
-      Location		      [136, 58, 1194, 630]
-      Open		      on
+      Location		      [942, 58, 1939, 540]
+      Open		      off
       NumInputPorts	      "2"
       List {
 	ListType		AxesTitles
@@ -1356,7 +1565,7 @@ Model {
       BlockType		      DiscreteTransferFcn
       Name		      "Synapse1"
       SID		      "68"
-      Position		      [460, 16, 540, 54]
+      Position		      [460, 12, 540, 58]
       Numerator		      "num_syn / 1024 / 17"
       Denominator	      "den_syn"
       SampleTime	      "T"
@@ -1375,8 +1584,8 @@ Model {
       BlockType		      S-Function
       Name		      "motoneuron3"
       SID		      "70"
-      Ports		      [1, 2]
-      Position		      [575, 106, 770, 144]
+      Ports		      [1, 3]
+      Position		      [615, 111, 730, 179]
       BackgroundColor	      "lightBlue"
       FunctionName	      "izh"
       Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_3] [-70.0 -14.0]"
@@ -1389,12 +1598,32 @@ Model {
       MaskPortRotate	      "default"
       MaskIconUnits	      "autoscale"
     }
+    Block {
+      BlockType		      Display
+      Name		      "totlal spike count"
+      SID		      "76"
+      Ports		      [1]
+      Position		      [455, 173, 550, 207]
+      ZOrder		      -1
+      Decimation	      "3"
+      Lockdown		      off
+    }
+    Block {
+      BlockType		      Display
+      Name		      "totlal spike count1"
+      SID		      "77"
+      Ports		      [1]
+      Position		      [745, 173, 840, 207]
+      ZOrder		      -1
+      Decimation	      "3"
+      Lockdown		      off
+    }
     Line {
       SrcBlock		      "SNR21"
       SrcPort		      1
       Points		      [5, 0; 0, 40]
       Branch {
-	Points			[0, 40]
+	Points			[0, 65]
 	DstBlock		"SN1"
 	DstPort			1
       }
@@ -1407,9 +1636,24 @@ Model {
     Line {
       SrcBlock		      "Add1"
       SrcPort		      1
-      Points		      [0, 70; -25, 0]
-      DstBlock		      "Manual Switch"
-      DstPort		      1
+      Points		      [0, 25]
+      Branch {
+	Points			[0, 45; -25, 0]
+	DstBlock		"Manual Switch"
+	DstPort			1
+      }
+      Branch {
+	Points			[35, 0; 0, 165; 180, 0]
+	Branch {
+	  DstBlock		  "1-D Lookup\nTable"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [-5, 0; 0, -45; 145, 0]
+	  DstBlock		  "Scope3"
+	  DstPort		  1
+	}
+      }
     }
     Line {
       SrcBlock		      "Uniform Random\nNumber"
@@ -1426,6 +1670,7 @@ Model {
     Line {
       SrcBlock		      "Descending1"
       SrcPort		      1
+      Points		      [5, 0]
       DstBlock		      "Add1"
       DstPort		      1
     }
@@ -1447,14 +1692,14 @@ Model {
     Line {
       SrcBlock		      "SN1"
       SrcPort		      2
-      Points		      [0, -75]
+      Points		      [10, 0; 0, -85]
       Branch {
 	Points			[0, -15]
 	DstBlock		"Synapse1"
 	DstPort			1
       }
       Branch {
-	Points			[0, 90]
+	Points			[10, 0; 0, 90]
 	DstBlock		"Scope5"
 	DstPort			1
       }
@@ -1468,7 +1713,7 @@ Model {
 	DstPort			1
       }
       Branch {
-	Points			[0, 45; -70, 0]
+	Points			[0, 45; -60, 0]
 	DstBlock		"Scope5"
 	DstPort			2
       }
@@ -1476,16 +1721,48 @@ Model {
     Line {
       SrcBlock		      "SNR3"
       SrcPort		      1
-      Points		      [0, 60; -110, 0]
-      DstBlock		      "motoneuron3"
-      DstPort		      1
+      Points		      [0, 35]
+      Branch {
+	Points			[0, 25; -70, 0]
+	DstBlock		"motoneuron3"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Scope1"
+	DstPort			1
+      }
     }
     Line {
       SrcBlock		      "motoneuron3"
       SrcPort		      2
-      Points		      [5, 0; 0, -65]
+      Points		      [45, 0; 0, -60]
       DstBlock		      "Scope1"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "1-D Lookup\nTable"
+      SrcPort		      1
+      Points		      [20, 0; 0, 15]
+      DstBlock		      "Scope3"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "SN1"
+      SrcPort		      3
+      Points		      [5, 0; 0, 30]
+      DstBlock		      "totlal spike count"
       DstPort		      1
+    }
+    Line {
+      SrcBlock		      "motoneuron3"
+      SrcPort		      3
+      Points		      [0, 25]
+      DstBlock		      "totlal spike count1"
+      DstPort		      1
+    }
+    Annotation {
+      Name		      "real time variable update?"
+      Position		      [341, 381]
     }
   }
 }
