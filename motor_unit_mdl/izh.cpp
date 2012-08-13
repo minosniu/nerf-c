@@ -51,7 +51,7 @@
 #define NSTATES   2 // {u, v} in Izhi model. mxGetN(X0_PARAM(S))
 #define NMAGICNUM 6 // {a, b, c, d} in Izh model + {threthold control}
 #define NINPUTS   1 // {I} in Izhi model. mxGetN(B_PARAM(S))
-#define NOUTPUTS  2 // {u, spike} in Izhi model. mxGetM(C_PARAM(S))
+#define NOUTPUTS  3 // {u, spike, spike_count} in Izhi model. mxGetM(C_PARAM(S))
 
 #define IS_PARAM_DOUBLE(pVal) (mxIsNumeric(pVal) && !mxIsLogical(pVal) &&\
 !mxIsEmpty(pVal) && !mxIsSparse(pVal) && !mxIsComplex(pVal) && mxIsDouble(pVal))
@@ -138,6 +138,7 @@ static void mdlInitializeSizes(SimStruct *S)
     {
         ssSetOutputPortWidth(S, 0, 1);
         ssSetOutputPortWidth(S, 1, 1);
+        ssSetOutputPortWidth(S, 2, 1);
     }
     ssSetNumSampleTimes(S, 1);
     ssSetNumRWork(S, 0);
@@ -229,10 +230,11 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     
     if (v >= TH) // if spikes    
     {
-      x[0] = C;
-      x[1] = u + D;
+      x[0] = C;      // v?
+      x[1] = u + D;  // u?
       y[0] = C;             
       y[1] = 10.0 / (pow(EPSP_WEIGHT, 1.6)) * SAMPLING_RATE; // 1 = spiking
+      y[2] = y[2]+1;
       //y[1] = 1.0 * SAMPLING_RATE; // 1 = spiking
 
     }
@@ -240,6 +242,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     {
         y[0] = x[0];
         y[1] = 0.0;
+        y[2] = y[2];
     };
 
 // 
@@ -284,7 +287,8 @@ static void mdlDerivatives(SimStruct *S)
     
     real_T  v = x[0];
     real_T  u = x[1];
-    
+    printf("%3f", x[1]);
+
     real_T  A = apr[0];
     real_T  B = apr[1];
 
