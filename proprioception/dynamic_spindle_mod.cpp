@@ -561,12 +561,12 @@ IIPtrs[0] = II_muscle;
 			
 			
 			 if (j==0) {  //when it's bag1 intrafusal fiber, activation is from gd-gamma dynamic input "*gdPtrs"                
-				Mingd=pow((*gdPtrs[0]),2)/((pow((*gdPtrs[0]),2))+pow(60,2));
+				Mingd=pow(static_cast<double>(*gdPtrs[0]),2)/((pow(static_cast<double>(*gdPtrs[0]),2))+pow(60.0f,2));
                 dx[0+3*j] = (Mingd-x[0+3*j])/0.149; // this is implementing ((min(((*gdPtrs)/fs[j]),1))-x[0+3*j])/tao[j]; 
                 //dx[0+3*j] = (min((*gdPtrs[0]/fs[j]),1)-x[0+3*j])/tao[j]; // this is implementing ((min(((*gdPtrs)/fs[j]),1))-x[0+3*j])/tao[j]; 
             }
             else if (j==1)   {     //when it's bag2 and chain, activation is from gs-gamma static input "*gsPtrs"
-                Mings=pow((*gsPtrs[0]),2)/((pow((*gsPtrs[0]),2))+pow(60,2));
+                Mings=pow(static_cast<double>(*gsPtrs[0]),2)/((pow(static_cast<double>(*gsPtrs[0]),2))+pow(60.0f,2));
                 dx[0+3*j] = (Mings-x[0+3*j])/0.205; // this is implementing ((min(((*gdPtrs)/fs[j]),1))-x[0+3*j])/tao[j]; 
                 //dx[0+3*j] = (min((*gsPtrs[0]/fs[j]),1)-x[0+3*j])/tao[j]; // this is implementing ((min(((*gdPtrs)/fs[j]),1))-x[0+3*j])/tao[j]; 
             } //dx[1] second state representing LPR (polar region length) of jth intrafusal fiber in the spindle of ith muscle
@@ -574,7 +574,7 @@ IIPtrs[0] = II_muscle;
 				dx[0+3*j] = 0.0;
 			}
 			
-			x[0+3*2] = pow((*gsPtrs[0]),2)/((pow((*gsPtrs[0]),2))+pow(90,2));
+			x[0+3*2] = pow(static_cast<double>(*gsPtrs[0]),2)/((pow(static_cast<double>(*gsPtrs[0]),2))+pow(90.0f,2));
 			        
 			dx[1+3*j] = x[2+3*j];   
             CSS[j]=(2/(1+exp(-1000*x[2+3*j])))-1; //temporary var used for dx[2+3*j]
