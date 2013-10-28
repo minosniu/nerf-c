@@ -6,11 +6,11 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.88"
+    ComputedModelVersion    "1.93"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
-  SavedCharacterEncoding  "ISO-8859-1"
+  SavedCharacterEncoding  "windows-1252"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -37,7 +37,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1991.0, 28.0, 1960.0, 1174.0]
+      Location		      [-10.0, -10.0, 1940.0, 1100.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -46,7 +46,7 @@ Model {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -61,9 +61,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1926.0, 1001.0]
+	Extents			[1886.0, 880.0]
 	ZoomFactor		[0.8]
-	Offset			[-10.524013087093863, 329.99307827102746]
+	Offset			[-298.43135310091134, 427.25385111835021]
       }
     }
   }
@@ -71,11 +71,11 @@ Model {
   Creator		  "minos_niu"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "minos_niu"
+  LastModifiedBy	  "C. Minos Niu"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Oct 18 17:23:50 2013"
-  RTWModifiedTimeStamp	  304017753
-  ModelVersionFormat	  "1.%<AutoIncrement:88>"
+  LastModifiedDate	  "Sun Oct 27 17:00:55 2013"
+  RTWModifiedTimeStamp	  304794053
+  ModelVersionFormat	  "1.%<AutoIncrement:93>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -746,6 +746,12 @@ Model {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      Concatenate
+      NumInputs		      "2"
+      Mode		      "Vector"
+      ConcatenateDimension    "1"
+    }
+    Block {
       BlockType		      Constant
       Value		      "1"
       VectorParams1D	      on
@@ -953,7 +959,7 @@ Model {
   }
   System {
     Name		    "verify_loeb_spindle"
-    Location		    [1991, 28, 3951, 1202]
+    Location		    [-10, -10, 1930, 1090]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -967,39 +973,15 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "820"
-    Block {
-      BlockType		      Sum
-      Name		      "Add"
-      SID		      "571"
-      Ports		      [10, 1]
-      Position		      [1330, 1124, 1350, 1316]
-      ZOrder		      21
-      Inputs		      "++++++++++"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
+    SIDHighWatermark	    "828"
     Block {
       BlockType		      Sum
       Name		      "Add1"
       SID		      "692"
-      Ports		      [10, 1]
-      Position		      [1435, 929, 1455, 1121]
+      Ports		      [16, 1]
+      Position		      [1360, 729, 1375, 986]
       ZOrder		      62
-      Inputs		      "++++++++++"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Add2"
-      SID		      "693"
-      Ports		      [10, 1]
-      Position		      [965, 19, 985, 211]
-      ZOrder		      63
-      Inputs		      "++++++++++"
+      Inputs		      "++++++++++++++++"
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1072,7 +1054,7 @@ Model {
       BlockType		      Constant
       Name		      "Constant8"
       SID		      "461"
-      Position		      [150, 590, 180, 620]
+      Position		      [230, 590, 260, 620]
       ZOrder		      -4
       Value		      "0"
     }
@@ -1081,7 +1063,7 @@ Model {
       Name		      "Descending cmd"
       SID		      "87"
       Ports		      [0, 1]
-      Position		      [275, 431, 320, 469]
+      Position		      [355, 431, 400, 469]
       ZOrder		      -13
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -1206,7 +1188,7 @@ Model {
       Name		      "Fast_spiking"
       SID		      "445"
       Ports		      [1, 2]
-      Position		      [190, 811, 385, 849]
+      Position		      [270, 811, 465, 849]
       ZOrder		      -14
       BackgroundColor	      "lightBlue"
       FunctionName	      "izh"
@@ -1240,36 +1222,17 @@ Model {
       }
     }
     Block {
-      BlockType		      S-Function
-      Name		      "Fast_spiking2"
-      SID		      "632"
-      Ports		      [1, 2]
-      Position		      [965, 1366, 1160, 1404]
-      ZOrder		      51
-      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      FunctionName	      "izh"
-      Parameters	      "[0.01 0.2 -65.0 2.0 30.0 SIZE_MU_10] [-70.0 -14.0]"
-      EnableBusSupport	      off
-      Object {
-	$PropName		"MaskObject"
-	$ObjectID		21
-	$ClassName		"Simulink.Mask"
-	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
-	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-      }
-    }
-    Block {
       BlockType		      ManualSwitch
       Name		      "Manual Switch"
       SID		      "442"
-      Position		      [325, 542, 355, 578]
+      Position		      [405, 542, 435, 578]
       ZOrder		      -13
     }
     Block {
       BlockType		      ManualSwitch
       Name		      "Manual Switch1"
       SID		      "460"
-      Position		      [125, 432, 155, 468]
+      Position		      [205, 432, 235, 468]
       ZOrder		      -13
     }
     Block {
@@ -1277,7 +1240,7 @@ Model {
       Name		      "Repeating\nSequence1"
       SID		      "462"
       Ports		      [0, 1]
-      Position		      [115, 535, 145, 565]
+      Position		      [195, 535, 225, 565]
       ZOrder		      -16
       BlockRotation	      270
       BlockMirror	      on
@@ -1293,7 +1256,7 @@ Model {
       Name		      "Repeating\nSequence2"
       SID		      "446"
       Ports		      [0, 1]
-      Position		      [85, 815, 115, 845]
+      Position		      [165, 815, 195, 845]
       ZOrder		      -16
       LibraryVersion	      "1.274"
       SourceBlock	      "simulink/Sources/Repeating\nSequence"
@@ -1306,7 +1269,7 @@ Model {
       Name		      "Repeating\nSequence3"
       SID		      "459"
       Ports		      [0, 1]
-      Position		      [60, 445, 90, 475]
+      Position		      [140, 445, 170, 475]
       ZOrder		      -16
       BlockRotation	      270
       BlockMirror	      on
@@ -1322,10 +1285,10 @@ Model {
       Name		      "Scope"
       SID		      "468"
       Ports		      [1]
-      Position		      [1485, 1009, 1515, 1041]
+      Position		      [1400, 879, 1430, 911]
       ZOrder		      4
       Floating		      off
-      Location		      [188, 390, 1671, 735]
+      Location		      [5, 390, 1488, 735]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1352,7 +1315,7 @@ Model {
       Name		      "Scope1"
       SID		      "448"
       Ports		      [4]
-      Position		      [420, 783, 450, 817]
+      Position		      [500, 783, 530, 817]
       ZOrder		      -31
       Floating		      off
       Location		      [296, 221, 1038, 686]
@@ -1391,7 +1354,7 @@ Model {
       Name		      "Scope3"
       SID		      "397"
       Ports		      [4]
-      Position		      [545, 368, 575, 402]
+      Position		      [625, 368, 655, 402]
       ZOrder		      -32
       Floating		      off
       Location		      [33, 414, 1537, 1020]
@@ -1429,7 +1392,7 @@ Model {
       Name		      "Sine Wave"
       SID		      "425"
       Ports		      [0, 1]
-      Position		      [75, 385, 105, 415]
+      Position		      [155, 385, 185, 415]
       ZOrder		      -21
       Amplitude		      "0.1"
       Bias		      "1.1"
@@ -1442,7 +1405,7 @@ Model {
       Name		      "Spindle"
       SID		      "101"
       Ports		      [3, 2]
-      Position		      [245, 521, 300, 599]
+      Position		      [325, 521, 380, 599]
       ZOrder		      -34
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -1753,7 +1716,7 @@ Model {
 	  Ports			  [1]
 	  Position		  [330, 25, 390, 55]
 	  ZOrder		  -7
-	  VariableName		  "nips_stretch95"
+	  VariableName		  "nips_stretch98"
 	  MaxDataPoints		  "inf"
 	  SampleTime		  "-1"
 	  SaveFormat		  "Structure With Time"
@@ -1765,7 +1728,7 @@ Model {
 	  Ports			  [1]
 	  Position		  [330, 90, 390, 120]
 	  ZOrder		  -7
-	  VariableName		  "nips_stretchvel95"
+	  VariableName		  "nips_stretchvel98"
 	  MaxDataPoints		  "inf"
 	  SampleTime		  "-1"
 	  SaveFormat		  "Structure With Time"
@@ -1833,7 +1796,7 @@ Model {
 	  EnableBusSupport	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    22
+	    $ObjectID		    21
 	    $ClassName		    "Simulink.Mask"
 	    Display		    "port_label('input', 1, 'gamma dynamic');\nport_label('input', 2, 'gamma static');\nport_label('inpu"
 	    "t', 3, 'Lce(L0)');\nport_label('output',1,'Ia');\nport_label('output',2,'II');\ndisp('Muscle Spindle \\n(S-Functi"
@@ -2107,27 +2070,24 @@ Model {
       }
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum"
-      SID		      "467"
-      Ports		      [11, 1]
-      Position		      [1340, 675, 1410, 785]
-      ZOrder		      3
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|+++++++++++"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      ToWorkspace
+      Name		      "To Workspace1"
+      SID		      "828"
+      Ports		      [1]
+      Position		      [1680, 737, 1740, 753]
+      ZOrder		      112
+      VariableName	      "fpga_raster"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      ToWorkspace
       Name		      "To Workspace10"
       SID		      "715"
       Ports		      [1]
-      Position		      [505, 562, 565, 578]
+      Position		      [585, 562, 645, 578]
       ZOrder		      85
-      VariableName	      "loeb_pps11"
+      VariableName	      "loeb_pps14"
       MaxDataPoints	      "inf"
       SampleTime	      "-1"
     }
@@ -2136,18 +2096,27 @@ Model {
       Name		      "To Workspace4"
       SID		      "714"
       Ports		      [1]
-      Position		      [1565, 982, 1625, 998]
+      Position		      [1410, 807, 1470, 823]
       ZOrder		      84
-      VariableName	      "fpga_pps11"
+      VariableName	      "fpga_pps14"
       MaxDataPoints	      "inf"
       SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Concatenate
+      Name		      "Vector\nConcatenate"
+      SID		      "827"
+      Ports		      [16, 1]
+      Position		      [1610, 504, 1645, 986]
+      ZOrder		      111
+      NumInputs		      "16"
     }
     Block {
       BlockType		      SubSystem
       Name		      "additiveNoise"
       SID		      "485"
       Ports		      [1, 1]
-      Position		      [625, 396, 700, 434]
+      Position		      [705, 396, 780, 434]
       ZOrder		      5
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2234,7 +2203,7 @@ Model {
       Name		      "additiveNoise1"
       SID		      "716"
       Ports		      [1, 1]
-      Position		      [625, 446, 700, 484]
+      Position		      [705, 446, 780, 484]
       ZOrder		      86
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2321,7 +2290,7 @@ Model {
       Name		      "additiveNoise10"
       SID		      "761"
       Ports		      [1, 1]
-      Position		      [625, 916, 700, 954]
+      Position		      [705, 896, 780, 934]
       ZOrder		      95
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2408,7 +2377,7 @@ Model {
       Name		      "additiveNoise11"
       SID		      "766"
       Ports		      [1, 1]
-      Position		      [625, 966, 700, 1004]
+      Position		      [705, 946, 780, 984]
       ZOrder		      96
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2495,7 +2464,7 @@ Model {
       Name		      "additiveNoise12"
       SID		      "771"
       Ports		      [1, 1]
-      Position		      [625, 1016, 700, 1054]
+      Position		      [705, 996, 780, 1034]
       ZOrder		      97
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2582,7 +2551,7 @@ Model {
       Name		      "additiveNoise13"
       SID		      "776"
       Ports		      [1, 1]
-      Position		      [625, 1066, 700, 1104]
+      Position		      [705, 1046, 780, 1084]
       ZOrder		      98
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2669,7 +2638,7 @@ Model {
       Name		      "additiveNoise14"
       SID		      "781"
       Ports		      [1, 1]
-      Position		      [625, 1116, 700, 1154]
+      Position		      [705, 1096, 780, 1134]
       ZOrder		      99
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2756,7 +2725,7 @@ Model {
       Name		      "additiveNoise15"
       SID		      "786"
       Ports		      [1, 1]
-      Position		      [625, 1171, 700, 1209]
+      Position		      [705, 1151, 780, 1189]
       ZOrder		      100
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2840,358 +2809,10 @@ Model {
     }
     Block {
       BlockType		      SubSystem
-      Name		      "additiveNoise16"
-      SID		      "791"
-      Ports		      [1, 1]
-      Position		      [625, 1216, 700, 1254]
-      ZOrder		      101
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
-      RequestExecContextInheritance off
-      MaskHideContents	      off
-      VariantControl	      "Variant1"
-      System {
-	Name			"additiveNoise16"
-	Location		[1991, 28, 3951, 1202]
-	Open			off
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"100"
-	Block {
-	  BlockType		  Inport
-	  Name			  "In1"
-	  SID			  "792"
-	  Position		  [130, 288, 160, 302]
-	  ZOrder		  -1
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "Add1"
-	  SID			  "793"
-	  Ports			  [2, 1]
-	  Position		  [225, 287, 255, 318]
-	  ZOrder		  2
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  UniformRandomNumber
-	  Name			  "Uniform Random\nNumber1"
-	  SID			  "794"
-	  Position		  [130, 314, 160, 346]
-	  ZOrder		  1
-	  Seed			  "floor(rand()*100)"
-	  SampleTime		  "T"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "Out1"
-	  SID			  "795"
-	  Position		  [295, 298, 325, 312]
-	  ZOrder		  -23
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  SrcBlock		  "Add1"
-	  SrcPort		  1
-	  DstBlock		  "Out1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "In1"
-	  SrcPort		  1
-	  DstBlock		  "Add1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Uniform Random\nNumber1"
-	  SrcPort		  1
-	  Points		  [27, 0; 0, -20]
-	  DstBlock		  "Add1"
-	  DstPort		  2
-	}
-      }
-    }
-    Block {
-      BlockType		      SubSystem
-      Name		      "additiveNoise17"
-      SID		      "796"
-      Ports		      [1, 1]
-      Position		      [625, 1266, 700, 1304]
-      ZOrder		      102
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
-      RequestExecContextInheritance off
-      MaskHideContents	      off
-      VariantControl	      "Variant1"
-      System {
-	Name			"additiveNoise17"
-	Location		[1991, 28, 3951, 1202]
-	Open			off
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"100"
-	Block {
-	  BlockType		  Inport
-	  Name			  "In1"
-	  SID			  "797"
-	  Position		  [130, 288, 160, 302]
-	  ZOrder		  -1
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "Add1"
-	  SID			  "798"
-	  Ports			  [2, 1]
-	  Position		  [225, 287, 255, 318]
-	  ZOrder		  2
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  UniformRandomNumber
-	  Name			  "Uniform Random\nNumber1"
-	  SID			  "799"
-	  Position		  [130, 314, 160, 346]
-	  ZOrder		  1
-	  Seed			  "floor(rand()*100)"
-	  SampleTime		  "T"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "Out1"
-	  SID			  "800"
-	  Position		  [295, 298, 325, 312]
-	  ZOrder		  -23
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  SrcBlock		  "Uniform Random\nNumber1"
-	  SrcPort		  1
-	  Points		  [27, 0; 0, -20]
-	  DstBlock		  "Add1"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "In1"
-	  SrcPort		  1
-	  DstBlock		  "Add1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Add1"
-	  SrcPort		  1
-	  DstBlock		  "Out1"
-	  DstPort		  1
-	}
-      }
-    }
-    Block {
-      BlockType		      SubSystem
-      Name		      "additiveNoise18"
-      SID		      "801"
-      Ports		      [1, 1]
-      Position		      [625, 1316, 700, 1354]
-      ZOrder		      103
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
-      RequestExecContextInheritance off
-      MaskHideContents	      off
-      VariantControl	      "Variant1"
-      System {
-	Name			"additiveNoise18"
-	Location		[1991, 28, 3951, 1202]
-	Open			off
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"100"
-	Block {
-	  BlockType		  Inport
-	  Name			  "In1"
-	  SID			  "802"
-	  Position		  [130, 288, 160, 302]
-	  ZOrder		  -1
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "Add1"
-	  SID			  "803"
-	  Ports			  [2, 1]
-	  Position		  [225, 287, 255, 318]
-	  ZOrder		  2
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  UniformRandomNumber
-	  Name			  "Uniform Random\nNumber1"
-	  SID			  "804"
-	  Position		  [130, 314, 160, 346]
-	  ZOrder		  1
-	  Seed			  "floor(rand()*100)"
-	  SampleTime		  "T"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "Out1"
-	  SID			  "805"
-	  Position		  [295, 298, 325, 312]
-	  ZOrder		  -23
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  SrcBlock		  "Add1"
-	  SrcPort		  1
-	  DstBlock		  "Out1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "In1"
-	  SrcPort		  1
-	  DstBlock		  "Add1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Uniform Random\nNumber1"
-	  SrcPort		  1
-	  Points		  [27, 0; 0, -20]
-	  DstBlock		  "Add1"
-	  DstPort		  2
-	}
-      }
-    }
-    Block {
-      BlockType		      SubSystem
-      Name		      "additiveNoise19"
-      SID		      "806"
-      Ports		      [1, 1]
-      Position		      [625, 1366, 700, 1404]
-      ZOrder		      104
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
-      RequestExecContextInheritance off
-      MaskHideContents	      off
-      VariantControl	      "Variant1"
-      System {
-	Name			"additiveNoise19"
-	Location		[1991, 28, 3951, 1202]
-	Open			off
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"100"
-	Block {
-	  BlockType		  Inport
-	  Name			  "In1"
-	  SID			  "807"
-	  Position		  [130, 288, 160, 302]
-	  ZOrder		  -1
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "Add1"
-	  SID			  "808"
-	  Ports			  [2, 1]
-	  Position		  [225, 287, 255, 318]
-	  ZOrder		  2
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  UniformRandomNumber
-	  Name			  "Uniform Random\nNumber1"
-	  SID			  "809"
-	  Position		  [130, 314, 160, 346]
-	  ZOrder		  1
-	  Seed			  "floor(rand()*100)"
-	  SampleTime		  "T"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "Out1"
-	  SID			  "810"
-	  Position		  [295, 298, 325, 312]
-	  ZOrder		  -23
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  SrcBlock		  "Uniform Random\nNumber1"
-	  SrcPort		  1
-	  Points		  [27, 0; 0, -20]
-	  DstBlock		  "Add1"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "In1"
-	  SrcPort		  1
-	  DstBlock		  "Add1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Add1"
-	  SrcPort		  1
-	  DstBlock		  "Out1"
-	  DstPort		  1
-	}
-      }
-    }
-    Block {
-      BlockType		      SubSystem
       Name		      "additiveNoise2"
       SID		      "721"
       Ports		      [1, 1]
-      Position		      [625, 496, 700, 534]
+      Position		      [705, 496, 780, 534]
       ZOrder		      87
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -3278,7 +2899,7 @@ Model {
       Name		      "additiveNoise3"
       SID		      "726"
       Ports		      [1, 1]
-      Position		      [625, 546, 700, 584]
+      Position		      [705, 546, 780, 584]
       ZOrder		      88
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -3365,7 +2986,7 @@ Model {
       Name		      "additiveNoise4"
       SID		      "731"
       Ports		      [1, 1]
-      Position		      [625, 596, 700, 634]
+      Position		      [705, 596, 780, 634]
       ZOrder		      89
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -3452,7 +3073,7 @@ Model {
       Name		      "additiveNoise5"
       SID		      "736"
       Ports		      [1, 1]
-      Position		      [625, 651, 700, 689]
+      Position		      [705, 646, 780, 684]
       ZOrder		      90
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -3539,7 +3160,7 @@ Model {
       Name		      "additiveNoise6"
       SID		      "741"
       Ports		      [1, 1]
-      Position		      [625, 696, 700, 734]
+      Position		      [705, 696, 780, 734]
       ZOrder		      91
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -3626,7 +3247,7 @@ Model {
       Name		      "additiveNoise7"
       SID		      "746"
       Ports		      [1, 1]
-      Position		      [625, 746, 700, 784]
+      Position		      [705, 746, 780, 784]
       ZOrder		      92
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -3713,7 +3334,7 @@ Model {
       Name		      "additiveNoise8"
       SID		      "751"
       Ports		      [1, 1]
-      Position		      [625, 796, 700, 834]
+      Position		      [705, 796, 780, 834]
       ZOrder		      93
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -3800,7 +3421,7 @@ Model {
       Name		      "additiveNoise9"
       SID		      "756"
       Ports		      [1, 1]
-      Position		      [625, 846, 700, 884]
+      Position		      [705, 846, 780, 884]
       ZOrder		      94
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -3895,7 +3516,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		23
+	$ObjectID		22
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3906,11 +3527,30 @@ Model {
       Name		      "sensory10"
       SID		      "683"
       Ports		      [1, 2]
-      Position		      [965, 916, 1160, 954]
+      Position		      [965, 896, 1160, 934]
       ZOrder		      50
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
       FunctionName	      "izh"
       Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_1] [-70.0 -14.0]"
+      EnableBusSupport	      off
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		23
+	$ClassName		"Simulink.Mask"
+	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
+	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
+      }
+    }
+    Block {
+      BlockType		      S-Function
+      Name		      "sensory12"
+      SID		      "684"
+      Ports		      [1, 2]
+      Position		      [965, 946, 1160, 984]
+      ZOrder		      49
+      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
+      FunctionName	      "izh"
+      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_2] [-70.0 -14.0]"
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
@@ -3922,14 +3562,14 @@ Model {
     }
     Block {
       BlockType		      S-Function
-      Name		      "sensory12"
-      SID		      "684"
+      Name		      "sensory13"
+      SID		      "685"
       Ports		      [1, 2]
-      Position		      [965, 966, 1160, 1004]
-      ZOrder		      49
-      BackgroundColor	      "lightBlue"
+      Position		      [965, 996, 1160, 1034]
+      ZOrder		      48
+      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
       FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_2] [-70.0 -14.0]"
+      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_3] [-70.0 -14.0]"
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
@@ -3941,14 +3581,14 @@ Model {
     }
     Block {
       BlockType		      S-Function
-      Name		      "sensory13"
-      SID		      "685"
+      Name		      "sensory14"
+      SID		      "686"
       Ports		      [1, 2]
-      Position		      [965, 1016, 1160, 1054]
-      ZOrder		      48
+      Position		      [965, 1046, 1160, 1084]
+      ZOrder		      47
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
       FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_3] [-70.0 -14.0]"
+      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_4] [-70.0 -14.0]"
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
@@ -3960,14 +3600,14 @@ Model {
     }
     Block {
       BlockType		      S-Function
-      Name		      "sensory14"
-      SID		      "686"
+      Name		      "sensory15"
+      SID		      "687"
       Ports		      [1, 2]
-      Position		      [965, 1066, 1160, 1104]
-      ZOrder		      47
+      Position		      [965, 1096, 1160, 1134]
+      ZOrder		      46
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
       FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_4] [-70.0 -14.0]"
+      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_5] [-70.0 -14.0]"
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
@@ -3979,29 +3619,10 @@ Model {
     }
     Block {
       BlockType		      S-Function
-      Name		      "sensory15"
-      SID		      "687"
-      Ports		      [1, 2]
-      Position		      [965, 1116, 1160, 1154]
-      ZOrder		      46
-      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_5] [-70.0 -14.0]"
-      EnableBusSupport	      off
-      Object {
-	$PropName		"MaskObject"
-	$ObjectID		28
-	$ClassName		"Simulink.Mask"
-	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
-	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-      }
-    }
-    Block {
-      BlockType		      S-Function
       Name		      "sensory16"
       SID		      "688"
       Ports		      [1, 2]
-      Position		      [965, 1171, 1160, 1209]
+      Position		      [965, 1151, 1160, 1189]
       ZOrder		      45
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
       FunctionName	      "izh"
@@ -4009,64 +3630,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		29
-	$ClassName		"Simulink.Mask"
-	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
-	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-      }
-    }
-    Block {
-      BlockType		      S-Function
-      Name		      "sensory17"
-      SID		      "689"
-      Ports		      [1, 2]
-      Position		      [965, 1216, 1160, 1254]
-      ZOrder		      44
-      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_7] [-70.0 -14.0]"
-      EnableBusSupport	      off
-      Object {
-	$PropName		"MaskObject"
-	$ObjectID		30
-	$ClassName		"Simulink.Mask"
-	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
-	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-      }
-    }
-    Block {
-      BlockType		      S-Function
-      Name		      "sensory18"
-      SID		      "690"
-      Ports		      [1, 2]
-      Position		      [965, 1266, 1160, 1304]
-      ZOrder		      43
-      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_8] [-70.0 -14.0]"
-      EnableBusSupport	      off
-      Object {
-	$PropName		"MaskObject"
-	$ObjectID		31
-	$ClassName		"Simulink.Mask"
-	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
-	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-      }
-    }
-    Block {
-      BlockType		      S-Function
-      Name		      "sensory19"
-      SID		      "691"
-      Ports		      [1, 2]
-      Position		      [965, 1316, 1160, 1354]
-      ZOrder		      42
-      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      FunctionName	      "izh"
-      Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_9] [-70.0 -14.0]"
-      EnableBusSupport	      off
-      Object {
-	$PropName		"MaskObject"
-	$ObjectID		32
+	$ObjectID		28
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -4079,13 +3643,13 @@ Model {
       Ports		      [1, 2]
       Position		      [965, 446, 1160, 484]
       ZOrder		      -38
-      BackgroundColor	      "lightBlue"
+      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
       FunctionName	      "izh"
       Parameters	      "[0.02 0.2 -65.0 6.0 30.0 SIZE_MU_2] [-70.0 -14.0]"
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		33
+	$ObjectID		29
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -4104,7 +3668,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		34
+	$ObjectID		30
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -4123,7 +3687,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		35
+	$ObjectID		31
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -4142,7 +3706,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		36
+	$ObjectID		32
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -4153,7 +3717,7 @@ Model {
       Name		      "sensory6"
       SID		      "57"
       Ports		      [1, 2]
-      Position		      [965, 651, 1160, 689]
+      Position		      [965, 646, 1160, 684]
       ZOrder		      -42
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
       FunctionName	      "izh"
@@ -4161,7 +3725,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		37
+	$ObjectID		33
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -4180,7 +3744,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		38
+	$ObjectID		34
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -4199,7 +3763,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		39
+	$ObjectID		35
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -4218,7 +3782,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		40
+	$ObjectID		36
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -4228,14 +3792,14 @@ Model {
       BlockType		      Scope
       Name		      "spikes"
       SID		      "4"
-      Ports		      [11]
-      Position		      [1330, 379, 1355, 551]
+      Ports		      [9]
+      Position		      [1330, 385, 1350, 515]
       ZOrder		      -46
       NamePlacement	      "alternate"
       Floating		      off
-      Location		      [287, 122, 1682, 1041]
+      Location		      [1, 59, 1921, 1079]
       Open		      off
-      NumInputPorts	      "11"
+      NumInputPorts	      "9"
       TickLabels	      "on"
       ZoomMode		      "yonly"
       List {
@@ -4249,8 +3813,6 @@ Model {
 	axes7			"%<SignalLabel>"
 	axes8			"%<SignalLabel>"
 	axes9			"%<SignalLabel>"
-	axes10			"%<SignalLabel>"
-	axes11			"%<SignalLabel>"
       }
       List {
 	ListType		ScopeGraphics
@@ -4264,10 +3826,55 @@ Model {
       }
       ShowLegends	      off
       TimeRange		      "5"
-      YMin		      "-1000~-5~-5~-5~-5~-5~-5~-5~-5~-5~-5"
-      YMax		      "5000~5~5~5~5~5~5~5~5~5~5"
+      YMin		      "-1000~-5~-5~-5~-5~-5~-5~-5~-5"
+      YMax		      "5000~5~5~5~5~5~5~5~5"
       SaveToWorkspace	      on
       SaveName		      "spikes_g1"
+      DataFormat	      "Structure"
+      LimitDataPoints	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "spikes1"
+      SID		      "826"
+      Ports		      [8]
+      Position		      [1330, 1076, 1350, 1199]
+      ZOrder		      110
+      NamePlacement	      "alternate"
+      Floating		      off
+      Location		      [31, 89, 1426, 1008]
+      Open		      off
+      NumInputPorts	      "8"
+      TickLabels	      "on"
+      ZoomMode		      "yonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+	axes4			"%<SignalLabel>"
+	axes5			"%<SignalLabel>"
+	axes6			"%<SignalLabel>"
+	axes7			"%<SignalLabel>"
+	axes8			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.501960784313725 0.501960784313725 0.501960784313725]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      ShowLegends	      off
+      TimeRange		      "5"
+      YMin		      "-1000~-5~-5~-5~-5~-5~-5~-5"
+      YMax		      "5000~5~5~5~5~5~5~5"
+      SaveToWorkspace	      on
+      SaveName		      "spikes_g"
       DataFormat	      "Structure"
       LimitDataPoints	      off
       SampleTime	      "0"
@@ -4277,11 +3884,19 @@ Model {
       SrcPort		      2
       Points		      [0, -20; 148, 0]
       Branch {
-	Points			[0, 186; 39, 0]
-	DstBlock		"Sum"
-	DstPort			1
+	Points			[0, 115]
+	Branch {
+	  Points		  [0, 225]
+	  DstBlock		  "Add1"
+	  DstPort		  1
+	}
+	Branch {
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  1
+	}
       }
       Branch {
+	Points			[2, 0]
 	DstBlock		"spikes"
 	DstPort			2
       }
@@ -4291,11 +3906,19 @@ Model {
       SrcPort		      2
       Points		      [5, 0; 0, -55; 136, 0]
       Branch {
-	Points			[0, 192; 32, 0]
-	DstBlock		"Sum"
-	DstPort			2
+	Points			[0, 130]
+	Branch {
+	  Points		  [0, 210]
+	  DstBlock		  "Add1"
+	  DstPort		  2
+	}
+	Branch {
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  2
+	}
       }
       Branch {
+	Points			[9, 0]
 	DstBlock		"spikes"
 	DstPort			3
       }
@@ -4305,11 +3928,19 @@ Model {
       SrcPort		      2
       Points		      [10, 0; 0, -90; 123, 0]
       Branch {
-	Points			[0, 264]
-	DstBlock		"Sum"
-	DstPort			3
+	Points			[0, 145]
+	Branch {
+	  Points		  [0, 195]
+	  DstBlock		  "Add1"
+	  DstPort		  3
+	}
+	Branch {
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  3
+	}
       }
       Branch {
+	Points			[17, 0]
 	DstBlock		"spikes"
 	DstPort			4
       }
@@ -4319,11 +3950,19 @@ Model {
       SrcPort		      2
       Points		      [15, 0; 0, -125; 112, 0]
       Branch {
-	Points			[0, 262]
-	DstBlock		"Sum"
-	DstPort			4
+	Points			[0, 160]
+	Branch {
+	  Points		  [0, 180]
+	  DstBlock		  "Add1"
+	  DstPort		  4
+	}
+	Branch {
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  4
+	}
       }
       Branch {
+	Points			[23, 0]
 	DstBlock		"spikes"
 	DstPort			5
       }
@@ -4333,11 +3972,19 @@ Model {
       SrcPort		      2
       Points		      [20, 0; 0, -160; 101, 0]
       Branch {
-	Points			[0, 259]
-	DstBlock		"Sum"
-	DstPort			5
+	Points			[0, 175]
+	Branch {
+	  Points		  [0, 165]
+	  DstBlock		  "Add1"
+	  DstPort		  5
+	}
+	Branch {
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  5
+	}
       }
       Branch {
+	Points			[29, 0]
 	DstBlock		"spikes"
 	DstPort			6
       }
@@ -4345,13 +3992,21 @@ Model {
     Line {
       SrcBlock		      "sensory6"
       SrcPort		      2
-      Points		      [25, 0; 0, -200; 90, 0]
+      Points		      [25, 0; 0, -195; 90, 0]
       Branch {
-	Points			[0, 256]
-	DstBlock		"Sum"
-	DstPort			6
+	Points			[0, 190]
+	Branch {
+	  Points		  [0, 150]
+	  DstBlock		  "Add1"
+	  DstPort		  6
+	}
+	Branch {
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  6
+	}
       }
       Branch {
+	Points			[35, 0]
 	DstBlock		"spikes"
 	DstPort			7
       }
@@ -4361,183 +4016,76 @@ Model {
       SrcPort		      2
       Points		      [30, 0; 0, -230; 77, 0]
       Branch {
-	Points			[0, 253]
-	DstBlock		"Sum"
-	DstPort			7
+	Points			[0, 205]
+	Branch {
+	  Points		  [0, 135]
+	  DstBlock		  "Add1"
+	  DstPort		  7
+	}
+	Branch {
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  7
+	}
       }
       Branch {
+	Points			[43, 0]
 	DstBlock		"spikes"
 	DstPort			8
-      }
-    }
-    Line {
-      SrcBlock		      "sensory9"
-      SrcPort		      2
-      Points		      [40, 0; 0, -300; 53, 0]
-      Branch {
-	Points			[0, 251]
-	DstBlock		"Sum"
-	DstPort			9
-      }
-      Branch {
-	DstBlock		"spikes"
-	DstPort			10
-      }
-    }
-    Line {
-      SrcBlock		      "Fast_spiking1"
-      SrcPort		      2
-      Points		      [45, 0; 0, -335; 41, 0]
-      Branch {
-	Points			[0, 255; 101, 0]
-	DstBlock		"Sum"
-	DstPort			10
-      }
-      Branch {
-	DstBlock		"spikes"
-	DstPort			11
-      }
-    }
-    Line {
-      Labels		      [0, 0]
-      SrcBlock		      "sensory8"
-      SrcPort		      2
-      Points		      [35, 0; 0, -265; 65, 0]
-      Branch {
-	Points			[0, 251]
-	DstBlock		"Sum"
-	DstPort			8
-      }
-      Branch {
-	DstBlock		"spikes"
-	DstPort			9
       }
     }
     Line {
       SrcBlock		      "additiveNoise"
       SrcPort		      1
-      Points		      [21, 0]
-      Branch {
-	Points			[0, -390]
-	DstBlock		"Add2"
-	DstPort			1
-      }
-      Branch {
-	DstBlock		"sensory1"
-	DstPort			1
-      }
+      DstBlock		      "sensory1"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "additiveNoise1"
       SrcPort		      1
-      Points		      [33, 0]
-      Branch {
-	Points			[0, -420]
-	DstBlock		"Add2"
-	DstPort			2
-      }
-      Branch {
-	DstBlock		"sensory2"
-	DstPort			1
-      }
+      DstBlock		      "sensory2"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "additiveNoise2"
       SrcPort		      1
-      Points		      [43, 0]
-      Branch {
-	Points			[0, -450]
-	DstBlock		"Add2"
-	DstPort			3
-      }
-      Branch {
-	DstBlock		"sensory3"
-	DstPort			1
-      }
+      DstBlock		      "sensory3"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "additiveNoise3"
       SrcPort		      1
-      Points		      [55, 0]
-      Branch {
-	Points			[0, -480]
-	DstBlock		"Add2"
-	DstPort			4
-      }
-      Branch {
-	DstBlock		"sensory4"
-	DstPort			1
-      }
+      DstBlock		      "sensory4"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "additiveNoise4"
       SrcPort		      1
-      Points		      [67, 0]
-      Branch {
-	Points			[0, -510]
-	DstBlock		"Add2"
-	DstPort			5
-      }
-      Branch {
-	DstBlock		"sensory5"
-	DstPort			1
-      }
+      DstBlock		      "sensory5"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "additiveNoise5"
       SrcPort		      1
-      Points		      [77, 0]
-      Branch {
-	Points			[0, -545]
-	DstBlock		"Add2"
-	DstPort			6
-      }
-      Branch {
-	DstBlock		"sensory6"
-	DstPort			1
-      }
+      DstBlock		      "sensory6"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "additiveNoise6"
       SrcPort		      1
-      Points		      [87, 0]
-      Branch {
-	Points			[0, -570]
-	DstBlock		"Add2"
-	DstPort			7
-      }
-      Branch {
-	DstBlock		"sensory7"
-	DstPort			1
-      }
+      DstBlock		      "sensory7"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "additiveNoise7"
       SrcPort		      1
-      Points		      [97, 0]
-      Branch {
-	Points			[0, -600]
-	DstBlock		"Add2"
-	DstPort			8
-      }
-      Branch {
-	DstBlock		"sensory8"
-	DstPort			1
-      }
+      DstBlock		      "sensory8"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "additiveNoise8"
       SrcPort		      1
-      Points		      [107, 0]
-      Branch {
-	Points			[0, -630]
-	DstBlock		"Add2"
-	DstPort			9
-      }
-      Branch {
-	DstBlock		"sensory9"
-	DstPort			1
-      }
+      DstBlock		      "sensory9"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "Constant8"
@@ -4608,13 +4156,9 @@ Model {
 	      DstPort		      1
 	    }
 	    Branch {
-	      Points		      [0, 55]
+	      Points		      [0, 50]
 	      Branch {
-		DstBlock		"additiveNoise5"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, 45]
+		Points			[0, 50]
 		Branch {
 		  DstBlock		  "additiveNoise6"
 		  DstPort		  1
@@ -4638,76 +4182,52 @@ Model {
 		    DstPort		    1
 		    }
 		    Branch {
-		    Points		    [0, 70]
-		    Branch {
-		    DstBlock		    "additiveNoise10"
-		    DstPort		    1
-		    }
+		    Points		    [0, 50]
 		    Branch {
 		    Points		    [0, 50]
 		    Branch {
-		    DstBlock		    "additiveNoise11"
-		    DstPort		    1
-		    }
-		    Branch {
 		    Points		    [0, 50]
 		    Branch {
-		    DstBlock		    "additiveNoise12"
-		    DstPort		    1
-		    }
-		    Branch {
 		    Points		    [0, 50]
-		    Branch {
-		    DstBlock		    "additiveNoise13"
-		    DstPort		    1
-		    }
 		    Branch {
 		    Points		    [0, 50]
 		    Branch {
 		    Points		    [0, 55]
-		    Branch {
 		    DstBlock		    "additiveNoise15"
 		    DstPort		    1
-		    }
-		    Branch {
-		    Points		    [0, 45]
-		    Branch {
-		    DstBlock		    "additiveNoise16"
-		    DstPort		    1
-		    }
-		    Branch {
-		    Points		    [0, 50]
-		    Branch {
-		    DstBlock		    "additiveNoise17"
-		    DstPort		    1
-		    }
-		    Branch {
-		    Points		    [0, 50]
-		    Branch {
-		    Points		    [0, 50]
-		    DstBlock		    "additiveNoise19"
-		    DstPort		    1
-		    }
-		    Branch {
-		    DstBlock		    "additiveNoise18"
-		    DstPort		    1
-		    }
-		    }
-		    }
-		    }
 		    }
 		    Branch {
 		    DstBlock		    "additiveNoise14"
 		    DstPort		    1
 		    }
 		    }
+		    Branch {
+		    DstBlock		    "additiveNoise13"
+		    DstPort		    1
 		    }
 		    }
+		    Branch {
+		    DstBlock		    "additiveNoise12"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "additiveNoise11"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "additiveNoise10"
+		    DstPort		    1
 		    }
 		    }
 		    }
 		  }
 		}
+	      }
+	      Branch {
+		DstBlock		"additiveNoise5"
+		DstPort			1
 	      }
 	    }
 	  }
@@ -4789,32 +4309,20 @@ Model {
     Line {
       SrcBlock		      "additiveNoise9"
       SrcPort		      1
-      Points		      [115, 0]
-      Branch {
-	Points			[0, -660]
-	DstBlock		"Add2"
-	DstPort			10
-      }
-      Branch {
-	DstBlock		"Fast_spiking1"
-	DstPort			1
-      }
+      DstBlock		      "Fast_spiking1"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "Add1"
       SrcPort		      1
-      Points		      [8, 0]
+      Points		      [10, 0]
       Branch {
-	Points			[0, -35]
+	Points			[0, -45]
 	DstBlock		"To Workspace4"
 	DstPort			1
       }
       Branch {
-	Points			[0, 403; -1010, 0; 0, -1028]
-	DstBlock		"Scope3"
-	DstPort			4
-      }
-      Branch {
+	Points			[0, 35]
 	DstBlock		"Scope"
 	DstPort			1
       }
@@ -4856,119 +4364,208 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "additiveNoise16"
-      SrcPort		      1
-      DstBlock		      "sensory17"
-      DstPort		      1
+      SrcBlock		      "sensory8"
+      SrcPort		      2
+      Points		      [36, 0; 0, -265; 62, 0]
+      Branch {
+	Points			[0, 210]
+	Branch {
+	  Points		  [0, 130]
+	  DstBlock		  "Add1"
+	  DstPort		  8
+	}
+	Branch {
+	  Points		  [222, 0; 0, 10]
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  8
+	}
+      }
+      Branch {
+	DstBlock		"spikes"
+	DstPort			9
+      }
     }
     Line {
-      SrcBlock		      "additiveNoise17"
-      SrcPort		      1
-      DstBlock		      "sensory18"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "additiveNoise18"
-      SrcPort		      1
-      DstBlock		      "sensory19"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "additiveNoise19"
-      SrcPort		      1
-      DstBlock		      "Fast_spiking2"
-      DstPort		      1
+      SrcBlock		      "Fast_spiking1"
+      SrcPort		      2
+      Points		      [35, 0; 0, 225; 64, 0]
+      Branch {
+	DstBlock		"spikes1"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, -53]
+	Branch {
+	  Points		  [315, 0; 0, -107]
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  15
+	}
+	Branch {
+	  Points		  [0, -167]
+	  DstBlock		  "Add1"
+	  DstPort		  10
+	}
+      }
     }
     Line {
       SrcBlock		      "sensory10"
       SrcPort		      2
-      Points		      [72, 0; 0, 185]
-      DstBlock		      "Add"
-      DstPort		      1
+      Points		      [32, 0; 0, 190; 76, 0]
+      Branch {
+	DstBlock		"spikes1"
+	DstPort			3
+      }
+      Branch {
+	Points			[0, -76]
+	Branch {
+	  Points		  [295, 0; 0, -129]
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  14
+	}
+	Branch {
+	  Points		  [0, -144]
+	  DstBlock		  "Add1"
+	  DstPort		  11
+	}
+      }
     }
     Line {
       SrcBlock		      "sensory12"
       SrcPort		      2
-      Points		      [61, 0; 0, 155]
-      DstBlock		      "Add"
-      DstPort		      2
+      Points		      [28, 0; 0, 155; 90, 0]
+      Branch {
+	DstBlock		"spikes1"
+	DstPort			4
+      }
+      Branch {
+	Points			[0, -101]
+	Branch {
+	  Points		  [272, 0; 0, -149]
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  13
+	}
+	Branch {
+	  Points		  [0, -119]
+	  DstBlock		  "Add1"
+	  DstPort		  12
+	}
+      }
     }
     Line {
       SrcBlock		      "sensory13"
       SrcPort		      2
-      Points		      [53, 0; 0, 125]
-      DstBlock		      "Add"
-      DstPort		      3
-    }
-    Line {
-      SrcBlock		      "sensory14"
-      SrcPort		      2
-      Points		      [40, 0; 0, 95]
-      DstBlock		      "Add"
-      DstPort		      4
+      Points		      [19, 0; 0, 120; 107, 0]
+      Branch {
+	Points			[0, -121]
+	Branch {
+	  Points		  [253, 0; 0, -174]
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  12
+	}
+	Branch {
+	  Points		  [0, -99]
+	  DstBlock		  "Add1"
+	  DstPort		  13
+	}
+      }
+      Branch {
+	DstBlock		"spikes1"
+	DstPort			5
+      }
     }
     Line {
       SrcBlock		      "sensory15"
       SrcPort		      2
-      Points		      [28, 0; 0, 65]
-      DstBlock		      "Add"
-      DstPort		      5
+      Points		      [4, 0; 0, 50; 133, 0]
+      Branch {
+	Points			[0, -163]
+	Branch {
+	  Points		  [225, 0; 0, -222]
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  10
+	}
+	Branch {
+	  Points		  [0, -57]
+	  DstBlock		  "Add1"
+	  DstPort		  15
+	}
+      }
+      Branch {
+	DstBlock		"spikes1"
+	DstPort			7
+      }
     }
     Line {
       SrcBlock		      "sensory16"
       SrcPort		      2
-      Points		      [18, 0; 0, 30]
-      DstBlock		      "Add"
-      DstPort		      6
+      Points		      [5, 0; 0, 10; 143, 0]
+      Branch {
+	Points			[0, -186]
+	Branch {
+	  Points		  [186, 0; 0, -244]
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  9
+	}
+	Branch {
+	  Points		  [0, -34]
+	  DstBlock		  "Add1"
+	  DstPort		  16
+	}
+      }
+      Branch {
+	DstBlock		"spikes1"
+	DstPort			8
+      }
     }
     Line {
-      SrcBlock		      "sensory17"
-      SrcPort		      2
-      Points		      [7, 0; 0, 5]
-      DstBlock		      "Add"
-      DstPort		      7
-    }
-    Line {
-      SrcBlock		      "sensory18"
-      SrcPort		      2
-      Points		      [12, 0; 0, -25]
-      DstBlock		      "Add"
-      DstPort		      8
-    }
-    Line {
-      SrcBlock		      "sensory19"
-      SrcPort		      2
-      Points		      [24, 0; 0, -55]
-      DstBlock		      "Add"
-      DstPort		      9
-    }
-    Line {
-      SrcBlock		      "Fast_spiking2"
-      SrcPort		      2
-      Points		      [35, 0; 0, -85]
-      DstBlock		      "Add"
-      DstPort		      10
-    }
-    Line {
-      SrcBlock		      "Add"
+      SrcBlock		      "Vector\nConcatenate"
       SrcPort		      1
-      Points		      [37, 0; 0, -265]
-      DstBlock		      "Add1"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Sum"
-      SrcPort		      1
-      Points		      [5, 0]
-      DstBlock		      "Add1"
+      DstBlock		      "To Workspace1"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Add2"
-      SrcPort		      1
-      Points		      [540, 0; 0, 1327; -1118, 0; 0, -1052]
-      DstBlock		      "Scope3"
-      DstPort		      3
+      SrcBlock		      "sensory9"
+      SrcPort		      2
+      Points		      [42, 0; 0, 260; 49, 0]
+      Branch {
+	DstBlock		"spikes1"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -31]
+	Branch {
+	  Points		  [0, -189]
+	  DstBlock		  "Add1"
+	  DstPort		  9
+	}
+	Branch {
+	  Points		  [333, 0; 0, -84]
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  16
+	}
+      }
+    }
+    Line {
+      SrcBlock		      "sensory14"
+      SrcPort		      2
+      Points		      [12, 0; 0, 85; 120, 0]
+      Branch {
+	Points			[0, -142]
+	Branch {
+	  Points		  [239, 0; 0, -198]
+	  DstBlock		  "Vector\nConcatenate"
+	  DstPort		  11
+	}
+	Branch {
+	  Points		  [0, -78]
+	  DstBlock		  "Add1"
+	  DstPort		  14
+	}
+      }
+      Branch {
+	DstBlock		"spikes1"
+	DstPort			6
+      }
     }
   }
 }
