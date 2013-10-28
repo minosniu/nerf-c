@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.93"
+    ComputedModelVersion    "1.94"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -37,7 +37,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-10.0, -10.0, 1940.0, 1100.0]
+      Location		      [960.0, 0.0, 960.0, 1080.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -61,7 +61,7 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1886.0, 880.0]
+	Extents			[906.0, 860.0]
 	ZoomFactor		[0.8]
 	Offset			[-298.43135310091134, 427.25385111835021]
       }
@@ -73,9 +73,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "C. Minos Niu"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Oct 27 17:00:55 2013"
-  RTWModifiedTimeStamp	  304794053
-  ModelVersionFormat	  "1.%<AutoIncrement:93>"
+  LastModifiedDate	  "Sun Oct 27 17:11:12 2013"
+  RTWModifiedTimeStamp	  304794669
+  ModelVersionFormat	  "1.%<AutoIncrement:94>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -959,7 +959,7 @@ Model {
   }
   System {
     Name		    "verify_loeb_spindle"
-    Location		    [-10, -10, 1930, 1090]
+    Location		    [960, 0, 1920, 1080]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1185,25 +1185,6 @@ Model {
     }
     Block {
       BlockType		      S-Function
-      Name		      "Fast_spiking"
-      SID		      "445"
-      Ports		      [1, 2]
-      Position		      [270, 811, 465, 849]
-      ZOrder		      -14
-      BackgroundColor	      "lightBlue"
-      FunctionName	      "izh"
-      Parameters	      "[0.01 0.2 -65.0 2.0 30.0 SIZE_MU_10] [-70.0 -14.0]"
-      EnableBusSupport	      off
-      Object {
-	$PropName		"MaskObject"
-	$ObjectID		19
-	$ClassName		"Simulink.Mask"
-	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
-	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
-      }
-    }
-    Block {
-      BlockType		      S-Function
       Name		      "Fast_spiking1"
       SID		      "449"
       Ports		      [1, 2]
@@ -1215,7 +1196,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		20
+	$ObjectID		19
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -1250,19 +1231,6 @@ Model {
       SourceType	      "Repeating table"
       rep_seq_t		      "[0 1.8 2.1 4.0]"
       rep_seq_y		      "[1.00 1.0 80.0 80.0]"
-    }
-    Block {
-      BlockType		      Reference
-      Name		      "Repeating\nSequence2"
-      SID		      "446"
-      Ports		      [0, 1]
-      Position		      [165, 815, 195, 845]
-      ZOrder		      -16
-      LibraryVersion	      "1.274"
-      SourceBlock	      "simulink/Sources/Repeating\nSequence"
-      SourceType	      "Repeating table"
-      rep_seq_t		      "[0 0.3 4.0]"
-      rep_seq_y		      "[0 0 45 ]"
     }
     Block {
       BlockType		      Reference
@@ -1308,45 +1276,6 @@ Model {
       ShowLegends	      off
       SaveName		      "ScopeData3"
       DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope1"
-      SID		      "448"
-      Ports		      [4]
-      Position		      [500, 783, 530, 817]
-      ZOrder		      -31
-      Floating		      off
-      Location		      [296, 221, 1038, 686]
-      Open		      off
-      NumInputPorts	      "4"
-      ZoomMode		      "xonly"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-	axes2			"%<SignalLabel>"
-	axes3			"%<SignalLabel>"
-	axes4			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.501960784313725 0.501960784313725 0.501960784313725]"
-	AxesColor		"[1 1 1]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[0 0 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[1 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      ShowLegends	      off
-      TimeRange		      "10"
-      YMin		      "0~-5~-5~-5"
-      YMax		      "37.5~5~5~5"
-      SaveToWorkspace	      on
-      SaveName		      "total_force"
-      DataFormat	      "Structure"
-      LimitDataPoints	      off
       SampleTime	      "0"
     }
     Block {
@@ -1716,7 +1645,7 @@ Model {
 	  Ports			  [1]
 	  Position		  [330, 25, 390, 55]
 	  ZOrder		  -7
-	  VariableName		  "nips_stretch98"
+	  VariableName		  "nips_stretch99"
 	  MaxDataPoints		  "inf"
 	  SampleTime		  "-1"
 	  SaveFormat		  "Structure With Time"
@@ -1728,7 +1657,7 @@ Model {
 	  Ports			  [1]
 	  Position		  [330, 90, 390, 120]
 	  ZOrder		  -7
-	  VariableName		  "nips_stretchvel98"
+	  VariableName		  "nips_stretchvel99"
 	  MaxDataPoints		  "inf"
 	  SampleTime		  "-1"
 	  SaveFormat		  "Structure With Time"
@@ -1796,7 +1725,7 @@ Model {
 	  EnableBusSupport	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    21
+	    $ObjectID		    20
 	    $ClassName		    "Simulink.Mask"
 	    Display		    "port_label('input', 1, 'gamma dynamic');\nport_label('input', 2, 'gamma static');\nport_label('inpu"
 	    "t', 3, 'Lce(L0)');\nport_label('output',1,'Ia');\nport_label('output',2,'II');\ndisp('Muscle Spindle \\n(S-Functi"
@@ -2076,7 +2005,7 @@ Model {
       Ports		      [1]
       Position		      [1680, 737, 1740, 753]
       ZOrder		      112
-      VariableName	      "fpga_raster"
+      VariableName	      "fpga_raster1"
       MaxDataPoints	      "inf"
       SampleTime	      "-1"
     }
@@ -2087,7 +2016,7 @@ Model {
       Ports		      [1]
       Position		      [585, 562, 645, 578]
       ZOrder		      85
-      VariableName	      "loeb_pps14"
+      VariableName	      "loeb_pps15"
       MaxDataPoints	      "inf"
       SampleTime	      "-1"
     }
@@ -2098,7 +2027,7 @@ Model {
       Ports		      [1]
       Position		      [1410, 807, 1470, 823]
       ZOrder		      84
-      VariableName	      "fpga_pps14"
+      VariableName	      "fpga_pps15"
       MaxDataPoints	      "inf"
       SampleTime	      "-1"
     }
@@ -3516,7 +3445,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		22
+	$ObjectID		21
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3535,7 +3464,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		23
+	$ObjectID		22
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3554,7 +3483,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		24
+	$ObjectID		23
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3573,7 +3502,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		25
+	$ObjectID		24
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3592,7 +3521,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		26
+	$ObjectID		25
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3611,7 +3540,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		27
+	$ObjectID		26
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3630,7 +3559,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		28
+	$ObjectID		27
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3649,7 +3578,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		29
+	$ObjectID		28
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3668,7 +3597,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		30
+	$ObjectID		29
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3687,7 +3616,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		31
+	$ObjectID		30
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3706,7 +3635,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		32
+	$ObjectID		31
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3725,7 +3654,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		33
+	$ObjectID		32
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3744,7 +3673,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		34
+	$ObjectID		33
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3763,7 +3692,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		35
+	$ObjectID		34
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -3782,7 +3711,7 @@ Model {
       EnableBusSupport	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		36
+	$ObjectID		35
 	$ClassName		"Simulink.Mask"
 	Display			"port_label('input', 1, 'syn curr');\nport_label('output', 1, 'action potential');\nport_label('output', 2,"
 	" 'spike');\ndisp('Izhi Neuron \\n(S-Function)') "
@@ -4233,34 +4162,6 @@ Model {
 	  }
 	}
       }
-    }
-    Line {
-      SrcBlock		      "Repeating\nSequence2"
-      SrcPort		      1
-      Points		      [30, 0]
-      Branch {
-	DstBlock		"Fast_spiking"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -45]
-	DstBlock		"Scope1"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Fast_spiking"
-      SrcPort		      1
-      Points		      [15, 0]
-      DstBlock		      "Scope1"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Fast_spiking"
-      SrcPort		      2
-      Points		      [15, 0]
-      DstBlock		      "Scope1"
-      DstPort		      3
     }
     Line {
       SrcBlock		      "Manual Switch1"
